@@ -6,7 +6,9 @@
 # Game specification 
 
 ## Objective
-Players must compete against each other to collect items on their shopping list and be the first to check out at the register.
+Players must compete against each other to collect items on their shopping list and check out at the register as fast as possible.
+
+[**More information on the rules here**](./Documentation/GameRules.md)
 
 ## Scenario
 "Livl Madness" is a fast-paced multiplayer game that takes place in a bustling and chaotic supermarket called Livl... Players are given a shopping list of various items they need to collect from the Lidl+ application on their phone, ranging from food items to household supplies. The first player to collect all the required items and check out at the register wins the game.
