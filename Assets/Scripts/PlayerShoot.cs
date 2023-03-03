@@ -3,15 +3,15 @@ using Mirror;
 
 public class PlayerShoot : NetworkBehaviour
 {
-    
+
     public PlayerWeapon weapon;
 
     [SerializeField]
     private Camera cam;
-    
+
     [SerializeField]
     private LayerMask mask;
-    
+
     void Start()
     {
         if (cam == null)
@@ -23,9 +23,9 @@ public class PlayerShoot : NetworkBehaviour
 
     private void Update()
     {
-        if(PauseMenu.isOn)
+        if (PlayerUI.isPaused)
             return;
-        
+
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
@@ -38,10 +38,10 @@ public class PlayerShoot : NetworkBehaviour
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, weapon.range, mask))
         {
             Debug.Log("On a touché " + hit.collider.name);
-            
+
             if (hit.collider.tag == "Player")
             {
-                
+
             }
         }
     }

@@ -1,20 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class PlayerUI : MonoBehaviour
+public class PlayerUI : NetworkBehaviour
 {
+
+    private static bool paused = false;
+
+
     private Player player;
 
+    private NetworkManager networkManager;
     private PlayerController controller;
 
-    [SerializeField]
-    private GameObject pauseMenu;
 
-    // Start is called before the first frame update
+    [Header("Components")]
+    [SerializeField] private GameObject pauseOverlay;
+    [SerializeField] private PhoneController phoneController;
+
+    public static bool isPaused
+    {
+        get => paused;
+    }
+
     private void Start()
     {
-        SetPauseMenuVisibility(false);
+        networkManager = NetworkManager.singleton;
+
+        // Hide pause overlay
+        pauseOverlay.SetActive(false);
     }
 
     public void SetPlayer(Player _player)
@@ -34,13 +49,33 @@ public class PlayerUI : MonoBehaviour
 
     public void TogglePauseMenu()
     {
-        SetPauseMenuVisibility(!PauseMenu.isOn);
+        SetPauseMenuVisibility(!isPaused);
     }
 
     public void SetPauseMenuVisibility(bool visible)
     {
-        pauseMenu.SetActive(visible);
-        PauseMenu.isOn = visible;
+        PlayerUI.paused = visible;
+        pauseOverlay.SetActive(visible);
+        if (isPaused)
+        {
+            phoneController.navigate(Phone.Screen.Pause);
+        }
+        else
+        {
+            phoneController.navigate(Phone.Screen.ProductList);
+        }
+    }
+
+    public void LeaveRoomButton()
+    {
+        if (isClientOnly)
+        {
+            networkManager.StopClient();
+        }
+        else
+        {
+            networkManager.StopHost();
+        }
     }
 
 }
