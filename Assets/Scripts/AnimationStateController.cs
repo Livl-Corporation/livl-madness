@@ -9,12 +9,14 @@ public class AnimationStateController : MonoBehaviour
     private Animator animator;
     int isWalkingHash;
     private int isRunningHash;
+    private int isScanningHash;
     
     void Start()
     {
         animator = character.GetComponent<Animator>();
         isWalkingHash = Animator.StringToHash("isWalking");
         isRunningHash = Animator.StringToHash("isRunning");
+        isScanningHash = Animator.StringToHash("isScanning");
     }
 
     void Update()
@@ -23,8 +25,11 @@ public class AnimationStateController : MonoBehaviour
         bool forwardPressed = Input.GetKey(KeyCode.Z);
         bool runPressed = Input.GetKey(KeyCode.LeftShift);
         bool isRunning = animator.GetBool(isRunningHash);
+        bool isScanningPressed = Input.GetKey(KeyCode.Space);
+        bool isScanning = animator.GetBool(isScanningHash);
         
         bool isKeyReleased = Input.GetKeyUp(KeyCode.Z);
+        bool isScanningReleased = Input.GetKeyUp(KeyCode.Space);
 
         if(!isWalking && forwardPressed)
         {
@@ -44,6 +49,15 @@ public class AnimationStateController : MonoBehaviour
         if(isRunning && (!forwardPressed || !runPressed))
         {
             animator.SetBool(isRunningHash, false);
+        }
+        
+        if(isScanningPressed && !isScanning)
+        {
+            animator.SetBool(isScanningHash, true);
+        }
+        if(isScanningReleased && (isScanning && !isScanningPressed))
+        {
+            animator.SetBool(isScanningHash, false);
         }
     }
 }
