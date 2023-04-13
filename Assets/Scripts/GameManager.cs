@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     private static Dictionary<string, Player> players = new Dictionary<string, Player>();
     private static Dictionary<string, PhoneController> phoneControllers = new Dictionary<string, PhoneController>();
     
+    [SerializeField] private float skyboxRotationSpeed = 1f;
+    
     //public MatchSettings matchSettings;
 
     public static GameManager instance;
@@ -34,6 +36,25 @@ public class GameManager : MonoBehaviour
         }
 
         Debug.LogError("More than one GameManager in scene.");
+    }
+    
+    private void Update()
+    {
+        MoveSkybox();
+    }
+    
+    private void MoveSkybox()
+    {
+        var skybox = RenderSettings.skybox;
+        var rotation = skybox.GetFloat("_Rotation");
+        skybox.SetFloat("_Rotation", rotation + skyboxRotationSpeed * Time.deltaTime);
+        
+        // move the directional light as well
+        var light = GameObject.Find("Directional Light");
+        if(light != null)
+        {
+            light.transform.Rotate(Vector3.up, skyboxRotationSpeed * Time.deltaTime);
+        }
     }
 
     public void SetSceneCameraActive(bool isActive)
