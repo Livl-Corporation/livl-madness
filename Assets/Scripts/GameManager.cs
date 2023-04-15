@@ -50,11 +50,11 @@ public class GameManager : MonoBehaviour
         skybox.SetFloat("_Rotation", rotation + skyboxRotationSpeed * Time.deltaTime);
         
         // move the directional light as well
-        var light = GameObject.Find("Directional Light");
-        if(light != null)
-        {
-            light.transform.Rotate(Vector3.up, skyboxRotationSpeed * Time.deltaTime);
-        }
+        //var light = GameObject.Find("Directional Light");
+        //if(light != null)
+        //{
+        //    light.transform.Rotate(Vector3.up, skyboxRotationSpeed * Time.deltaTime);
+        //}
     }
 
     public void SetSceneCameraActive(bool isActive)
