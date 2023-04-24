@@ -50,34 +50,37 @@ public class PlayerScanController : MonoBehaviour
 
     public List<GameObject> GetScanList()
     {
-        var scanList = new List<GameObject>();
-        for (int i = 0; i < scanListSize; i++)
+        var returnedList = new List<GameObject>();
+        var clonedScanList = new Queue<GameObject>(scanList);
+        for (var i = 0; i < scanListSize; i++)
         {
-            if (this.scanList.Count > 0)
+            if (clonedScanList.Count > 0)
             {
-                scanList.Add(this.scanList.Dequeue());
+                returnedList.Add(clonedScanList.Dequeue());
             }
         }
 
-        return scanList;
+        return returnedList;
     }
 
     public bool Scan(GameObject item)
     {
         
-        // Check if item is in the 4 first items
-        var displayedScanList = GetScanList().GetRange(0,4);
-        var isItemInScanList = scanList.Contains(item);
+        var scanListIdentities = GetScanListNames();
         
-        if (!isItemInScanList)
+        if (!scanListIdentities.Contains(item.name))
         {
             return false;
         }
         
-        var itemIndex = displayedScanList.FindIndex(a => a == item);
+        // Add item to scanned objects
+        var itemIndex = scanListIdentities.FindIndex(a => a == item.name);
         scannedObjects.Add(item);
         
+        // Remove scanned items from scanlist
         scanList = new Queue<GameObject>(scanList.Where(a => a != item));
+        
+        // Update UI
         productListController.CheckAndReplace(itemIndex, GetScanListNames());
         playerScore.Increment(1);
         
@@ -89,11 +92,11 @@ public class PlayerScanController : MonoBehaviour
         return new List<GameObject>(scannedObjects);
     }
 
-    public List<String> GetScanListNames()
+    private List<string> GetScanListNames()
     {
         return GetScanList()
             .Select(a => a.name)
             .ToList();
     }
-
+    
 }
