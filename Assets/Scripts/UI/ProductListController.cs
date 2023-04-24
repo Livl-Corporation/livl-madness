@@ -1,13 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Interfaces;
+using Models;
 using UnityEngine;
 
-public class ProductListController : MonoBehaviour
+public class ProductListController : MonoBehaviour, IProductListObserver
 {
-
-    [Header("Config")]
-    [SerializeField] private int checkAnimationDuration = 2;
 
     [Header("Components")]
     [SerializeField] private int productCount = 4;
@@ -26,43 +25,19 @@ public class ProductListController : MonoBehaviour
         Debug.Log("ProductListController: " + productItems.Count + " product items found");
     }
 
-    // Start is called before the first frame update
-    public void SetProducts(List<string> names)
+    public void UpdateProductList(List<ProductItem> productList)
     {
         for (int i = 0; i < productCount; i++)
         {
-            ReplaceProduct(i, names.Count > i ? names[i] : "");
+            ReplaceProduct(i, productList.Count > i ? productList[i] : null);
         }
     }
-
-    public void UpdateProductStock(int productIndex, bool isOutOfStock)
+    
+    private void ReplaceProduct(int index, ProductItem item)
     {
-        productItems[productIndex].SetOutOfStock(isOutOfStock);
-    }
-
-    public void ReplaceProduct(int index, string name, bool isOutOfStock = false)
-    {
-        productItems[index].SetText(name);
-        productItems[index].SetOutOfStock(false);
-        productItems[index].SetChecked(isOutOfStock);
-    }
-
-    private IEnumerator DelayedProductReplacement(int index, string name)
-    {
-        yield return new WaitForSeconds(checkAnimationDuration);
-        ReplaceProduct(index, name);
-    }
-
-    public void CheckAndReplace(int index, List<string> newList)
-    {
-        productItems[index].SetChecked(true);
-        
-        // Replace product after index & before productCount
-        for (int i = index + 1; i < productCount; i++)
-        { 
-            StartCoroutine(DelayedProductReplacement(index, newList[index]));
-        }
-        
+        productItems[index].SetText(item.name ?? "");
+        productItems[index].SetOutOfStock(item.isOutOfStock);
+        productItems[index].SetChecked(item.scanned);
     }
 
 }

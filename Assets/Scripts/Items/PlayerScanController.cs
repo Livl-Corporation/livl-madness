@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Interfaces;
+using Models;
 using UnityEngine;
 
-public class PlayerScanController : MonoBehaviour
+public class PlayerScanController : MonoBehaviour, IProductListObservable
 {
     
     private static System.Random random = new System.Random();
@@ -16,9 +18,26 @@ public class PlayerScanController : MonoBehaviour
     [Header("Configuration")]
     [SerializeField] private int scanListSize = 4;
 
-    private Queue<GameObject> scanList;
-    private List<GameObject> scannedObjects = new List<GameObject>();
+    private Queue<ProductItem> scanList;
+    private List<ProductItem> scannedObjects = new List<ProductItem>();
+    private List<IProductListObserver> observers = new List<IProductListObserver>();
     
+    public void AddObserver(IProductListObserver observer)
+    {
+        observers.Add(observer);
+        NotifyObservers();
+    }
+
+    public void RemoveObserver(IProductListObserver observer)
+    {
+        observers.Remove(observer);
+    }
+
+    public void NotifyObservers()
+    {
+        observers.ForEach(observer => observer.UpdateProductList(GetScanList()));
+    }
+
     public void Start()
     {
         // Find store items controller
@@ -38,20 +57,20 @@ public class PlayerScanController : MonoBehaviour
         {
             playerScore = FindObjectOfType<PlayerScore>();
         }
-
-
+        
         var storeItems = storeItemsController.GetItems()
-            .OrderBy(a => random.Next());
+            .OrderBy(a => random.Next())
+            .Select(a => new ProductItem(a.name));
 
-        scanList = new Queue<GameObject>(storeItems);
+        scanList = new Queue<ProductItem>(storeItems);
      
-        productListController.SetProducts(GetScanListNames());
+        AddObserver(productListController);
     }
 
-    public List<GameObject> GetScanList()
+    private List<ProductItem> GetScanList()
     {
-        var returnedList = new List<GameObject>();
-        var clonedScanList = new Queue<GameObject>(scanList);
+        var returnedList = new List<ProductItem>();
+        var clonedScanList = new Queue<ProductItem>(scanList);
         for (var i = 0; i < scanListSize; i++)
         {
             if (clonedScanList.Count > 0)
@@ -74,22 +93,21 @@ public class PlayerScanController : MonoBehaviour
         }
         
         // Add item to scanned objects
-        var itemIndex = scanListIdentities.FindIndex(a => a == item.name);
-        scannedObjects.Add(item);
+        scannedObjects.Add(new ProductItem(item.name));
         
         // Remove scanned items from scanlist
-        scanList = new Queue<GameObject>(scanList.Where(a => a != item));
+        scanList = new Queue<ProductItem>(scanList.Where(a => a.name != item.name));
         
         // Update UI
-        productListController.CheckAndReplace(itemIndex, GetScanListNames());
+        NotifyObservers();
         playerScore.Increment(1);
         
         return true;
     }
     
-    public List<GameObject> GetScannedObjects()
+    public List<ProductItem> GetScannedObjects()
     {
-        return new List<GameObject>(scannedObjects);
+        return new List<ProductItem>(scannedObjects);
     }
 
     private List<string> GetScanListNames()
