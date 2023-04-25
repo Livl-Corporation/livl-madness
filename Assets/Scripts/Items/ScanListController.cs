@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using Interfaces;
 using Models;
@@ -12,10 +13,12 @@ public class ScanListController : MonoBehaviour, IProductListObservable
     
     [Header("Configuration")]
     [SerializeField] public int scanListSize = 4;
+
+    [SerializeField] private int newProductDelay = 3;
     
     private static System.Random random = new System.Random();
 
-    private Queue<ProductItem> scanList;
+    private List<ProductItem> scanList;
     private List<ProductItem> scannedObjects = new List<ProductItem>();
     private List<IProductListObserver> observers = new List<IProductListObserver>();
 
@@ -48,12 +51,11 @@ public class ScanListController : MonoBehaviour, IProductListObservable
         {
             productListController = FindObjectOfType<ProductListController>();
         }
-        
-        var storeItems = storeItemsController.GetItems()
-            .OrderBy(a => random.Next())
-            .Select(a => new ProductItem(a.name));
 
-        scanList = new Queue<ProductItem>(storeItems);
+        scanList = storeItemsController.GetItems()
+            .OrderBy(a => random.Next())
+            .Select(a => new ProductItem(a.name))
+            .ToList();
      
         AddObserver(productListController);
     }
@@ -61,17 +63,12 @@ public class ScanListController : MonoBehaviour, IProductListObservable
     
     public List<ProductItem> GetScanList()
     {
-        var returnedList = new List<ProductItem>();
-        var clonedScanList = new Queue<ProductItem>(scanList);
-        for (var i = 0; i < scanListSize; i++)
+        if (scanList.Count >= scanListSize)
         {
-            if (clonedScanList.Count > 0)
-            {
-                returnedList.Add(clonedScanList.Dequeue());
-            }
+            return scanList.GetRange(0, scanListSize);
         }
 
-        return returnedList;
+        return scanList;
     }
     
     public List<ProductItem> GetScannedObjects()
@@ -95,12 +92,50 @@ public class ScanListController : MonoBehaviour, IProductListObservable
     {
         // Add item to scanned objects
         scannedObjects.Add(new ProductItem(itemName));
-        
-        // Remove scanned items from scanlist
-        scanList = new Queue<ProductItem>(scanList.Where(a => a.name != itemName));
 
-        NotifyObservers();
+        var productIndex = IndexOfProduct(itemName);
         
+        CheckProduct(productIndex);
+
+        var coroutine = DelayedDeleteProduct(productIndex);
+        StartCoroutine(coroutine);
+
     }
+
+    private void CheckProduct(int productIndex)
+    {
+        if (productIndex < 0 || productIndex >= scanListSize)
+        {
+            Debug.LogError("Product index out of range");
+            return;
+        }
+        
+        scanList[productIndex].scanned = true;
+        NotifyObservers();
+    }
+
+    private int IndexOfProduct(string itemName)
+    {
+        return GetScanListNames().IndexOf(itemName);
+    } 
+
+    private void DeleteProduct(int productIndex)
+    {
+        if (productIndex < 0 || productIndex >= scanListSize)
+        {
+            Debug.LogError("Product index out of range");
+            return;
+        }
+        
+        scanList.RemoveAt(productIndex);
+        NotifyObservers();
+    }
+    
+    private IEnumerator DelayedDeleteProduct(int productIndex)
+    {
+        yield return new WaitForSeconds(newProductDelay);
+        DeleteProduct(productIndex);
+    }
+    
 
 }

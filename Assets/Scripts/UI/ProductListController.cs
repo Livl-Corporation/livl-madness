@@ -35,9 +35,17 @@ public class ProductListController : MonoBehaviour, IProductListObserver
     
     private void ReplaceProduct(int index, ProductItem item)
     {
-        productItems[index].SetText(item.name ?? "");
-        productItems[index].SetOutOfStock(item.isOutOfStock);
-        productItems[index].SetChecked(item.scanned);
+        if(index >= productItems.Count || index < 0)
+        {
+            Debug.LogError("ProductListController: Index out of range");
+            return;
+        }
+        
+        var productItem = productItems[index];
+
+        productItem.SetText(item.name ?? "");
+        productItem.SetOutOfStock(item.isOutOfStock);
+        productItem.SetChecked(item.scanned);
     }
 
 }
