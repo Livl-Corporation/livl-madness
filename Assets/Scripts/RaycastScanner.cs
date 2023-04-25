@@ -1,44 +1,60 @@
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 
-public class RaycastScanner : MonoBehaviour
+public class RaycastScanner : NetworkBehaviour
 {
-    public Camera playerCamera;
-    public Transform laserOrigin;
-    public float gunRange = 50f;
-    public float fireRate = 0.2f;
-    public float laserDuration = 0.05f;
- 
-    LineRenderer laserLine;
-    float fireTimer;
- 
-    void Awake()
-    {
-        laserLine = GetComponent<LineRenderer>();
-    }
- 
+    [Header("References")]
+    [SerializeField] private Camera playerCamera;
+    
+    [Header("Laser")]
+    [SerializeField] private Transform laserOrigin;
+    [SerializeField] private LineRenderer laserLine;
+    
+    [Header("Scanner")]
+    [SerializeField] private float gunRange = 50f;
+    [SerializeField] private float fireRate = 0.2f;
+    [SerializeField] private float laserDuration = 0.05f;
+    
+    private float fireTimer;
+
     void Update()
     {
+        if (!isLocalPlayer) return;
+
         fireTimer += Time.deltaTime;
-        if(Input.GetButtonDown("Fire1") && fireTimer > fireRate)
+        if (Input.GetButtonDown("Fire1") && fireTimer > fireRate)
         {
             fireTimer = 0;
-            laserLine.SetPosition(0, laserOrigin.position);
-            Vector3 rayOrigin = playerCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
-            RaycastHit hit;
-            if(Physics.Raycast(rayOrigin, playerCamera.transform.forward, out hit, gunRange))
-            {
-                laserLine.SetPosition(1, hit.point);
-            }
-            else
-            {
-                laserLine.SetPosition(1, rayOrigin + (playerCamera.transform.forward * gunRange));
-            }
-            StartCoroutine(ShootLaser());
+            CmdShootLaser();
         }
     }
- 
+
+    [Command]
+    void CmdShootLaser()
+    {
+        RpcShowLaser();
+        StartCoroutine(ShootLaser());
+    }
+
+    [ClientRpc]
+    void RpcShowLaser()
+    {
+        laserLine.SetPosition(0, laserOrigin.position);
+        Vector3 rayOrigin = playerCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hit;
+        if (Physics.Raycast(rayOrigin, playerCamera.transform.forward, out hit, gunRange))
+        {
+            laserLine.SetPosition(1, hit.point);
+        }
+        else
+        {
+            laserLine.SetPosition(1, rayOrigin + (playerCamera.transform.forward * gunRange));
+        }
+        StartCoroutine(ShootLaser());
+    }
+
     IEnumerator ShootLaser()
     {
         laserLine.enabled = true;
