@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: morbier_front
-    second: {fileID: 2800000, guid: c433e8602d81805479026193d1dbbf64, type: 3}
+    second: {fileID: 2800000, guid: f0cd0298dbefcdc4cac25f2af17eba71, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
