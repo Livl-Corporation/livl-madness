@@ -71,10 +71,17 @@ public class ScanListController : MonoBehaviour, IProductListObservable
         return scanList;
     }
     
-    public List<ProductItem> GetScannedObjects()
+    public List<ProductItem> GetScannedProducts()
     {
         return new List<ProductItem>(scannedObjects);
     }
+
+    public List<string> GetScannedProductsNames()
+    {
+        return GetScannedProducts()
+            .Select(a => a.name)
+            .ToList();
+    }  
     
     public List<string> GetScanListNames()
     {
@@ -85,7 +92,8 @@ public class ScanListController : MonoBehaviour, IProductListObservable
 
     public bool CanBeScanned(string itemName)
     {
-        return !GetScanListNames().Contains(itemName);
+        return !GetScannedProductsNames().Contains(itemName) 
+               && GetScanListNames().Contains(itemName);
     }
 
     public void ScanArticle(string itemName)

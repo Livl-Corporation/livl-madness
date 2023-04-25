@@ -18,7 +18,7 @@ public class PlayerScanController : MonoBehaviour
     public bool Scan(GameObject item)
     {
         
-        if (scanListController.CanBeScanned(item.name))
+        if (!scanListController.CanBeScanned(item.name))
         {
             return false;
         }
