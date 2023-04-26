@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -8,11 +7,9 @@ public class GameManager : MonoBehaviour
     private const string playerIdPrefix = "Player";
 
     private static Dictionary<string, Player> players = new Dictionary<string, Player>();
-    private static Dictionary<string, PhoneController> phoneControllers = new Dictionary<string, PhoneController>();
+    private static readonly Dictionary<string, PhoneController> phoneControllers = new Dictionary<string, PhoneController>();
     
     [SerializeField] private float skyboxRotationSpeed = 1f;
-    
-    //public MatchSettings matchSettings;
 
     public static GameManager instance;
 
@@ -20,7 +17,12 @@ public class GameManager : MonoBehaviour
     private GameObject sceneCamera;
 
     public delegate void OnPlayerKilledCallback(string player, string source);
+    
     public OnPlayerKilledCallback onPlayerKilledCallback;
+    
+    [SerializeField] private Timer timer;
+    
+    //public MatchSettings matchSettings;
 
     private static string MakePlayerId(uint netId)
     {
@@ -37,10 +39,20 @@ public class GameManager : MonoBehaviour
 
         Debug.LogError("More than one GameManager in scene.");
     }
+
+    private void Start()
+    {
+        timer.StartTimer();
+    }
     
     private void Update()
     {
         MoveSkybox();
+    }
+    
+    public Dictionary<string, PhoneController> GetPhoneControllers()
+    {
+        return phoneControllers;
     }
     
     private void MoveSkybox()
