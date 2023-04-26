@@ -33,6 +33,9 @@ public class PlayerShoot : NetworkBehaviour
         playerScanController = GetComponent<PlayerScanController>();
         inputManager = GetComponent<InputManager>();
         
+        ScanningAudioSource.volume = 1f;
+        ScanningAudioSource.clip = ScanningAudioClip;
+        
     }
 
     private void Update()
@@ -57,7 +60,7 @@ public class PlayerShoot : NetworkBehaviour
             // check if player has right click on his mouse to scan
             if (inputManager.Aiming && hit.collider.CompareTag("Product"))
             {
-                PlayScanningAudio();
+                ScanningAudioSource.Play();
                 bool scanResult = playerScanController.Scan(hit.collider.gameObject);
 
                 if (!scanResult)
@@ -70,12 +73,6 @@ public class PlayerShoot : NetworkBehaviour
         }
     }
     
-    private void PlayScanningAudio()
-    {
-        ScanningAudioSource.volume = 1f;
-        ScanningAudioSource.clip = ScanningAudioClip;
-        ScanningAudioSource.Play();
-    }
     
     /**
      * TODO : Make the sound be also heard to all clients near the scanned article

@@ -27,7 +27,8 @@ public class ShelfController : MonoBehaviour
         Vector3 randomSpawnPosition = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y, spawnPoint.transform.position.z);
 
 
-        Instantiate(item, randomSpawnPosition, Quaternion.identity);
+        var clonedObject = Instantiate(item, randomSpawnPosition, Quaternion.identity);
+        clonedObject.name = item.name;
 
     }
 
