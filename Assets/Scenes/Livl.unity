@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 53855891}
   - component: {fileID: 53855893}
   - component: {fileID: 53855892}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: TriggerSoundOn
   m_TagString: EnterLivl
   m_Icon: {fileID: 0}
@@ -1538,7 +1538,7 @@ GameObject:
   - component: {fileID: 736891268}
   - component: {fileID: 736891267}
   - component: {fileID: 736891266}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Sensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1713,7 +1713,7 @@ GameObject:
   - component: {fileID: 816110684}
   - component: {fileID: 816110687}
   - component: {fileID: 816110688}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: TriggerSoundOn
   m_TagString: EnterLivl
   m_Icon: {fileID: 0}
@@ -1773,7 +1773,7 @@ GameObject:
   - component: {fileID: 818989848}
   - component: {fileID: 818989850}
   - component: {fileID: 818989849}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: TriggerSoundOff
   m_TagString: ExitLivl
   m_Icon: {fileID: 0}
@@ -1961,7 +1961,7 @@ GameObject:
   - component: {fileID: 917829261}
   - component: {fileID: 917829263}
   - component: {fileID: 917829262}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: TriggerSoundOn
   m_TagString: EnterLivl
   m_Icon: {fileID: 0}
@@ -2022,7 +2022,7 @@ GameObject:
   - component: {fileID: 1064029538}
   - component: {fileID: 1064029536}
   - component: {fileID: 1064029539}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Sensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2091,7 +2091,7 @@ GameObject:
   - component: {fileID: 1102542871}
   - component: {fileID: 1102542873}
   - component: {fileID: 1102542872}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: TriggerSoundOff
   m_TagString: ExitLivl
   m_Icon: {fileID: 0}
@@ -2152,7 +2152,7 @@ GameObject:
   - component: {fileID: 1146462697}
   - component: {fileID: 1146462696}
   - component: {fileID: 1146462695}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Sensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4608,7 +4608,7 @@ GameObject:
   - component: {fileID: 1960719397}
   - component: {fileID: 1960719399}
   - component: {fileID: 1960719398}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: TriggerSoundOff
   m_TagString: ExitLivl
   m_Icon: {fileID: 0}
