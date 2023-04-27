@@ -2,11 +2,12 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using Interfaces;
+using Mirror;
 using Models;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class ScanListController : MonoBehaviour, IProductListObservable
+public class ScanListController : NetworkBehaviour, IProductListObservable
 {
     [Header("Components")]
     [SerializeField] private ProductsController productsController;
@@ -17,10 +18,38 @@ public class ScanListController : MonoBehaviour, IProductListObservable
     
     private static System.Random random = new System.Random();
 
-    private List<ProductItem> scanList;
+    private readonly SyncList<ProductItem> scanList = new SyncList<ProductItem>();
+    
     // TODO : Move scanned object in the player
     private List<ProductItem> scannedObjects = new List<ProductItem>();
     private List<IProductListObserver> observers = new List<IProductListObserver>();
+
+    public void Start()
+    {
+        // Find store items controller
+        if (productsController == null)
+        {
+            productsController = FindObjectOfType<ProductsController>();
+        }
+
+        scanList.Callback += (op, index, item, newItem) => NotifyObservers();
+
+    }
+
+    public override void OnStartServer()
+    {
+        base.OnStartServer();
+        
+        // Server populate the scan list
+        
+        var productList = productsController.GetItems()
+            .OrderBy(a => random.Next())
+            .Select(a => new ProductItem(a.name))
+            .ToList();
+        
+        scanList.AddRange(productList);
+        
+    }
 
     public void AddObserver(IProductListObserver observer)
     {
@@ -37,33 +66,13 @@ public class ScanListController : MonoBehaviour, IProductListObservable
     {
         observers.ForEach(observer => observer.UpdateProductList(GetScanList()));
     }
-    
-    public void Start()
-    {
-        // Find store items controller
-        if (productsController == null)
-        {
-            productsController = FindObjectOfType<ProductsController>();
-        }
 
-        scanList = productsController.GetItems()
-            .OrderBy(a => random.Next())
-            .Select(a => new ProductItem(a.name))
-            .ToList();
-     
-        // TODO : remove test line
-        scanList = scanList.GetRange(0, 5);
-        
-        // TODO : GameManager should add player as observer
-        //AddObserver(productListController);
-    }
-    
-    
     public List<ProductItem> GetScanList()
     {
-        return scanList.Count >= scanListSize 
-            ? scanList.GetRange(0, scanListSize) 
-            : scanList;
+        var scanListClone = new List<ProductItem>(scanList);
+        return scanListClone.Count >= scanListSize 
+            ? scanListClone.GetRange(0, scanListSize) 
+            : scanListClone;
     }
     
     public List<ProductItem> GetScannedProducts()
@@ -114,7 +123,7 @@ public class ScanListController : MonoBehaviour, IProductListObservable
         }
         
         scanList[productIndex].scanned = true;
-        NotifyObservers();
+        //NotifyObservers();
     }
 
     private int IndexOfProduct(string itemName)
@@ -131,7 +140,7 @@ public class ScanListController : MonoBehaviour, IProductListObservable
         }
         
         scanList.RemoveAt(productIndex);
-        NotifyObservers();
+        //NotifyObservers();
     }
     
     private IEnumerator DelayedDeleteProduct(int productIndex)

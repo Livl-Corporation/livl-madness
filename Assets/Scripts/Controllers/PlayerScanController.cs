@@ -13,6 +13,9 @@ public class PlayerScanController : MonoBehaviour
         {
             scanListController = FindObjectOfType<ScanListController>();
         }
+        
+        
+        
     }
 
     public bool Scan(GameObject item)

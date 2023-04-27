@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject sceneCamera;
+    
+    [SerializeField]
+    private ScanListController scanListController;
 
     public delegate void OnPlayerKilledCallback(string player, string source);
     public OnPlayerKilledCallback onPlayerKilledCallback;
