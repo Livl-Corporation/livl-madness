@@ -4,12 +4,13 @@ using System.Linq;
 using Interfaces;
 using Models;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ScanListController : MonoBehaviour, IProductListObservable
 {
     [Header("Components")]
     [SerializeField] private ProductListController productListController;
-    [SerializeField] private StoreItemsController storeItemsController;
+    [SerializeField] private ProductsController productsController;
     
     [Header("Configuration")]
     [SerializeField] public int scanListSize = 4;
@@ -41,9 +42,9 @@ public class ScanListController : MonoBehaviour, IProductListObservable
     public void Start()
     {
         // Find store items controller
-        if (storeItemsController == null)
+        if (productsController == null)
         {
-            storeItemsController = FindObjectOfType<StoreItemsController>();
+            productsController = FindObjectOfType<ProductsController>();
         }
         
         // Find product list controller
@@ -52,7 +53,7 @@ public class ScanListController : MonoBehaviour, IProductListObservable
             productListController = FindObjectOfType<ProductListController>();
         }
 
-        scanList = storeItemsController.GetItems()
+        scanList = productsController.GetItems()
             .OrderBy(a => random.Next())
             .Select(a => new ProductItem(a.name))
             .ToList();
