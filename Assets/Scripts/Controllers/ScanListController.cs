@@ -9,17 +9,16 @@ using UnityEngine.Serialization;
 public class ScanListController : MonoBehaviour, IProductListObservable
 {
     [Header("Components")]
-    [SerializeField] private ProductListController productListController;
     [SerializeField] private ProductsController productsController;
     
     [Header("Configuration")]
     [SerializeField] public int scanListSize = 4;
-
     [SerializeField] private int newProductDelay = 3;
     
     private static System.Random random = new System.Random();
 
     private List<ProductItem> scanList;
+    // TODO : Move scanned object in the player
     private List<ProductItem> scannedObjects = new List<ProductItem>();
     private List<IProductListObserver> observers = new List<IProductListObserver>();
 
@@ -46,12 +45,6 @@ public class ScanListController : MonoBehaviour, IProductListObservable
         {
             productsController = FindObjectOfType<ProductsController>();
         }
-        
-        // Find product list controller
-        if (productListController == null)
-        {
-            productListController = FindObjectOfType<ProductListController>();
-        }
 
         scanList = productsController.GetItems()
             .OrderBy(a => random.Next())
@@ -61,18 +54,16 @@ public class ScanListController : MonoBehaviour, IProductListObservable
         // TODO : remove test line
         scanList = scanList.GetRange(0, 5);
         
-        AddObserver(productListController);
+        // TODO : GameManager should add player as observer
+        //AddObserver(productListController);
     }
     
     
     public List<ProductItem> GetScanList()
     {
-        if (scanList.Count >= scanListSize)
-        {
-            return scanList.GetRange(0, scanListSize);
-        }
-
-        return scanList;
+        return scanList.Count >= scanListSize 
+            ? scanList.GetRange(0, scanListSize) 
+            : scanList;
     }
     
     public List<ProductItem> GetScannedProducts()
