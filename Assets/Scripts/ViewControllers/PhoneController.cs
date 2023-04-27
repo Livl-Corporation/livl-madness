@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Interfaces;
 using UnityEngine;
 using TMPro;
 
-public class PhoneController : MonoBehaviour
+public class PhoneController : MonoBehaviour, ITimerObserver
 {
 
     [Header("Phone Components")]
@@ -59,7 +60,7 @@ public class PhoneController : MonoBehaviour
         screenTitle.text = title;
     }
 
-    public void SetTimeText(string time)
+    public void UpdateTimer(string time)
     {
         timeText.text = time;
     }

@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using Interfaces;
 using Mirror;
 using UnityEngine;
 
-public class Timer : NetworkBehaviour
+public class Timer : NetworkBehaviour, ITimerObservable
 {
     [SyncVar(hook = nameof(OnTimeLeftChanged))]
     [SerializeField] private float timeLeft = 150f;
     
     private bool isTimerRunning = false;
+    
+    private List<ITimerObserver> observers = new List<ITimerObserver>();
     
     private void Update()
     {
@@ -30,10 +34,7 @@ public class Timer : NetworkBehaviour
     {
         // This method is called on the clients when the value of timeLeft changes on the server
         // You can add code here to handle the change in value
-        foreach (var phoneController in GetComponent<GameManager>().GetPhoneControllers())
-        {
-            phoneController.Value.SetTimeText(GetTimeLeftText());
-        }
+        NotifyObservers();
     }
     
     [Server]
@@ -46,7 +47,22 @@ public class Timer : NetworkBehaviour
     {
         isTimerRunning = true;
     }
-    
+
+    public void AddObserver(ITimerObserver observer)
+    {
+        observers.Add(observer);
+    }
+
+    public void RemoveObserver(ITimerObserver observer)
+    {
+        observers.Remove(observer);
+    }
+
+    public void NotifyObservers()
+    {
+        observers.ForEach(observer => observer.UpdateTimer(GetTimeLeftText()));
+    }
+
     public string GetTimeLeftText()
     {
         TimeSpan timeSpan = TimeSpan.FromSeconds(timeLeft);

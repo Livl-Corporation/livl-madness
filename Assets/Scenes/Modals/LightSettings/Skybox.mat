@@ -115,7 +115,11 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+<<<<<<< HEAD
     - _Rotation: 27.536602
+=======
+    - _Rotation: 443.5403
+>>>>>>> c2d8446 (feat: add TimerObservable, fix multiplayer errors, add parallelSync)
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
