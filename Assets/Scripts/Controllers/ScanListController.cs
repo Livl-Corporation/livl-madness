@@ -19,8 +19,6 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
 
     private readonly SyncList<ProductItem> scanList = new SyncList<ProductItem>();
     
-    // TODO : Move scanned object in the player
-    private List<ProductItem> scannedObjects = new List<ProductItem>();
     private List<IProductListObserver> observers = new List<IProductListObserver>();
 
     public void Start()
@@ -74,18 +72,6 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
             : scanListClone;
     }
     
-    public List<ProductItem> GetScannedProducts()
-    {
-        return new List<ProductItem>(scannedObjects);
-    }
-
-    public List<string> GetScannedProductsNames()
-    {
-        return GetScannedProducts()
-            .Select(a => a.name)
-            .ToList();
-    }  
-    
     public List<string> GetScanListNames()
     {
         return GetScanList()
@@ -95,15 +81,15 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
 
     public bool CanBeScanned(string itemName)
     {
-        return !GetScannedProductsNames().Contains(itemName) 
-               && GetScanListNames().Contains(itemName);
+        return GetScanList()
+            .Where(a => !a.scanned)
+            .Select(a => a.name)
+            .Contains(itemName);
     }
 
     [Command(requiresAuthority = false)]
     public void CmdScanArticle(string itemName)
     {
-        // Add item to scanned objects
-        scannedObjects.Add(new ProductItem(itemName));
 
         var productIndex = IndexOfProduct(itemName);
         
