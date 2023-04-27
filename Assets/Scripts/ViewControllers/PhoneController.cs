@@ -12,6 +12,7 @@ public class PhoneController : MonoBehaviour, ITimerObserver
     [SerializeField] private TMP_Text screenTitle;
     [SerializeField] public MessageController messageController;
     [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private ProductListController productListController;
     
     [Header("Screens")]
     [SerializeField] private GameObject productListScreen;
@@ -24,7 +25,12 @@ public class PhoneController : MonoBehaviour, ITimerObserver
     private Dictionary<Phone.Screen, GameObject> screens = new Dictionary<Phone.Screen, GameObject>();
     
     private float lastCoroutineTime;
-    
+
+    public ProductListController GetProductListController()
+    {
+        return productListController;
+    }
+
     public void AddPlayerUI(PlayerUI _playerUi)
     {
         messageController.AddPlayerUI(_playerUi);

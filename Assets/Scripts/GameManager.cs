@@ -95,6 +95,12 @@ public class GameManager : MonoBehaviour
             instance.timer.AddObserver(controller);
         }
         
+        // Add scanlist observable
+        if (instance.scanListController != null)
+        {
+            instance.scanListController.AddObserver(controller.GetProductListController());
+        }
+        
         // TODO : remove test
         controller.messageController.ShowMessage("Jean Marc Muller", "Salut, ça va ?");
 
