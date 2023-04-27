@@ -1,5 +1,6 @@
 using UnityEngine;
 using Mirror;
+using UnityEngine.SceneManagement;
 
 public class PlayerShoot : NetworkBehaviour
 {
@@ -40,7 +41,7 @@ public class PlayerShoot : NetworkBehaviour
 
     private void Update()
     {
-        if (PlayerUI.isPaused)
+        if (PlayerUI.isPaused || SceneManager.GetActiveScene().name != "Livl")
             return;
 
         if (Input.GetButtonDown("Fire1")) // if we click on the left mouse button

@@ -1,6 +1,7 @@
 using Mirror;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : NetworkBehaviour
 {
@@ -75,7 +76,8 @@ public class PlayerController : NetworkBehaviour
 
     private void Update()
     {
-        HideCursor();
+        if(SceneManager.GetActiveScene().name == "Livl")
+            HideCursor();
     }
 
     private void HideCursor()
