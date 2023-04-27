@@ -1541,7 +1541,6 @@ GameObject:
   - component: {fileID: 3291634424326720288}
   - component: {fileID: 6549255688500616013}
   - component: {fileID: -6659338413789938236}
-  - component: {fileID: 867630281103181229}
   - component: {fileID: 6717103498096639098}
   m_Layer: 6
   m_Name: PlayerArmature
@@ -2299,7 +2298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerScore: {fileID: -6659338413789938236}
-  scanListController: {fileID: 867630281103181229}
+  scanListController: {fileID: 0}
 --- !u!114 &-6659338413789938236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2313,22 +2312,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phoneController: {fileID: 0}
---- !u!114 &867630281103181229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4416926081852918481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c4e495b3585e432cb591f18bc34a7e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  productListController: {fileID: 0}
-  storeItemsController: {fileID: 0}
-  scanListSize: 4
-  newProductDelay: 3
 --- !u!114 &6717103498096639098
 MonoBehaviour:
   m_ObjectHideFlags: 0
