@@ -74,16 +74,15 @@ public class PlayerSetup : NetworkBehaviour
     // When player quit the server
     private void OnDisable()
     {
-        if (sceneCamera != null && isLocalPlayer)
-        {
+        if (!isLocalPlayer)
+            return;
+        
+        if (sceneCamera != null)
             sceneCamera.gameObject.SetActive(true);
-        }
 
-        if (isLocalPlayer)
-        {
-            Destroy(playerUIInstance);
-            GameManager.UnregisterPlayer(transform.name);
-        }
+        Destroy(playerUIInstance);
+        GameManager.UnregisterPlayer(transform.name);
+        
     }
     
 }
