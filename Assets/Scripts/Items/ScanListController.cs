@@ -57,6 +57,9 @@ public class ScanListController : MonoBehaviour, IProductListObservable
             .Select(a => new ProductItem(a.name))
             .ToList();
      
+        // TODO : remove test line
+        scanList = scanList.GetRange(0, 5);
+        
         AddObserver(productListController);
     }
     
