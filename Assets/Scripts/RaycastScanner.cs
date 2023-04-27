@@ -22,6 +22,7 @@ public class RaycastScanner : NetworkBehaviour
     void Update()
     {
         if (!isLocalPlayer) return;
+        if (PlayerUI.isPaused) return;
 
         fireTimer += Time.deltaTime;
         if (Input.GetButtonDown("Fire1") && fireTimer > fireRate)
