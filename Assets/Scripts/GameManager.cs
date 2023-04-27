@@ -79,23 +79,32 @@ public class GameManager : MonoBehaviour
         sceneCamera.SetActive(isActive);
     }
     
-    public static void RegisterPlayer(uint netID, Player player)
+    public static void RegisterPlayer(uint netID, Player player, PhoneController controller)
     {
         var playerId = MakePlayerId(netID);
         players.Add(playerId, player);
+        phoneControllers.Add(playerId, controller);
         player.transform.name = playerId;
-    }
-    
-    public static void RegisterPhoneController(uint netID, PhoneController controller)
-    {
-        phoneControllers.Add(MakePlayerId(netID), controller);
+        
+        // Add timer observable
+        if (instance.timer != null)
+        {
+            instance.timer.AddObserver(controller);
+        }
         
         // TODO : remove test
         controller.messageController.ShowMessage("Jean Marc Muller", "Salut, ça va ?");
-    }
 
+    }
+    
     public static void UnregisterPlayer(string playerId)
     {
+        var controller = phoneControllers[playerId];
+        if (instance.timer != null)
+        {
+            instance.timer.RemoveObserver(controller);
+        }
+        
         players.Remove(playerId);
         phoneControllers.Remove(playerId);
     }
