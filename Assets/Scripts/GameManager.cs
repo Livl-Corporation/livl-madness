@@ -113,9 +113,5 @@ public class GameManager : MonoBehaviour
     {
         return players[playerId];
     }
-
-    public static Player[] GetAllPlayers()
-    {
-        return players.Values.ToArray();
-    }
+    
 }
