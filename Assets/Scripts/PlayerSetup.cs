@@ -42,8 +42,7 @@ public class PlayerSetup : NetworkBehaviour
             }
 
             var player = GetComponent<Player>();
-            GameManager.RegisterPlayer(player.GetNetId(), player);
-            GameManager.RegisterPhoneController(player.GetNetId(), ui.GetPhoneController());
+            GameManager.RegisterPlayer(player.GetNetId(), player, ui.GetPhoneController());
             player.Setup();
         }
     }
@@ -75,14 +74,15 @@ public class PlayerSetup : NetworkBehaviour
     // When player quit the server
     private void OnDisable()
     {
-        Destroy(playerUIInstance);
+        if (!isLocalPlayer)
+            return;
         
-        if (sceneCamera != null && isLocalPlayer)
-        {
+        if (sceneCamera != null)
             sceneCamera.gameObject.SetActive(true);
-        }
-        
+
+        Destroy(playerUIInstance);
         GameManager.UnregisterPlayer(transform.name);
+        
     }
     
 }
