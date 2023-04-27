@@ -219,6 +219,9 @@ public class PlayerController : NetworkBehaviour
     
     private void HandleAiming()
     {
+        if(PlayerUI.isPaused)
+            return;
+        
         bool isAiming = _inputManager.Aiming;
 
         if (isAiming)
