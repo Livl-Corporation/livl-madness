@@ -99,7 +99,8 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
                && GetScanListNames().Contains(itemName);
     }
 
-    public void ScanArticle(string itemName)
+    [Command(requiresAuthority = false)]
+    public void CmdScanArticle(string itemName)
     {
         // Add item to scanned objects
         scannedObjects.Add(new ProductItem(itemName));
