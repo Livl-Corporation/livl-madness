@@ -1,13 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class StoreItemsController : MonoBehaviour
+
+public class StoreItemsController : NetworkBehaviour
 {
     [SerializeField] private List<GameObject> items = new List<GameObject>();
     [SerializeField] private List<ShelfController> shelves = new List<ShelfController> ();
 
-    private void Start()
+    public override void OnStartServer()
     {
+        base.OnStartServer();
 
         items.ForEach(item =>
         {
@@ -20,7 +23,17 @@ public class StoreItemsController : MonoBehaviour
             shelves[rndItemIdx].setItem(item);
         });
     }
-    
+
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        // Register all prefabs
+        foreach (var item in items)
+        {
+            NetworkClient.RegisterPrefab(item);
+        }
+    }
+
     public List<GameObject> GetItems()
     {
         return new List<GameObject>(items);
