@@ -24,7 +24,7 @@ public class PlayerScanController : MonoBehaviour
             return false;
         }
         
-        scanListController.ScanArticle(item.name);
+        scanListController.CmdScanArticle(item.name);
         
         playerScore.Increment(1);
         
