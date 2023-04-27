@@ -118,6 +118,7 @@ Material:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     - _Rotation: 27.536602
 =======
     - _Rotation: 443.5403
@@ -128,6 +129,9 @@ Material:
 =======
     - _Rotation: 3104.0918
 >>>>>>> db3fd55 (feat: working synclist with fail status)
+=======
+    - _Rotation: 749.85333
+>>>>>>> 028da1b (feat(shelves): sync items accross network)
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
