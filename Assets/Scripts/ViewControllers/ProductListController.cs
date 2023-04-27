@@ -41,12 +41,8 @@ public class ProductListController : MonoBehaviour, IProductListObserver
             return;
         }
         
-        var productItem = productItems[index];
-        var hasItem = item != null;
-        
-        productItem.SetText(hasItem ? item.name :  "---");
-        productItem.SetOutOfStock(hasItem && item.isOutOfStock);
-        productItem.SetChecked(hasItem && item.scanned);
+        productItems[index].SetProduct(item);
+ 
     }
 
 }
