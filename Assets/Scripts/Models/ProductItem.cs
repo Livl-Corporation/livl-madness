@@ -3,27 +3,27 @@ namespace Models
     public class ProductItem
     {
         public string name;
-        public bool scanned;
+        public ProductState status;
         public bool isOutOfStock;
         
         public ProductItem()
         {
             this.name = "";
-            this.scanned = false;
+            this.status = ProductState.UNCHECKED;
             this.isOutOfStock = false;
         }
         
-        public ProductItem(string name, bool scanned, bool isOutOfStock)
+        public ProductItem(string name, ProductState status, bool isOutOfStock)
         {
             this.name = name;
-            this.scanned = scanned;
+            this.status = status;
             this.isOutOfStock = isOutOfStock;
         }
 
         public ProductItem(string name)
         {
             this.name = name;
-            this.scanned = false;
+            this.status = ProductState.UNCHECKED;
             this.isOutOfStock = false;
         }
     }

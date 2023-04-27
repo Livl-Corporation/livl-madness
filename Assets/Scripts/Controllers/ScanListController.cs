@@ -82,7 +82,7 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
     public bool CanBeScanned(string itemName)
     {
         return GetScanList()
-            .Where(a => !a.scanned)
+            .Where(a => a.status == ProductState.UNCHECKED)
             .Select(a => a.name)
             .Contains(itemName);
     }
@@ -111,7 +111,7 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
         var product = scanList[productIndex];
 
         scanList[productIndex] = new ProductItem(
-            product.name, true, product.isOutOfStock
+            product.name, ProductState.CHECKED, product.isOutOfStock
         );
     }
 
@@ -128,7 +128,13 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
             return;
         }
         
+        var removedItem = scanList[productIndex];
         scanList.RemoveAt(productIndex);
+        
+        // Put this item randomly in the list after displayed items
+        var randomIndex = random.Next(scanListSize, scanList.Count);
+        scanList.Insert(randomIndex, new ProductItem(removedItem.name));
+        
     }
     
     private IEnumerator DelayedDeleteProduct(int productIndex)
