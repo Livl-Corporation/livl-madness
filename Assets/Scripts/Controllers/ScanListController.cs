@@ -5,7 +5,6 @@ using Interfaces;
 using Mirror;
 using Models;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class ScanListController : NetworkBehaviour, IProductListObservable
 {
@@ -121,9 +120,12 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
             Debug.LogError("Product index out of range");
             return;
         }
-        
-        scanList[productIndex].scanned = true;
-        //NotifyObservers();
+
+        var product = scanList[productIndex];
+
+        scanList[productIndex] = new ProductItem(
+            product.name, true, product.isOutOfStock
+        );
     }
 
     private int IndexOfProduct(string itemName)
@@ -140,7 +142,6 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
         }
         
         scanList.RemoveAt(productIndex);
-        //NotifyObservers();
     }
     
     private IEnumerator DelayedDeleteProduct(int productIndex)
