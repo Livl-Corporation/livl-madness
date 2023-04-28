@@ -25,19 +25,19 @@ public class ProductItemController
         checkboxImage = checkbox.GetComponent<Image>();
         stateToSprite = new Dictionary<ProductState, Sprite>()
         {
-            {ProductState.FAILED, failSprite },
-            {ProductState.CHECKED, checkedSprite },
-            {ProductState.UNCHECKED, uncheckedSprite }
+            { ProductState.FAILED, failSprite },
+            { ProductState.CHECKED, checkedSprite },
+            { ProductState.UNCHECKED, uncheckedSprite }
         };
     }
 
-    public void SetProduct(ProductItem item)
+    public void SetProduct(DisplayedProductItem item)
     {
         var hasItem = item != null;
         
-        SetText(hasItem ? item.name :  "---");
-        SetOutOfStock(hasItem && item.isOutOfStock);
-        SetState(hasItem ? item.status : ProductState.UNCHECKED);
+        SetText(hasItem ? item.Name :  "---");
+        SetOutOfStock(hasItem && item.OutOfStock);
+        SetState(hasItem ? item.Status : ProductState.UNCHECKED);
     }
 
     private void SetText(string text)

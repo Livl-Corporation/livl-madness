@@ -14,6 +14,8 @@ public class ProductListController : MonoBehaviour, IProductListObserver
 
     private List<ProductItemController> productItems = new List<ProductItemController>();
 
+    private string playerName;
+    
     private void Awake()
     {
         // For each child of productItemList, get the ProductItemController component
@@ -25,15 +27,37 @@ public class ProductListController : MonoBehaviour, IProductListObserver
         Debug.Log("ProductListController: " + productItems.Count + " product items found");
     }
 
+    private void Start()
+    {
+        // Find the player name
+        playerName = FindObjectOfType<Player>().name;
+    }
+
     public void UpdateProductList(List<ProductItem> productList)
     {
         for (int i = 0; i < productCount; i++)
         {
-            ReplaceProduct(i, productList.Count > i ? productList[i] : null);
+            
+            if (i >= productList.Count)
+            {
+                ReplaceProduct(i, null);
+                continue;
+            }
+
+            var item = productList[i];
+
+            if (!item.Scanned)
+            {
+                ReplaceProduct(i, new DisplayedProductItem(item));
+                continue;
+            }
+            
+            ReplaceProduct(i, new DisplayedProductItem(item, item.ScannedBy == playerName));
+
         }
     }
     
-    private void ReplaceProduct(int index, ProductItem item)
+    private void ReplaceProduct(int index, DisplayedProductItem item)
     {
         if(index >= productItems.Count || index < 0)
         {

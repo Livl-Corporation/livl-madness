@@ -117,6 +117,7 @@ Material:
     - _ReceiveShadows: 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     - _Rotation: 27.536602
 =======
     - _Rotation: 443.5403
@@ -124,6 +125,9 @@ Material:
 =======
     - _Rotation: 922.7558
 >>>>>>> fcf0fd1 (feat: shared scanlist)
+=======
+    - _Rotation: 3104.0918
+>>>>>>> db3fd55 (feat: working synclist with fail status)
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
