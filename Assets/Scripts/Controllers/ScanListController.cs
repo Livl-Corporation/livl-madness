@@ -17,8 +17,9 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
     
     private static System.Random random = new System.Random();
 
-    private readonly SyncList<ProductItem> scanList = new SyncList<ProductItem>();
-    
+    private readonly List<ProductItem> scanList = new List<ProductItem>();
+    private readonly SyncList<ProductItem> syncScanList = new SyncList<ProductItem>();
+
     private List<IProductListObserver> observers = new List<IProductListObserver>();
 
     public void Start()
@@ -29,8 +30,8 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
             productsController = FindObjectOfType<ProductsController>();
         }
 
-        scanList.Callback += (op, index, item, newItem) => NotifyObservers();
-
+        syncScanList.Callback += (op, index, item, newItem) => NotifyObservers();
+        
     }
 
     public override void OnStartServer()
@@ -39,13 +40,15 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
         
         // Server populate the scan list
         
-        var productList = productsController.GetItems()
+        var productItems = productsController.GetItems()
             .OrderBy(a => random.Next())
             .Select(a => new ProductItem(a.name))
             .ToList();
         
-        scanList.AddRange(productList);
-        
+        scanList.AddRange(productItems);
+
+        UpdateSyncList();
+
     }
 
     public void AddObserver(IProductListObserver observer)
@@ -66,10 +69,16 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
 
     public List<ProductItem> GetScanList()
     {
+        return syncScanList.ToList();
+    }
+    
+    private void UpdateSyncList() {
         var scanListClone = new List<ProductItem>(scanList);
-        return scanListClone.Count >= scanListSize 
+        var scanListToShare = scanListClone.Count >= scanListSize 
             ? scanListClone.GetRange(0, scanListSize) 
             : scanListClone;
+        syncScanList.Clear();
+        syncScanList.AddRange(scanListToShare);
     }
     
     public List<string> GetScanListNames()
@@ -110,6 +119,7 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
 
         var product = scanList[productIndex];
         scanList[productIndex] = new ProductItem(product.Name, scannedBy);
+        UpdateSyncList();
     }
 
     private int IndexOfProduct(string itemName)
@@ -132,6 +142,7 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
         var randomIndex = random.Next(scanListSize, scanList.Count);
         scanList.Insert(randomIndex, new ProductItem(removedItem.Name));
         
+        UpdateSyncList();
     }
     
     private IEnumerator DelayedDeleteProduct(int productIndex)
