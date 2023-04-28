@@ -75,32 +75,32 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
     public List<string> GetScanListNames()
     {
         return GetScanList()
-            .Select(a => a.name)
+            .Select(a => a.Name)
             .ToList();
     }
 
     public bool CanBeScanned(string itemName)
     {
         return GetScanList()
-            .Where(a => a.status == ProductState.UNCHECKED)
-            .Select(a => a.name)
+            .Where(a => !a.Scanned)
+            .Select(a => a.Name)
             .Contains(itemName);
     }
 
     [Command(requiresAuthority = false)]
-    public void CmdScanArticle(string itemName)
+    public void CmdScanArticle(string itemName, string scannedBy)
     {
 
         var productIndex = IndexOfProduct(itemName);
         
-        CheckProduct(productIndex);
+        CheckProduct(productIndex, scannedBy);
 
         var coroutine = DelayedDeleteProduct(productIndex);
         StartCoroutine(coroutine);
 
     }
 
-    private void CheckProduct(int productIndex)
+    private void CheckProduct(int productIndex, string scannedBy)
     {
         if (productIndex < 0 || productIndex >= scanListSize)
         {
@@ -109,10 +109,7 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
         }
 
         var product = scanList[productIndex];
-
-        scanList[productIndex] = new ProductItem(
-            product.name, ProductState.CHECKED, product.isOutOfStock
-        );
+        scanList[productIndex] = new ProductItem(product.Name, scannedBy);
     }
 
     private int IndexOfProduct(string itemName)
@@ -133,7 +130,7 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
         
         // Put this item randomly in the list after displayed items
         var randomIndex = random.Next(scanListSize, scanList.Count);
-        scanList.Insert(randomIndex, new ProductItem(removedItem.name));
+        scanList.Insert(randomIndex, new ProductItem(removedItem.Name));
         
     }
     

@@ -2,29 +2,33 @@ namespace Models
 {
     public class ProductItem
     {
-        public string name;
-        public ProductState status;
-        public bool isOutOfStock;
+        public string Name;
+        public bool Scanned;
+        public bool OutOfStock;
+        public string ScannedBy;
         
         public ProductItem()
         {
-            this.name = "";
-            this.status = ProductState.UNCHECKED;
-            this.isOutOfStock = false;
+            Name = "";
+            Scanned = false;
+            OutOfStock = false;
+            ScannedBy = null;
         }
         
-        public ProductItem(string name, ProductState status, bool isOutOfStock)
+        public ProductItem(string name, string scannedBy)
         {
-            this.name = name;
-            this.status = status;
-            this.isOutOfStock = isOutOfStock;
+            Name = name;
+            Scanned = true;
+            OutOfStock = false;
+            ScannedBy = scannedBy;
         }
 
         public ProductItem(string name)
         {
-            this.name = name;
-            this.status = ProductState.UNCHECKED;
-            this.isOutOfStock = false;
+            Name = name;
+            Scanned = false;
+            OutOfStock = false;
+            ScannedBy = null;
         }
     }
 }

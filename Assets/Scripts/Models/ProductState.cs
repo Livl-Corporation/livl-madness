@@ -2,8 +2,6 @@ namespace Models
 {
     public enum ProductState
     {
-        CHECKED,
-        UNCHECKED,
-        FAILED,
+        CHECKED, UNCHECKED, FAILED
     }
 }

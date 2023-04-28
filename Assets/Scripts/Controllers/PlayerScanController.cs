@@ -6,7 +6,7 @@ public class PlayerScanController : MonoBehaviour
     [Header("Components")]
     [SerializeField] private PlayerScore playerScore;
     [SerializeField] private ScanListController scanListController;
-
+    
     public void Start()
     {
         if (scanListController == null)
@@ -24,7 +24,7 @@ public class PlayerScanController : MonoBehaviour
             return false;
         }
         
-        scanListController.CmdScanArticle(item.name);
+        scanListController.CmdScanArticle(item.name, name);
         
         playerScore.Increment(1);
         
