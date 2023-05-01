@@ -1,5 +1,6 @@
 using UnityEngine;
 using Mirror;
+using UnityEngine.SceneManagement;
 
 public class PlayerSetup : NetworkBehaviour
 {
@@ -20,7 +21,7 @@ public class PlayerSetup : NetworkBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        if (!isLocalPlayer)
+        if (!isLocalPlayer || SceneManager.GetActiveScene().name != "Livl")
         {
             DisableComponents();
             AssignRemoteLayer();

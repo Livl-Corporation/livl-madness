@@ -256,6 +256,8 @@ GameObject:
   - component: {fileID: 2925966898284264121}
   - component: {fileID: 4801751619637859672}
   - component: {fileID: 1057198359927196222}
+  - component: {fileID: -896475425061534}
+  - component: {fileID: 2052288215792545757}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -542,9 +544,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad75340dd55448fda7d5b49bf30c4127, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storeItemsController: {fileID: 0}
-  productListController: {fileID: 0}
-  scanListSize: 4
+  playerScore: {fileID: 0}
+  scanListController: {fileID: 0}
+--- !u!114 &-896475425061534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2438772479995991687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5d38669253f4e32911301d6a2928205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  matchID: 
+--- !u!114 &2052288215792545757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2438772479995991687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d17e718851449a6879986e45c458fb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0.1
 --- !u!1 &2438772480314387092
 GameObject:
   m_ObjectHideFlags: 0
