@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject sceneCamera;
+    
+    [SerializeField]
+    private ScanListController scanListController;
 
     public delegate void OnPlayerKilledCallback(string player, string source);
     
@@ -90,6 +93,12 @@ public class GameManager : MonoBehaviour
         if (instance.timer != null)
         {
             instance.timer.AddObserver(controller);
+        }
+        
+        // Add scanlist observable
+        if (instance.scanListController != null)
+        {
+            instance.scanListController.AddObserver(controller.GetProductListController());
         }
         
         // TODO : remove test

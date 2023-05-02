@@ -1223,6 +1223,7 @@ MonoBehaviour:
   screenTitle: {fileID: 7122211832784161460}
   messageController: {fileID: 746864559362294727}
   scoreText: {fileID: 8509201371413349995}
+  productListController: {fileID: 8572822910479937323}
   productListScreen: {fileID: 7450623235125515094}
   pauseScreen: {fileID: 2710551009452779681}
   screenTransitionTime: 0.25

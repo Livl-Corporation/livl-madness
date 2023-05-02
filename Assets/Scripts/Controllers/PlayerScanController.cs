@@ -36,8 +36,8 @@ public class PlayerScanController : MonoBehaviour
         
         var coroutine2 = DelayedSound(successSound);
         StartCoroutine(coroutine2);
-        
-        scanListController.ScanArticle(item.name);
+
+        scanListController.CmdScanArticle(item.name, gameObject.name);
         playerScore.Increment(1);
         
         return true;

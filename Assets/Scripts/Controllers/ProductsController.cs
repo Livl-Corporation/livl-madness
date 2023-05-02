@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
+public class ProductsController : NetworkBehaviour 
 
-public class StoreItemsController : NetworkBehaviour
 {
     [SerializeField] private List<GameObject> items = new List<GameObject>();
     [SerializeField] private List<ShelfController> shelves = new List<ShelfController> ();
