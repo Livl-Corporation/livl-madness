@@ -5,6 +5,6 @@ namespace Interfaces
 {
     public interface IPlayerStatsObserver
     {
-        void Update(Dictionary<string, PlayerStat> playerStats);
+        void UpdatePlayerStats(Dictionary<string, PlayerStat> playerStats);
     }
 }

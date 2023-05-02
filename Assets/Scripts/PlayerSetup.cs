@@ -70,7 +70,7 @@ public class PlayerSetup : NetworkBehaviour
 
     private void SetPlayerName()
     {
-        var playerName = "Player " + GetComponent<NetworkIdentity>().netId;
+        var playerName = "Player" + GetComponent<NetworkIdentity>().netId;
         transform.name = playerName;
         Player.LocalPlayerName = playerName;
     }

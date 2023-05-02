@@ -1075,7 +1075,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d88d8a0985aed0409fbfc2a3f27afbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoints:
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0.1
+  SpawnPoints:
   - {fileID: 3811254869760114203}
   - {fileID: 7672581886606221409}
   - {fileID: 2526299218373433961}

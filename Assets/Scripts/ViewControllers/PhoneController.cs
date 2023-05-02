@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Interfaces;
+using Models;
 using UnityEngine;
 using TMPro;
 
-public class PhoneController : MonoBehaviour, ITimerObserver
+public class PhoneController : MonoBehaviour, ITimerObserver, IPlayerStatsObserver
 {
 
     [Header("Phone Components")]
@@ -40,8 +41,6 @@ public class PhoneController : MonoBehaviour, ITimerObserver
     void Start()
     {   
         GenerateScreens();
-        
-        SetScoreText("0");
 
         // Hide all screens
         foreach (GameObject screen in screens.Values)
@@ -55,6 +54,13 @@ public class PhoneController : MonoBehaviour, ITimerObserver
         // TODO : Remove test message
         messageController.ShowMessage("Jean Marc Muller", "Salut, ça va ?");
         
+        SetupTimer();
+        SetupScore();
+
+    }
+
+    private void SetupTimer()
+    {
         // Subscribe to timer
         var timer = GameManager.Instance.GetTimer();
         if (timer == null)
@@ -64,7 +70,18 @@ public class PhoneController : MonoBehaviour, ITimerObserver
         }
         
         timer.AddObserver(this);
+    }
 
+    private void SetupScore()
+    {
+        var playerStatsController = FindObjectOfType<PlayerStatsController>();
+        if (playerStatsController == null)
+        {
+            Debug.LogError("PlayerStatsController is null");
+            return;
+        }
+        
+        playerStatsController.AddObserver(this);
     }
 
     private void GenerateScreens()
@@ -72,9 +89,6 @@ public class PhoneController : MonoBehaviour, ITimerObserver
         screens.Add(Phone.Screen.ProductList, productListScreen);
         screens.Add(Phone.Screen.Pause, pauseScreen);
     }
-
-    // TODO : Move message to a separate script
-    
 
     public void SetScreenTitle(string title)
     {
@@ -141,9 +155,16 @@ public class PhoneController : MonoBehaviour, ITimerObserver
         obj.SetActive(active);
     }
 
-    public void SetScoreText(string score)
+    public void UpdatePlayerStats(Dictionary<string, PlayerStat> playerStats)
     {
-        scoreText.text = score;
+        var playerStat = playerStats[Player.LocalPlayerName];
+        if (playerStat == null)
+        {
+            Debug.LogError("PlayerStat is null");
+            return;
+        }
+        
+        scoreText.text = playerStat.Score.ToString();
     }
 
     private void OnDestroy()

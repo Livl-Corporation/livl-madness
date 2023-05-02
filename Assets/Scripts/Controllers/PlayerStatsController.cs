@@ -20,12 +20,24 @@ public class PlayerStatsController : NetworkBehaviour, IPlayerStatsObservable
     [Command(requiresAuthority = false)]
     public void CmdAddPlayer(string playerName)
     {
+        if (_playerStats.ContainsKey(playerName))
+        {
+            Debug.LogError("Player already exists");
+            return;
+        }
+        
         _playerStats.Add(playerName, new PlayerStat());
     }
 
     [Command(requiresAuthority = false)]
     public void CmdRemovePlayer(string playerName)
     {
+        if (!_playerStats.ContainsKey(playerName))
+        {
+            Debug.LogError("Player not found");
+            return;
+        }
+        
         _playerStats.Remove(playerName);
     }
     
@@ -73,7 +85,7 @@ public class PlayerStatsController : NetworkBehaviour, IPlayerStatsObservable
         Dictionary<string, PlayerStat> playerStats = _playerStats.ToDictionary(entry => entry.Key, entry => entry.Value);
         foreach (var observer in _observers)
         {
-            observer.Update(playerStats);
+            observer.UpdatePlayerStats(playerStats);
         }
     }
 }
