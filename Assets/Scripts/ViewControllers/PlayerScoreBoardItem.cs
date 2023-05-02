@@ -11,7 +11,8 @@ public class PlayerScoreBoardItem : MonoBehaviour
     public void Setup(Player player, Sprite sprite)
     {
         playerNameText.text = player.name;
-        playerScoreText.text = player.GetScore().ToString();
+        // TODO : Pistache
+        // playerScoreText.text = player.GetScore().ToString();
         playerImage.sprite = sprite;
     }
 }

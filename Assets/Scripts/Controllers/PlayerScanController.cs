@@ -6,7 +6,6 @@ public class PlayerScanController : MonoBehaviour
 {
 
     [Header("Components")]
-    [SerializeField] private PlayerScore playerScore;
     [SerializeField] private ScanListController scanListController;
 
     [Header("Sounds")]
@@ -38,7 +37,6 @@ public class PlayerScanController : MonoBehaviour
         StartCoroutine(coroutine2);
 
         scanListController.CmdScanArticle(item.name, gameObject.name);
-        playerScore.Increment(1);
         
         return true;
     }

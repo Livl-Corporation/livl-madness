@@ -11,12 +11,9 @@ public class Player : NetworkBehaviour
     private AudioSource audioSource;
     [SerializeField] private float footStepRange = 4f;
     
-    private PlayerScore playerScore;
-
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        playerScore = GetComponent<PlayerScore>();
     }
 
     public uint GetNetId()
@@ -63,8 +60,4 @@ public class Player : NetworkBehaviour
         audioSource.Play();
     }
     
-    public int GetScore()
-    {
-        return playerScore.Get();
-    }
 }
