@@ -17,19 +17,19 @@ public class PlayerStatsController : NetworkBehaviour, IPlayerStatsObservable
         _playerStats.Callback += (op, key, item) => NotifyObservers();
     }
 
-    [Command]
+    [Command(requiresAuthority = false)]
     public void CmdAddPlayer(string playerName)
     {
         _playerStats.Add(playerName, new PlayerStat());
     }
 
-    [Command]
+    [Command(requiresAuthority = false)]
     public void CmdRemovePlayer(string playerName)
     {
         _playerStats.Remove(playerName);
     }
     
-    [Command]
+    [Command(requiresAuthority = false)]
     public void CmdIncrementScore(string playerName)
     {
         
@@ -43,7 +43,7 @@ public class PlayerStatsController : NetworkBehaviour, IPlayerStatsObservable
         _playerStats[playerName] = new PlayerStat(score + 1);
     }
     
-    [Command]
+    [Command(requiresAuthority = false)]
     public void CmdDecrementScore(string playerName)
     {
         

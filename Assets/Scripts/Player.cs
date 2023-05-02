@@ -16,22 +16,6 @@ public class Player : NetworkBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    public uint GetNetId()
-    {
-        return netId;
-    }
-
-    public void Setup()
-    {
-        if(isLocalPlayer)
-        {
-            // Changement de caméra
-            GameManager.instance.SetSceneCameraActive(false);
-            GetComponent<PlayerSetup>().playerUIInstance.SetActive(true);
-            LocalPlayerName = name;
-        }
-    }
-    
     public void FootStepAudioSound()
     {
         audioSource.volume = 0.1f;

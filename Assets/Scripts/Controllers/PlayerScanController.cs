@@ -7,6 +7,7 @@ public class PlayerScanController : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private ScanListController scanListController;
+    [SerializeField] private PlayerStatsController playerStatsController;
 
     [Header("Sounds")]
     [SerializeField] private AudioClip successSound;
@@ -21,6 +22,11 @@ public class PlayerScanController : MonoBehaviour
             scanListController = FindObjectOfType<ScanListController>();
         }
         
+        if (playerStatsController == null)
+        {
+            playerStatsController = FindObjectOfType<PlayerStatsController>();
+        }
+
     }
 
     public bool Scan(GameObject item)
@@ -37,6 +43,7 @@ public class PlayerScanController : MonoBehaviour
         StartCoroutine(coroutine2);
 
         scanListController.CmdScanArticle(item.name, gameObject.name);
+        playerStatsController.CmdIncrementScore(Player.LocalPlayerName);
         
         return true;
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Interfaces;
@@ -50,6 +51,20 @@ public class PhoneController : MonoBehaviour, ITimerObserver
 
         // Start on the product list screen
         Navigate(Phone.Screen.ProductList);
+        
+        // TODO : Remove test message
+        messageController.ShowMessage("Jean Marc Muller", "Salut, ça va ?");
+        
+        // Subscribe to timer
+        var timer = GameManager.Instance.GetTimer();
+        if (timer == null)
+        {
+            Debug.LogError("Timer is null");
+            return;
+        }
+        
+        timer.AddObserver(this);
+
     }
 
     private void GenerateScreens()
@@ -130,5 +145,16 @@ public class PhoneController : MonoBehaviour, ITimerObserver
     {
         scoreText.text = score;
     }
-    
+
+    private void OnDestroy()
+    {
+        var timer = GameManager.Instance.GetTimer();
+        if (timer == null)
+        {
+            Debug.LogError("Timer is null");
+            return;
+        }
+        
+        timer.RemoveObserver(this);
+    }
 }

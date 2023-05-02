@@ -14,8 +14,6 @@ public class PlayerSetup : NetworkBehaviour
     
     [HideInInspector]
     public GameObject playerUIInstance;
-
-    [SerializeField] private Player player;
     
     [SerializeField]
     private PlayerStatsController playerStatsController;
@@ -26,39 +24,19 @@ public class PlayerSetup : NetworkBehaviour
     private void Start()
     {
         
-        player = GetComponent<Player>();
+        SetPlayerName();
+        RegisterPlayerStats();
         
         if (!isLocalPlayer)
         {
             DisableComponents();
             AssignRemoteLayer();
+            return;
         }
-        else
-        {
-            // Création du UI du joueur local
-            playerUIInstance = Instantiate(playerUIPrefab);
-            
-            // Configuration du UI
-            PlayerUI ui = playerUIInstance.GetComponent<PlayerUI>();
-            if(ui == null)
-            {
-                Debug.LogError("Pas de component PlayerUI sur playerUIInstance");
-            }
-            else
-            {
-                ui.SetPlayer(player);
-            }
 
-            // Ajout du joueur au GameManager
-            GameManager.RegisterPlayer(player.GetNetId(), player, ui.GetPhoneController());
-            
-            // Configuration du joueur
-            player.Setup();
-        }
-        
-        // Ajout du joueur aux statistiques
-        playerStatsController.CmdAddPlayer(Player.LocalPlayerName);
-        
+        GameManager.SetSceneCameraActive(false);
+        InitPlayerUI();
+
     }
     
     private void DisableComponents()
@@ -87,8 +65,51 @@ public class PlayerSetup : NetworkBehaviour
             sceneCamera.gameObject.SetActive(true);
 
         Destroy(playerUIInstance);
-        GameManager.UnregisterPlayer(transform.name);
         
+    }
+
+    private void SetPlayerName()
+    {
+        var playerName = "Player " + GetComponent<NetworkIdentity>().netId;
+        transform.name = playerName;
+        Player.LocalPlayerName = playerName;
+    }
+
+    private void InitPlayerUI()
+    {
+        // Création du UI du joueur local
+        playerUIInstance = Instantiate(playerUIPrefab);
+        playerUIInstance.SetActive(true);
+        
+        // Configuration du UI
+        PlayerUI ui = playerUIInstance.GetComponent<PlayerUI>();
+        
+        if(ui == null)
+        {
+            Debug.LogError("Pas de component PlayerUI sur playerUIInstance");
+            return;
+        }
+
+        ui.SetPlayer(GetComponent<Player>());
+        
+    }
+
+    private void RegisterPlayerStats()
+    {
+        if (playerStatsController == null)
+        {
+            playerStatsController = FindObjectOfType<PlayerStatsController>();
+        }
+        
+        if (playerStatsController == null)
+        {
+            Debug.LogError("PlayerStatsController not found");
+            return;
+        }
+        
+        // Ajout du joueur aux statistiques
+        playerStatsController.CmdAddPlayer(Player.LocalPlayerName);
+
     }
     
 }

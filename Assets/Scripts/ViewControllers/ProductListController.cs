@@ -31,6 +31,15 @@ public class ProductListController : MonoBehaviour, IProductListObserver
     {
         // Find the player name
         playerName = FindObjectOfType<Player>().name;
+        
+        // Subcribe to ScanList
+        var scanListController = FindObjectOfType<ScanListController>();
+        if (scanListController == null)
+        {
+            Debug.LogError("ProductListController: ScanListController not found");
+            return;
+        }
+        scanListController.AddObserver(this);
     }
 
     public void UpdateProductList(List<ProductItem> productList)
@@ -69,4 +78,14 @@ public class ProductListController : MonoBehaviour, IProductListObserver
  
     }
 
+    private void OnDestroy()
+    {
+        var scanListController = FindObjectOfType<ScanListController>();
+        if (scanListController == null)
+        {
+            Debug.LogError("ProductListController: ScanListController not found");
+            return;
+        }
+        scanListController.RemoveObserver(this);
+    }
 }
