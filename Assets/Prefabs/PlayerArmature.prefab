@@ -1847,7 +1847,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 512
-  ScanningAudioClip: {fileID: 8300000, guid: b171dc8bf5db5d046b4207baed7bb90e, type: 3}
+  ScanningAudioClip: {fileID: 8300000, guid: 942d20ca363ed4eebbdd177ec124c714, type: 3}
   ScanningAudioSource: {fileID: 3775695176468190791}
 --- !u!82 &2223097549820210296
 AudioSource:
@@ -2300,6 +2300,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerScore: {fileID: -6659338413789938236}
   scanListController: {fileID: 867630281103181229}
+  successSound: {fileID: 8300000, guid: 1746b3bcdb6034095ae528ec584f175b, type: 3}
+  failSound: {fileID: 8300000, guid: 077c7288c79314613b3d427a69eb7446, type: 3}
+  scanSoundDelay: 0.2
 --- !u!114 &-6659338413789938236
 MonoBehaviour:
   m_ObjectHideFlags: 0
