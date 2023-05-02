@@ -5,11 +5,11 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(PlayerSetup))]
 public class Player : NetworkBehaviour
 {
-    [SyncVar]
-    public string username = "Player";
-    
+
     private AudioSource audioSource;
     [SerializeField] private float footStepRange = 4f;
+
+    public static string LocalPlayerName = "";
     
     private void Start()
     {
@@ -28,6 +28,7 @@ public class Player : NetworkBehaviour
             // Changement de caméra
             GameManager.instance.SetSceneCameraActive(false);
             GetComponent<PlayerSetup>().playerUIInstance.SetActive(true);
+            LocalPlayerName = name;
         }
     }
     

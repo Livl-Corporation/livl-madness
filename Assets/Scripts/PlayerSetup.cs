@@ -14,12 +14,20 @@ public class PlayerSetup : NetworkBehaviour
     
     [HideInInspector]
     public GameObject playerUIInstance;
+
+    [SerializeField] private Player player;
+    
+    [SerializeField]
+    private PlayerStatsController playerStatsController;
     
     Camera sceneCamera;
     
     // Start is called before the first frame update
     private void Start()
     {
+        
+        player = GetComponent<Player>();
+        
         if (!isLocalPlayer)
         {
             DisableComponents();
@@ -38,26 +46,21 @@ public class PlayerSetup : NetworkBehaviour
             }
             else
             {
-                ui.SetPlayer(GetComponent<Player>());
+                ui.SetPlayer(player);
             }
 
-            var player = GetComponent<Player>();
+            // Ajout du joueur au GameManager
             GameManager.RegisterPlayer(player.GetNetId(), player, ui.GetPhoneController());
+            
+            // Configuration du joueur
             player.Setup();
         }
+        
+        // Ajout du joueur aux statistiques
+        playerStatsController.CmdAddPlayer(Player.LocalPlayerName);
+        
     }
     
-    [Command]
-    void CmdSetUsername(string playerID, string username)
-    {
-        Player player = GameManager.GetPlayer(playerID);
-        if(player != null)
-        {
-            Debug.Log(username + " has joined !");
-            player.username = username;
-        }
-    }
-
     private void DisableComponents()
     {
         foreach (Behaviour component in componentsToDisable)
@@ -74,6 +77,9 @@ public class PlayerSetup : NetworkBehaviour
     // When player quit the server
     private void OnDisable()
     {
+        
+        playerStatsController.CmdRemovePlayer(Player.LocalPlayerName);
+        
         if (!isLocalPlayer)
             return;
         
