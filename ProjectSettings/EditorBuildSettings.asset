@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Livl.unity
     guid: ed51aed68170e074e893a23f9d7b876c
+  - enabled: 1
+    path: Assets/Scenes/Livl-Raffael.unity
+    guid: 6352cfb466b34424b8ab29384d7ae64f
+  - enabled: 1
+    path: Assets/Scenes/Lobby-Raffael.unity
+    guid: e7739e12a1315d64ea67c54a7d585681
   m_configObjects: {}

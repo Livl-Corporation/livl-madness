@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class ShelfController : MonoBehaviour
+public class ShelfController : NetworkBehaviour
 {
     public List<GameObject> spawnPoints;
     private List<int> usedSpawnPointsIdx = new List<int>();
@@ -27,8 +28,10 @@ public class ShelfController : MonoBehaviour
         Vector3 randomSpawnPosition = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y, spawnPoint.transform.position.z);
 
 
-        var clonedObject = Instantiate(item, randomSpawnPosition, Quaternion.identity);
-        clonedObject.name = item.name;
+        var spawnedObject = Instantiate(item, randomSpawnPosition, Quaternion.identity);
+        NetworkServer.Spawn(spawnedObject);
+
+        spawnedObject.name = item.name;
 
     }
 
