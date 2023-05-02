@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
@@ -16,6 +13,8 @@ public class PlayerUI : NetworkBehaviour
     [Header("Components")]
     [SerializeField] private GameObject pauseOverlay;
     [SerializeField] private PhoneController phoneController;
+    [SerializeField] private GameObject leaderboardCanvas;
+    [SerializeField] private GameObject smartphoneCanvas;
 
     public static bool isPaused
     {
@@ -30,9 +29,10 @@ public class PlayerUI : NetworkBehaviour
     private void Start()
     {
         networkManager = NetworkManager.singleton;
-
-        // Hide pause overlay
+        
         pauseOverlay.SetActive(false);
+        leaderboardCanvas.SetActive(false);
+        smartphoneCanvas.SetActive(true);
     }
 
     public void SetPlayer(Player _player)
@@ -44,15 +44,37 @@ public class PlayerUI : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        HandlePauseInput();
+        HandleLeaderboardInput();
+    }
+    
+    void HandlePauseInput()
+    {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePauseMenu();
         }
     }
-
+    
     public void TogglePauseMenu()
     {
         SetPauseMenuVisibility(!isPaused);
+    }   
+
+    void HandleLeaderboardInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            leaderboardCanvas.SetActive(true);
+            smartphoneCanvas.SetActive(false);
+            paused = true;
+        }
+        else if (Input.GetKeyUp(KeyCode.Tab))
+        {
+            leaderboardCanvas.SetActive(false);
+            smartphoneCanvas.SetActive(true);
+            paused = false;
+        }
     }
 
     public void SetPauseMenuVisibility(bool visible)
