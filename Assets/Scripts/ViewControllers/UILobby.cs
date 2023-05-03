@@ -38,6 +38,10 @@ namespace UI
 	    public void Join()
 	    {
 		    EnableComponents(false);
+
+		    string matchID = matchIdInputField.text;
+		    
+		    Network.PlayerNetwork.localPlayerNetwork.JoinGame(matchID);
 	    }
 
 	    public void JoinSuccess(bool success)
@@ -47,6 +51,8 @@ namespace UI
 			    EnableComponents(true);
 			    return;
 		    }
+		    
+		    lobbyCanvas.enabled = true;
 	    } 
 	    
 	    public void EnableComponents(bool enabled)

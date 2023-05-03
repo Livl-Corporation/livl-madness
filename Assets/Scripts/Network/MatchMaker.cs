@@ -50,6 +50,27 @@ namespace Network
             
             return true;
         }
+        
+        public bool JoinGame(string matchID, PlayerNetwork playerNetwork)
+        {
+            if (!matchIds.Contains(matchID))
+            {
+                Debug.Log($"Match ID {matchID} doesn't exists");
+                return false;
+            }
+
+            foreach (Match match in matches) // match est une copie ou une ref ? à méditer...
+            {
+                if (match.matchID == matchID)
+                {
+                    match.players.Add(playerNetwork);
+                    break;
+                }
+            }
+            
+            Debug.Log($"Match ID {matchID} joined");
+            return true;
+        }
 
         public static string GetRandomMatchID()
         {

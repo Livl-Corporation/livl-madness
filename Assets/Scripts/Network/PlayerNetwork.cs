@@ -1,5 +1,6 @@
 using System;
 using Mirror;
+using TMPro;
 using UI;
 using UnityEngine;
 
@@ -33,7 +34,7 @@ namespace Network
         [Command]
         void CmdHostGame(string matchId)
         {
-            this.matchID = matchId; 
+            matchID = matchId; 
             bool hostedSuccesfully = MatchMaker.instance.HostGame(matchId, this);
 
             if (hostedSuccesfully)
@@ -55,6 +56,38 @@ namespace Network
         {
             Debug.Log($"MatchID : {matchID} == {this.matchID}");
             UILobby.instance.HostSuccess(success);
+        }
+        
+        public void JoinGame(string matchID)
+        {
+            CmdJoinGame(matchID);
+        }
+
+        [Command]
+        void CmdJoinGame(string matchId)
+        {
+            matchID = matchId; 
+            bool joinedSuccesfully = MatchMaker.instance.JoinGame(matchId, this);
+
+            if (joinedSuccesfully)
+            {
+                Debug.Log("Game joined successfully");
+                Guid guid = matchId.ToGuid();
+                networkMatch.matchId = guid;
+            }
+            else
+            {
+                Debug.Log("Game joined failed");
+            }
+            
+            TargetJoinGame(joinedSuccesfully, matchId);
+        }
+
+        [TargetRpc]
+        void TargetJoinGame(bool success, string matchID)
+        {
+            Debug.Log($"MatchID : {matchID}");
+            UILobby.instance.JoinSuccess(success);
         }
     }
 }
