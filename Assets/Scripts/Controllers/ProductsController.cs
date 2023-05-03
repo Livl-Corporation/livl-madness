@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,7 +8,19 @@ public class ProductsController : NetworkBehaviour
 {
     [SerializeField] private List<GameObject> items = new List<GameObject>();
     [SerializeField] private List<ShelfController> shelves = new List<ShelfController> ();
-    
+
+    private void Awake()
+    {
+        foreach (var item in items)
+        {
+            NetworkClient.RegisterPrefab(
+                item, 
+                msg => ProductSpawnDelegate(msg, item),
+                ProductDestroyDelegate
+            );
+        }
+    }
+
     public override void OnStartServer()
     {
         base.OnStartServer();
@@ -26,12 +39,6 @@ public class ProductsController : NetworkBehaviour
                 return;
             }
 
-            NetworkClient.RegisterPrefab(
-                item, 
-                msg => ProductSpawnDelegate(msg, item),
-                ProductDestroyDelegate
-            );
-            
             var selectedShelve = availableShelves.Dequeue();
             selectedShelve.SpawnProduct(item);
             
