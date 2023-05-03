@@ -11,11 +11,13 @@ public class PlayerStatItemController : MonoBehaviour
     [SerializeField] private TMP_FontAsset boldFont;
     [SerializeField] private TMP_FontAsset regularFont;
 
-    public void Set(PlayerStat stat, bool isCurrentPlayer)
+    public void Set(PlayerStat stat)
     {
         playerNameText.text = stat.Username;
         scoreText.text = stat.Score.ToString();
-        playerNameText.font = isCurrentPlayer ? boldFont : regularFont;
+        playerNameText.font = stat.Username == Player.LocalPlayerName 
+            ? boldFont
+            : regularFont;
     }
     
 }

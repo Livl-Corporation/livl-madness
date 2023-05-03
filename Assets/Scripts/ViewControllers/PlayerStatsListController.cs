@@ -9,7 +9,7 @@ public class PlayerStatsListController : MonoBehaviour, IPlayerStatsObserver
 {
     
     private PlayerStatsController _playerStatsController;
-    private readonly List<PlayerStatItemController> _playerStatItems = new List<PlayerStatItemController>();
+    private readonly Dictionary<string, PlayerStatItemController> _playerStatItems = new Dictionary<string, PlayerStatItemController>();
     
     [SerializeField] private GameObject playerStatPrefab;
     
@@ -25,60 +25,47 @@ public class PlayerStatsListController : MonoBehaviour, IPlayerStatsObserver
         }
         _playerStatsController.AddObserver(this);
         
-        // For each child of playerStatItemsList, get the PlayerStatItemController component
-        foreach (Transform child in transform)
-        {
-            _playerStatItems.Add(child.GetComponent<PlayerStatItemController>());
-        }
     }
 
     public void UpdatePlayerStats(Dictionary<string, PlayerStat> playerStats)
     {
 
         Debug.Log(String.Join(", ", playerStats.Select(a => a.Value.Username + " : " + a.Value.Score)));
-        
-        var diff = playerStats.Count - _playerStatItems.Count;
-        BalancePlayerCount(diff);
 
-        var playerStatsValues = playerStats.Values.ToArray();
-        for (int i = 0; i < _playerStatItems.Count; i++)
+        var missingKeys = new List<string>(_playerStatItems.Keys);
+        
+        // For each connected player
+        foreach (var playerStat in playerStats)
         {
-            var playerStat = playerStatsValues[i];
-            _playerStatItems[i].Set(playerStat, playerStat.Username == Player.LocalPlayerName);
+            if (!_playerStatItems.ContainsKey(playerStat.Key))
+            {
+                // If player is not displayed, add it
+                AddPlayerStat(playerStat.Value.Username);
+            }
+            
+            _playerStatItems[playerStat.Key].Set(playerStat.Value);
+            
+            missingKeys.Remove(playerStat.Key);
+        }
+        
+        // Remove disconnected players from list
+        foreach (var missingKey in missingKeys)
+        {
+            RemovePlayerStat(missingKey);
         }
         
     }
 
-    private void BalancePlayerCount(int diff)
-    {
-        if (diff == 0) return;
-        
-        if (diff > 0)
-        {
-            for (int i = 0; i < diff; i++)
-            {
-                AddPlayerStat();
-            }
-        }
-        else
-        {
-            for (int i = 0; i < Math.Abs(diff); i++)
-            {
-                RemovePlayerStat();
-            }
-        }
-    }
-    
-    private void AddPlayerStat()
+    private void AddPlayerStat(string playerName)
     {
         var playerStatItem = Instantiate(playerStatPrefab, transform);
-        _playerStatItems.Add(playerStatItem.GetComponent<PlayerStatItemController>());
+        _playerStatItems.Add(playerName, playerStatItem.GetComponent<PlayerStatItemController>());
     }
 
-    private void RemovePlayerStat()
+    private void RemovePlayerStat(string playerName)
     {
-        var playerStatItem = _playerStatItems[_playerStatItems.Count - 1];
-        _playerStatItems.Remove(playerStatItem);
+        var playerStatItem = _playerStatItems[playerName];
+        _playerStatItems.Remove(playerName);
         Destroy(playerStatItem.gameObject);
     }    
     
