@@ -24,8 +24,8 @@ public class PlayerSetup : NetworkBehaviour
     private void Start()
     {
         
-        SetPlayerName();
-        RegisterPlayerStats();
+        var playerName = DefinePlayerName();
+        RegisterPlayerStats(playerName);
         
         if (!isLocalPlayer)
         {
@@ -34,6 +34,7 @@ public class PlayerSetup : NetworkBehaviour
             return;
         }
 
+        Player.LocalPlayerName = playerName;
         GameManager.SetSceneCameraActive(false);
         InitPlayerUI();
 
@@ -56,7 +57,7 @@ public class PlayerSetup : NetworkBehaviour
     private void OnDisable()
     {
         
-        playerStatsController.CmdRemovePlayer(Player.LocalPlayerName);
+        playerStatsController.CmdRemovePlayer(transform.name);
         
         if (!isLocalPlayer)
             return;
@@ -68,11 +69,11 @@ public class PlayerSetup : NetworkBehaviour
         
     }
 
-    private void SetPlayerName()
+    private string DefinePlayerName()
     {
         var playerName = "Player" + GetComponent<NetworkIdentity>().netId;
         transform.name = playerName;
-        Player.LocalPlayerName = playerName;
+        return playerName;
     }
 
     private void InitPlayerUI()
@@ -94,7 +95,7 @@ public class PlayerSetup : NetworkBehaviour
         
     }
 
-    private void RegisterPlayerStats()
+    private void RegisterPlayerStats(string playerName)
     {
         if (playerStatsController == null)
         {
@@ -108,7 +109,7 @@ public class PlayerSetup : NetworkBehaviour
         }
         
         // Ajout du joueur aux statistiques
-        playerStatsController.CmdAddPlayer(Player.LocalPlayerName);
+        playerStatsController.CmdAddPlayer(playerName);
 
     }
     
