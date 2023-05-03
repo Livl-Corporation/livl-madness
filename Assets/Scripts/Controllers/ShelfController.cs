@@ -2,20 +2,20 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Mirror;
+using UnityEngine.Serialization;
 
 public class ShelfController : NetworkBehaviour
 {
-    public List<GameObject> SpawnPoints;
+    [FormerlySerializedAs("SpawnPoints")] public List<GameObject> spawnPoints;
     private Queue<GameObject> availableSpawnPoints = new Queue<GameObject>();
 
     private void Awake()
     {
         var rnd = new System.Random();
-        availableSpawnPoints = new Queue<GameObject>(SpawnPoints
+        availableSpawnPoints = new Queue<GameObject>(spawnPoints
             .OrderBy(a => rnd.Next()).ToList());
     }
     
-
     public void SpawnProduct(GameObject item)
     {
 

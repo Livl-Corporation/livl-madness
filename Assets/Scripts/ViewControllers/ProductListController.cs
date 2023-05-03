@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Interfaces;
 using Models;
@@ -11,10 +9,9 @@ public class ProductListController : MonoBehaviour, IProductListObserver
     [Header("Components")]
     [SerializeField] private int productCount = 4;
     [SerializeField] private GameObject productItemsList;
+    [SerializeField] private ScanListController scanListController;
 
-    private List<ProductItemController> productItems = new List<ProductItemController>();
-
-    private string playerName;
+    private readonly List<ProductItemController> productItems = new List<ProductItemController>();
     
     private void Awake()
     {
@@ -25,15 +22,12 @@ public class ProductListController : MonoBehaviour, IProductListObserver
         }
         
         Debug.Log("ProductListController: " + productItems.Count + " product items found");
+        
     }
 
     private void Start()
     {
-        // Find the player name
-        playerName = FindObjectOfType<Player>().name;
-        
-        // Subcribe to ScanList
-        var scanListController = FindObjectOfType<ScanListController>();
+        scanListController = FindObjectOfType<ScanListController>();
         if (scanListController == null)
         {
             Debug.LogError("ProductListController: ScanListController not found");
@@ -61,7 +55,7 @@ public class ProductListController : MonoBehaviour, IProductListObserver
                 continue;
             }
             
-            ReplaceProduct(i, new DisplayedProductItem(item, item.ScannedBy == playerName));
+            ReplaceProduct(i, new DisplayedProductItem(item, item.ScannedBy == Player.LocalPlayerName));
 
         }
     }
@@ -80,12 +74,9 @@ public class ProductListController : MonoBehaviour, IProductListObserver
 
     private void OnDestroy()
     {
-        var scanListController = FindObjectOfType<ScanListController>();
         if (scanListController == null)
-        {
-            Debug.LogError("ProductListController: ScanListController not found");
             return;
-        }
+        
         scanListController.RemoveObserver(this);
     }
 }

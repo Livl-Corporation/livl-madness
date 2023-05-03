@@ -13,7 +13,6 @@ public class PlayerUI : NetworkBehaviour
     [Header("Components")]
     [SerializeField] private GameObject pauseOverlay;
     [SerializeField] private PhoneController phoneController;
-    [SerializeField] private GameObject leaderboardCanvas;
     [SerializeField] private GameObject smartphoneCanvas;
 
     public static bool isPaused
@@ -31,7 +30,6 @@ public class PlayerUI : NetworkBehaviour
         networkManager = NetworkManager.singleton;
         
         pauseOverlay.SetActive(false);
-        leaderboardCanvas.SetActive(false);
         smartphoneCanvas.SetActive(true);
     }
 
@@ -45,7 +43,6 @@ public class PlayerUI : NetworkBehaviour
     void Update()
     {
         HandlePauseInput();
-        HandleLeaderboardInput();
     }
     
     void HandlePauseInput()
@@ -60,23 +57,7 @@ public class PlayerUI : NetworkBehaviour
     {
         SetPauseMenuVisibility(!isPaused);
     }   
-
-    void HandleLeaderboardInput()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            leaderboardCanvas.SetActive(true);
-            smartphoneCanvas.SetActive(false);
-            paused = true;
-        }
-        else if (Input.GetKeyUp(KeyCode.Tab))
-        {
-            leaderboardCanvas.SetActive(false);
-            smartphoneCanvas.SetActive(true);
-            paused = false;
-        }
-    }
-
+    
     public void SetPauseMenuVisibility(bool visible)
     {
         PlayerUI.paused = visible;
@@ -101,11 +82,6 @@ public class PlayerUI : NetworkBehaviour
         {
             networkManager.StopHost();
         }
-    }
-
-    public PhoneController GetPhoneController()
-    {
-        return phoneController;
     }
     
     public bool IsActualPlayer()
