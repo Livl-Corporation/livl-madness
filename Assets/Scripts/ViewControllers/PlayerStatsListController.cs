@@ -29,9 +29,7 @@ public class PlayerStatsListController : MonoBehaviour, IPlayerStatsObserver
 
     public void UpdatePlayerStats(Dictionary<string, PlayerStat> playerStats)
     {
-
-        Debug.Log(String.Join(", ", playerStats.Select(a => a.Value.Username + " : " + a.Value.Score)));
-
+        
         var missingKeys = new List<string>(_playerStatItems.Keys);
         
         // For each connected player
