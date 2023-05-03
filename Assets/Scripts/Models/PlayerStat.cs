@@ -2,17 +2,25 @@ namespace Models
 {
     public class PlayerStat
     {
-        public int Score = 0;
-        public string Username = "Username";
+        public readonly int Score = 0;
+        public readonly string Username;
 
         public PlayerStat()
         {
+            Username = "Livl Customer";
         }
         
-        public PlayerStat(int score)
+        public PlayerStat(string username)
         {
-            this.Score = score;
+            Username = username;
+        }
+        
+        public PlayerStat(PlayerStat stat, int score)
+        {
+            Username = stat.Username;
+            Score = score;
         }
         
     }
+    
 }

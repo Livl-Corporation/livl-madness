@@ -26,7 +26,7 @@ public class PlayerStatsController : NetworkBehaviour, IPlayerStatsObservable
             return;
         }
         
-        _playerStats.Add(playerName, new PlayerStat());
+        _playerStats.Add(playerName, new PlayerStat(playerName));
     }
 
     [Command(requiresAuthority = false)]
@@ -51,8 +51,8 @@ public class PlayerStatsController : NetworkBehaviour, IPlayerStatsObservable
             return;
         }
 
-        var score = _playerStats[playerName].Score;
-        _playerStats[playerName] = new PlayerStat(score + 1);
+        var playerStat = _playerStats[playerName];
+        _playerStats[playerName] = new PlayerStat(playerStat, playerStat.Score + 1);
     }
     
     [Command(requiresAuthority = false)]
@@ -64,15 +64,16 @@ public class PlayerStatsController : NetworkBehaviour, IPlayerStatsObservable
             Debug.LogError("Player not found");
             return;
         }
-
-        var score = _playerStats[playerName].Score;
-        _playerStats[playerName] = new PlayerStat(score - 1);
+        
+        var playerStat = _playerStats[playerName];
+        _playerStats[playerName] = new PlayerStat(playerStat, playerStat.Score - 1);
     }
 
     public void AddObserver(IPlayerStatsObserver observer)
     {
         _observers.Add(observer);
-        NotifyObservers();
+        Dictionary<string, PlayerStat> playerStats = _playerStats.ToDictionary(entry => entry.Key, entry => entry.Value);
+        observer.UpdatePlayerStats(playerStats);
     }
 
     public void RemoveObserver(IPlayerStatsObserver observer)

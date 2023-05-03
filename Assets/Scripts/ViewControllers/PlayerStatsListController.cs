@@ -34,6 +34,8 @@ public class PlayerStatsListController : MonoBehaviour, IPlayerStatsObserver
 
     public void UpdatePlayerStats(Dictionary<string, PlayerStat> playerStats)
     {
+
+        Debug.Log(String.Join(", ", playerStats.Select(a => a.Value.Username + " : " + a.Value.Score)));
         
         var diff = playerStats.Count - _playerStatItems.Count;
         BalancePlayerCount(diff);
