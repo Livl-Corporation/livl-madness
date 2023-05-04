@@ -9,7 +9,7 @@ namespace Network
         
         [SerializeField] NetworkManager networkManager;
 
-        private void Start()
+        void Start()
         {
             if (Application.isBatchMode) // headless build
             {

@@ -836,7 +836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9016440220411718640, guid: 1caeaeef5b34d3241b3ca26221e1ff6d, type: 3}
       propertyPath: autoStartServerBuild
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9016440220411718641, guid: 1caeaeef5b34d3241b3ca26221e1ff6d, type: 3}
       propertyPath: m_RootOrder
@@ -885,6 +885,10 @@ PrefabInstance:
     - target: {fileID: 9016440220411718642, guid: 1caeaeef5b34d3241b3ca26221e1ff6d, type: 3}
       propertyPath: m_Name
       value: NetworkManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 9016440220411718646, guid: 1caeaeef5b34d3241b3ca26221e1ff6d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1caeaeef5b34d3241b3ca26221e1ff6d, type: 3}

@@ -8,15 +8,12 @@ public class PlayerScanController : MonoBehaviour
     [Header("Components")]
     [SerializeField] private PlayerScore playerScore;
     [SerializeField] private ScanListController scanListController;
-<<<<<<< HEAD:Assets/Scripts/Controllers/PlayerScanController.cs
-=======
 
     [Header("Sounds")]
     [SerializeField] private AudioClip successSound;
     [SerializeField] private AudioClip failSound;
 
     [Header("Conig")] [SerializeField] private float scanSoundDelay = 0.2f;
->>>>>>> b519dff (feat: add scan success & fail sounds):Assets/Scripts/Items/PlayerScanController.cs
     
     public void Start()
     {
@@ -24,11 +21,7 @@ public class PlayerScanController : MonoBehaviour
         {
             scanListController = FindObjectOfType<ScanListController>();
         }
-<<<<<<< HEAD:Assets/Scripts/Controllers/PlayerScanController.cs
-
-=======
         
->>>>>>> b519dff (feat: add scan success & fail sounds):Assets/Scripts/Items/PlayerScanController.cs
     }
 
     public bool Scan(GameObject item)
@@ -41,14 +34,10 @@ public class PlayerScanController : MonoBehaviour
             return false;
         }
         
-<<<<<<< HEAD:Assets/Scripts/Controllers/PlayerScanController.cs
-        scanListController.CmdScanArticle(item.name, name);
-=======
         var coroutine2 = DelayedSound(successSound);
         StartCoroutine(coroutine2);
->>>>>>> b519dff (feat: add scan success & fail sounds):Assets/Scripts/Items/PlayerScanController.cs
-        
-        scanListController.ScanArticle(item.name);
+
+        scanListController.CmdScanArticle(item.name, gameObject.name);
         playerScore.Increment(1);
         
         return true;

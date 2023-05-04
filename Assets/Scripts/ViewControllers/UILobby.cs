@@ -28,7 +28,7 @@ namespace UI
 	    {
 		    EnableComponents(false);
 
-		    Network.PlayerNetwork.localPlayerNetwork.HostGame();
+		    PlayerNetwork.localPlayerNetwork.HostGame();
 	    }
 
 	    public void HostSuccess(bool success)
