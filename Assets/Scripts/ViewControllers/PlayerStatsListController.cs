@@ -31,6 +31,10 @@ public class PlayerStatsListController : MonoBehaviour, IPlayerStatsObserver
     {
         
         var missingKeys = new List<string>(_playerStatItems.Keys);
+        var orderedKeys = playerStats.Keys
+            .OrderByDescending(key => playerStats[key].Score)
+            .Select(a => a)
+            .ToList();
         
         // For each connected player
         foreach (var playerStat in playerStats)
@@ -41,7 +45,10 @@ public class PlayerStatsListController : MonoBehaviour, IPlayerStatsObserver
                 AddPlayerStat(playerStat.Value.Username);
             }
             
-            _playerStatItems[playerStat.Key].Set(playerStat.Value);
+            var controller = _playerStatItems[playerStat.Key];
+            controller.Set(playerStat.Value);
+            controller.GetComponent<Transform>()
+                .SetSiblingIndex(orderedKeys.IndexOf(playerStat.Key));
             
             missingKeys.Remove(playerStat.Key);
         }
