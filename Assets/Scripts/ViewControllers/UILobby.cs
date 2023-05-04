@@ -1,6 +1,7 @@
 using Network;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace UI
@@ -20,7 +21,8 @@ namespace UI
 
 	    [SerializeField] GameObject PlayerFramePrefab;
 	    [SerializeField] TMP_Text matchIdText;
-	    
+	    [SerializeField] GameObject beginGameButton;
+
 	    void Start()
 	    {
 		    instance = this;
@@ -45,6 +47,7 @@ namespace UI
 
 		    SpawnPlayerFramePrefab(PlayerNetwork.localPlayerNetwork);
 		    matchIdText.text = PlayerNetwork.localPlayerNetwork.matchID;
+		    beginGameButton.SetActive(true);
 	    }
 	    
 	    public void Join()
@@ -81,6 +84,11 @@ namespace UI
 	    {
 		    GameObject newFrame = Instantiate(PlayerFramePrefab, UIPlayerParent);
 		    newFrame.GetComponent<PlayerFrame>().SetPlayer(player);
+	    }
+
+	    public void BeginGame()
+	    {
+		    PlayerNetwork.localPlayerNetwork.BeginGame();
 	    }
     }
 }

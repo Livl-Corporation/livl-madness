@@ -1,8 +1,8 @@
 using System;
 using Mirror;
-using TMPro;
 using UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Network
 {
@@ -29,6 +29,9 @@ namespace Network
             }
         }
 
+        /*
+         * HOST PART
+         */
         public void HostGame()
         {
             string matchID = MatchMaker.GetRandomMatchID();
@@ -62,6 +65,10 @@ namespace Network
             UILobby.instance.HostSuccess(success);
         }
         
+        /**
+         * JOIN PART
+         */
+        
         public void JoinGame(string matchID)
         {
             CmdJoinGame(matchID);
@@ -93,5 +100,30 @@ namespace Network
             Debug.Log($"MatchID : {matchID}");
             UILobby.instance.JoinSuccess(success);
         }
+        
+        /**
+         * BEGIN PART
+         */
+        public void BeginGame()
+        {
+            CmdBeginGame();
+        }
+
+        [Command]
+        void CmdBeginGame()
+        { 
+            Debug.Log("Game started");
+            
+            RpcBeginGame();
+        }
+
+        [ClientRpc]
+        void RpcBeginGame()
+        {
+            Debug.Log($"MatchID : {matchID} | Beginning");
+            // Load game scene
+            SceneManager.LoadScene("Livl");
+        }
+        
     }
 }
