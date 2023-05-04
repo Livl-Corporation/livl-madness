@@ -37,8 +37,10 @@ namespace Network
             instance = this;
         }
 
-        public bool HostGame(string matchID, PlayerNetwork playerNetwork)
+        public bool HostGame(string matchID, PlayerNetwork playerNetwork, out int playerIndex)
         {
+            playerIndex = -1;
+            
             if (matchIds.Contains(matchID))
             {
                 Debug.Log($"Match ID {matchID} already exists");
@@ -47,23 +49,28 @@ namespace Network
             
             matches.Add(new Match(matchID, playerNetwork));
             matchIds.Add(matchID);
+
+            playerIndex = 1;
             
             return true;
         }
         
-        public bool JoinGame(string matchID, PlayerNetwork playerNetwork)
+        public bool JoinGame(string matchID, PlayerNetwork playerNetwork, out int playerIndex)
         {
+            playerIndex = -1;
+
             if (!matchIds.Contains(matchID))
             {
                 Debug.Log($"Match ID {matchID} doesn't exists");
                 return false;
             }
 
-            foreach (Match match in matches) // match est une copie ou une ref ? à méditer...
+            foreach (Match match in matches)
             {
                 if (match.matchID == matchID)
                 {
                     match.players.Add(playerNetwork);
+                    playerIndex = match.players.Count;
                     break;
                 }
             }

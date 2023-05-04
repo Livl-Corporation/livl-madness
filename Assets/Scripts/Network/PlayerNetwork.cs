@@ -11,18 +11,22 @@ namespace Network
         public static PlayerNetwork localPlayerNetwork;
         
         [SyncVar] public string matchID;
+        [SyncVar] public int playerIndex;
         
         NetworkMatch networkMatch;
 
         void Start()
         {
+            networkMatch = GetComponent<NetworkMatch>();
+
             if (isLocalPlayer)
             {
                 localPlayerNetwork = this;
             }
-
-            networkMatch = GetComponent<NetworkMatch>();
-            
+            else
+            {
+                UILobby.instance.SpawnPlayerFramePrefab(this);  
+            }
         }
 
         public void HostGame()
@@ -35,7 +39,7 @@ namespace Network
         void CmdHostGame(string matchId)
         {
             matchID = matchId; 
-            bool hostedSuccesfully = MatchMaker.instance.HostGame(matchId, this);
+            bool hostedSuccesfully = MatchMaker.instance.HostGame(matchId, this, out playerIndex);
 
             if (hostedSuccesfully)
             {
@@ -67,7 +71,7 @@ namespace Network
         void CmdJoinGame(string matchId)
         {
             matchID = matchId; 
-            bool joinedSuccesfully = MatchMaker.instance.JoinGame(matchId, this);
+            bool joinedSuccesfully = MatchMaker.instance.JoinGame(matchId, this, out playerIndex);
 
             if (joinedSuccesfully)
             {
