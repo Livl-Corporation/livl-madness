@@ -18,7 +18,9 @@ namespace UI
 	    [Header("Lobby")] 
 	    [SerializeField] Transform UIPlayerParent;
 
-	    [SerializeField] private GameObject PlayerFramePrefab;
+	    [SerializeField] GameObject PlayerFramePrefab;
+	    [SerializeField] TMP_Text matchIdText;
+	    
 	    void Start()
 	    {
 		    instance = this;
@@ -42,6 +44,7 @@ namespace UI
 		    lobbyCanvas.enabled = true;
 
 		    SpawnPlayerFramePrefab(PlayerNetwork.localPlayerNetwork);
+		    matchIdText.text = PlayerNetwork.localPlayerNetwork.matchID;
 	    }
 	    
 	    public void Join()
@@ -64,6 +67,7 @@ namespace UI
 		    lobbyCanvas.enabled = true;
 
 		    SpawnPlayerFramePrefab(PlayerNetwork.localPlayerNetwork);
+		    matchIdText.text = PlayerNetwork.localPlayerNetwork.matchID;
 	    } 
 	    
 	    public void EnableComponents(bool enabled)
