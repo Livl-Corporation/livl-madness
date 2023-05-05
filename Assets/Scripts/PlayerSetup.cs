@@ -23,7 +23,6 @@ public class PlayerSetup : NetworkBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        
         var playerName = DefinePlayerName();
         RegisterPlayerStats(playerName);
         
@@ -37,9 +36,33 @@ public class PlayerSetup : NetworkBehaviour
         Player.LocalPlayerName = playerName;
         GameManager.SetSceneCameraActive(false);
         InitPlayerUI();
+    }
 
+    private void Update()
+    {
+        HideCursor();
     }
     
+    private void HideCursor()
+    {
+        if (PlayerUI.isPaused)
+        {
+            if (Cursor.lockState != CursorLockMode.None)
+            {
+                Cursor.lockState = CursorLockMode.None; // Unlock the cursor to be able to click on the UI
+                PlayerController controller = GetComponent<PlayerController>();
+                controller.PauseAnimation();
+            }
+
+            return;
+        } 
+        
+        if (Cursor.lockState != CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+
     private void DisableComponents()
     {
         foreach (Behaviour component in componentsToDisable)

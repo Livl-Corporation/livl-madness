@@ -15,10 +15,7 @@ public class PlayerUI : NetworkBehaviour
     [SerializeField] private PhoneController phoneController;
     [SerializeField] private GameObject smartphoneCanvas;
 
-    public static bool isPaused
-    {
-        get => paused;
-    }
+    public static bool isPaused => paused;
 
     private void Awake()
     {
@@ -31,6 +28,7 @@ public class PlayerUI : NetworkBehaviour
         
         pauseOverlay.SetActive(false);
         smartphoneCanvas.SetActive(true);
+        paused = false;
     }
 
     public void SetPlayer(Player _player)
@@ -58,18 +56,11 @@ public class PlayerUI : NetworkBehaviour
         SetPauseMenuVisibility(!isPaused);
     }   
     
-    public void SetPauseMenuVisibility(bool visible)
+    private void SetPauseMenuVisibility(bool visible)
     {
-        PlayerUI.paused = visible;
+        paused = visible;
         pauseOverlay.SetActive(visible);
-        if (isPaused)
-        {
-            phoneController.Navigate(Phone.Screen.Pause);
-        }
-        else
-        {
-            phoneController.Navigate(Phone.Screen.ProductList);
-        }
+        phoneController.Navigate(isPaused ? Phone.Screen.Pause : Phone.Screen.ProductList);
     }
 
     public void LeaveRoomButton()
