@@ -1,42 +1,41 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Mirror;
+using UnityEngine.Serialization;
 
 public class ShelfController : NetworkBehaviour
 {
-    public List<GameObject> spawnPoints;
-    private List<int> usedSpawnPointsIdx = new List<int>();
+    [FormerlySerializedAs("SpawnPoints")] public List<GameObject> spawnPoints;
+    private Queue<GameObject> availableSpawnPoints = new Queue<GameObject>();
 
-    public void setItem(GameObject item)
+    private void Awake()
+    {
+        var rnd = new System.Random();
+        availableSpawnPoints = new Queue<GameObject>(spawnPoints
+            .OrderBy(a => rnd.Next()).ToList());
+    }
+    
+    public void SpawnProduct(GameObject item)
     {
 
-        if (this.usedSpawnPointsIdx.Count == this.spawnPoints.Count)
+        if (!IsEmptySpaceAvailable())
         {
+            Debug.LogError("No more available space in this shelve");
             return;
         }
 
-        int rndSpawnIdx;
-        do
-        {
-            rndSpawnIdx = Random.Range(0, spawnPoints.Count);
-        } while (usedSpawnPointsIdx.Contains(rndSpawnIdx));
-
-        usedSpawnPointsIdx.Add(rndSpawnIdx);
-
-        GameObject spawnPoint = spawnPoints[rndSpawnIdx];
-        Vector3 randomSpawnPosition = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y, spawnPoint.transform.position.z);
-
-
-        var spawnedObject = Instantiate(item, randomSpawnPosition, Quaternion.identity);
-        NetworkServer.Spawn(spawnedObject);
-
+        var selectedSpawnPoint = availableSpawnPoints.Dequeue();
+        var position = selectedSpawnPoint.transform.position;
+        
+        var spawnedObject = Instantiate(item, position, Quaternion.identity);
         spawnedObject.name = item.name;
-
+        NetworkServer.Spawn(spawnedObject);
+        
     }
 
-    public bool isEmptySpaceAvailable()
+    public bool IsEmptySpaceAvailable()
     {
-        return this.usedSpawnPointsIdx.Count < this.spawnPoints.Count;
+        return availableSpawnPoints.Count > 0;
     }
 }
