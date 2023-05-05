@@ -13,13 +13,9 @@ public class PlayerUI : NetworkBehaviour
     [Header("Components")]
     [SerializeField] private GameObject pauseOverlay;
     [SerializeField] private PhoneController phoneController;
-    [SerializeField] private GameObject leaderboardCanvas;
     [SerializeField] private GameObject smartphoneCanvas;
 
-    public static bool isPaused
-    {
-        get => paused;
-    }
+    public static bool isPaused => paused;
 
     private void Awake()
     {
@@ -31,8 +27,8 @@ public class PlayerUI : NetworkBehaviour
         networkManager = NetworkManager.singleton;
         
         pauseOverlay.SetActive(false);
-        leaderboardCanvas.SetActive(false);
         smartphoneCanvas.SetActive(true);
+        paused = false;
     }
 
     public void SetPlayer(Player _player)
@@ -45,7 +41,6 @@ public class PlayerUI : NetworkBehaviour
     void Update()
     {
         HandlePauseInput();
-        HandleLeaderboardInput();
     }
     
     void HandlePauseInput()
@@ -60,35 +55,12 @@ public class PlayerUI : NetworkBehaviour
     {
         SetPauseMenuVisibility(!isPaused);
     }   
-
-    void HandleLeaderboardInput()
+    
+    private void SetPauseMenuVisibility(bool visible)
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            leaderboardCanvas.SetActive(true);
-            smartphoneCanvas.SetActive(false);
-            paused = true;
-        }
-        else if (Input.GetKeyUp(KeyCode.Tab))
-        {
-            leaderboardCanvas.SetActive(false);
-            smartphoneCanvas.SetActive(true);
-            paused = false;
-        }
-    }
-
-    public void SetPauseMenuVisibility(bool visible)
-    {
-        PlayerUI.paused = visible;
+        paused = visible;
         pauseOverlay.SetActive(visible);
-        if (isPaused)
-        {
-            phoneController.Navigate(Phone.Screen.Pause);
-        }
-        else
-        {
-            phoneController.Navigate(Phone.Screen.ProductList);
-        }
+        phoneController.Navigate(isPaused ? Phone.Screen.Pause : Phone.Screen.ProductList);
     }
 
     public void LeaveRoomButton()
@@ -101,11 +73,6 @@ public class PlayerUI : NetworkBehaviour
         {
             networkManager.StopHost();
         }
-    }
-
-    public PhoneController GetPhoneController()
-    {
-        return phoneController;
     }
     
     public bool IsActualPlayer()

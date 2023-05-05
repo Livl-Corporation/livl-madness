@@ -186,6 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   productCount: 4
   productItemsList: {fileID: 5776391206644671199}
+  scanListController: {fileID: 0}
 --- !u!1 &1305645193390030575
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +407,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &6991290969207237382
 MonoBehaviour:
   m_ObjectHideFlags: 0

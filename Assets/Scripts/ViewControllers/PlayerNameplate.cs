@@ -7,13 +7,12 @@ public class PlayerNameplate : MonoBehaviour
 {
     
     [SerializeField] private TMP_Text playerNameText;
-    
-    [SerializeField] private Player player;
+    [SerializeField] private Transform parentTransform;
 
     // Start is called before the first frame update
     void Start()
     {
-        SetUserName(player.username);
+        SetUserName(parentTransform.name);
     }
     
     void SetUserName(string username)

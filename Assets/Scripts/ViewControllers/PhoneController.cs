@@ -1,10 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Interfaces;
+using Models;
 using UnityEngine;
 using TMPro;
 
-public class PhoneController : MonoBehaviour, ITimerObserver
+public class PhoneController : MonoBehaviour, ITimerObserver, IPlayerStatsObserver
 {
 
     [Header("Phone Components")]
@@ -39,8 +41,6 @@ public class PhoneController : MonoBehaviour, ITimerObserver
     void Start()
     {   
         GenerateScreens();
-        
-        SetScoreText("0");
 
         // Hide all screens
         foreach (GameObject screen in screens.Values)
@@ -50,6 +50,38 @@ public class PhoneController : MonoBehaviour, ITimerObserver
 
         // Start on the product list screen
         Navigate(Phone.Screen.ProductList);
+        
+        // TODO : Remove test message
+        messageController.ShowMessage("Jean Marc Muller", "Salut, ça va ?");
+        
+        SetupTimer();
+        SetupScore();
+
+    }
+
+    private void SetupTimer()
+    {
+        // Subscribe to timer
+        var timer = GameManager.Instance.GetTimer();
+        if (timer == null)
+        {
+            Debug.LogError("Timer is null");
+            return;
+        }
+        
+        timer.AddObserver(this);
+    }
+
+    private void SetupScore()
+    {
+        var playerStatsController = FindObjectOfType<PlayerStatsController>();
+        if (playerStatsController == null)
+        {
+            Debug.LogError("PlayerStatsController is null");
+            return;
+        }
+        
+        playerStatsController.AddObserver(this);
     }
 
     private void GenerateScreens()
@@ -57,9 +89,6 @@ public class PhoneController : MonoBehaviour, ITimerObserver
         screens.Add(Phone.Screen.ProductList, productListScreen);
         screens.Add(Phone.Screen.Pause, pauseScreen);
     }
-
-    // TODO : Move message to a separate script
-    
 
     public void SetScreenTitle(string title)
     {
@@ -126,9 +155,26 @@ public class PhoneController : MonoBehaviour, ITimerObserver
         obj.SetActive(active);
     }
 
-    public void SetScoreText(string score)
+    public void UpdatePlayerStats(Dictionary<string, PlayerStat> playerStats)
     {
-        scoreText.text = score;
+        if (!playerStats.ContainsKey(Player.LocalPlayerName))
+        {
+            return;
+        }
+        
+        var playerStat = playerStats[Player.LocalPlayerName];
+        scoreText.text = playerStat.Score.ToString();
     }
-    
+
+    private void OnDestroy()
+    {
+        var timer = GameManager.Instance.GetTimer();
+        if (timer == null)
+        {
+            Debug.LogError("Timer is null");
+            return;
+        }
+        
+        timer.RemoveObserver(this);
+    }
 }

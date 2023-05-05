@@ -73,33 +73,13 @@ public class PlayerController : NetworkBehaviour
         _player = GetComponent<Player>();
     }
 
-    private void Update()
+    public void PauseAnimation()
     {
-        HideCursor();
+        _animator.SetFloat(_xVelHash, 0);
+        _animator.SetFloat(_yVelHash, 0);
+        _animator.SetFloat(_zVelHash, 0);
     }
 
-    private void HideCursor()
-    {
-        if (PlayerUI.isPaused)
-        {
-            if (Cursor.lockState != CursorLockMode.None)
-            {
-                Cursor.lockState = CursorLockMode.None; // Unlock the cursor to be able to click on the UI
-            }
-            
-            // Reset the animator values to put the player to idle state (not moving)
-            _animator.SetFloat(_xVelHash , 0);
-            _animator.SetFloat(_yVelHash, 0);
-
-            return;
-        } 
-        
-        if (Cursor.lockState != CursorLockMode.Locked)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-    }
-    
     private void FixedUpdate() {
         SampleGround();
         Move();
