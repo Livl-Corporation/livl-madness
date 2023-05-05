@@ -157,13 +157,12 @@ public class PhoneController : MonoBehaviour, ITimerObserver, IPlayerStatsObserv
 
     public void UpdatePlayerStats(Dictionary<string, PlayerStat> playerStats)
     {
-        var playerStat = playerStats[Player.LocalPlayerName];
-        if (playerStat == null)
+        if (!playerStats.ContainsKey(Player.LocalPlayerName))
         {
-            Debug.LogError("PlayerStat is null");
             return;
         }
         
+        var playerStat = playerStats[Player.LocalPlayerName];
         scoreText.text = playerStat.Score.ToString();
     }
 

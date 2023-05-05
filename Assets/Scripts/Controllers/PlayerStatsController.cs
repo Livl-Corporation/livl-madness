@@ -72,8 +72,7 @@ public class PlayerStatsController : NetworkBehaviour, IPlayerStatsObservable
     public void AddObserver(IPlayerStatsObserver observer)
     {
         _observers.Add(observer);
-        Dictionary<string, PlayerStat> playerStats = _playerStats.ToDictionary(entry => entry.Key, entry => entry.Value);
-        observer.UpdatePlayerStats(playerStats);
+        NotifyObservers();
     }
 
     public void RemoveObserver(IPlayerStatsObserver observer)
@@ -89,4 +88,5 @@ public class PlayerStatsController : NetworkBehaviour, IPlayerStatsObservable
             observer.UpdatePlayerStats(playerStats);
         }
     }
+    
 }

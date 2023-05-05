@@ -25,8 +25,7 @@ public class PlayerSetup : NetworkBehaviour
     {
         
         var playerName = DefinePlayerName();
-        RegisterPlayerStats(playerName);
-        
+
         if (!isLocalPlayer)
         {
             DisableComponents();
@@ -34,6 +33,7 @@ public class PlayerSetup : NetworkBehaviour
             return;
         }
 
+        RegisterPlayerStats(playerName);
         Player.LocalPlayerName = playerName;
         GameManager.SetSceneCameraActive(false);
         InitPlayerUI();
@@ -56,15 +56,14 @@ public class PlayerSetup : NetworkBehaviour
     // When player quit the server
     private void OnDisable()
     {
-        
-        playerStatsController.CmdRemovePlayer(transform.name);
-        
+
         if (!isLocalPlayer)
             return;
         
         if (sceneCamera != null)
             sceneCamera.gameObject.SetActive(true);
 
+        playerStatsController.CmdRemovePlayer(transform.name);
         Destroy(playerUIInstance);
         
     }
