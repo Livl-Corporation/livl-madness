@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Mirror;
 
-public class GameManager : MonoBehaviour
+public class GameManager : NetworkBehaviour
 {
     
     [SerializeField] private float skyboxRotationSpeed = 1f;
@@ -25,11 +26,18 @@ public class GameManager : MonoBehaviour
         Debug.LogError("More than one GameManager in scene.");
     }
 
-    private void Start()
+    public override void OnStartServer()
+    {
+        // Start game after 1 second
+        Invoke(nameof(StartGame), 1f);
+    }
+
+    public void StartGame()
     {
         timer.StartTimer();
+        FindObjectOfType<MessageBroadcaster>().StartMessageLoop();
     }
-    
+
     private void Update()
     {
         MoveSkybox();
