@@ -31,14 +31,16 @@ public class Leaderboard : MonoBehaviour, IPlayerStatsObserver
     public void UpdatePlayerStats(Dictionary<string, PlayerStat> playerStats)
     {
         var missingKeys = new List<string>(_playerStatItems.Keys);
-        var orderedKeys = playerStats.Keys
-            .OrderByDescending(key => playerStats[key].Score)
-            .Select(a => a)
-            .ToList();
         
-        // order the PlayerStat list by score
+        // Order the player stats by score
         playerStats = playerStats.OrderByDescending(x => x.Value.Score).ToDictionary(x => x.Key, x => x.Value);
-        
+
+        // Remove all existing player score board items
+        foreach (Transform child in transformPlayerScoreBoardList)
+        {
+            Destroy(child.gameObject);
+        }
+
         // For each connected player
         var index = 0;
         foreach (var playerStat in playerStats)
@@ -49,14 +51,13 @@ public class Leaderboard : MonoBehaviour, IPlayerStatsObserver
                 AddPlayerStat(playerStat.Value.Username);
             }
             
+            missingKeys.Remove(playerStat.Key);
+            
             if(index > maxPlayersToDisplayScore)
-                return;
+                break;
             
             var controller = _playerStatItems[playerStat.Key];
             controller.Set(playerStat.Value, playerImages[index++]);
-            transformPlayerScoreBoardList.SetSiblingIndex(orderedKeys.IndexOf(playerStat.Key));
-            
-            missingKeys.Remove(playerStat.Key);
         }
 
         // Remove disconnected players from list
@@ -66,7 +67,7 @@ public class Leaderboard : MonoBehaviour, IPlayerStatsObserver
         }
         
     }
-
+    
     private void AddPlayerStat(string playerName)
     {
         var playerStatItem = Instantiate(playerScoreBoardItem, transformPlayerScoreBoardList);
