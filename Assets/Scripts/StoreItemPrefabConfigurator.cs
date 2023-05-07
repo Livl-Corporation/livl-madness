@@ -11,10 +11,13 @@ public class StoreItemPrefabConfigurator : MonoBehaviour
     {
         ApplyScriptRecursively(transform);
         gameObject.AddComponent<StoreItem>();
+
         var storeItem = gameObject.GetComponent<StoreItem>();
         storeItem.id = itemId;
         storeItem.displayedName = itemDisplayedName;
-
+        this.tag = "Product";
+        this.gameObject.layer = LayerMask.NameToLayer("Shootable");
+        this.gameObject.AddComponent<MeshCollider>();
     }
 
     private void ApplyScriptRecursively(Transform parent)
@@ -28,6 +31,12 @@ public class StoreItemPrefabConfigurator : MonoBehaviour
                 myCustomScript.id = this.itemId;
                 myCustomScript.displayedName = this.itemDisplayedName;
             }
+
+            child.tag = "Product";
+            child.gameObject.layer = LayerMask.NameToLayer("Shootable");
+
+            child.gameObject.AddComponent<MeshCollider>();
+            
 
             ApplyScriptRecursively(child);
         }
