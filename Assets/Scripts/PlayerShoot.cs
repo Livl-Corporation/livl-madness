@@ -54,7 +54,6 @@ public class PlayerShoot : NetworkBehaviour
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, weapon.range, mask))
         {
-            Debug.Log("hit !");
             if(!hit.collider.CompareTag("Product"))
             {
                 Debug.Log("This is not a scannable product");
