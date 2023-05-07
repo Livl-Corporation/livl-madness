@@ -179,6 +179,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 9ef07dd7b914500408b1c5eb7df0d277, type: 3}
+      propertyPath: m_TagString
+      value: Product
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9ef07dd7b914500408b1c5eb7df0d277, type: 3}
       propertyPath: m_Name
       value: oat_milk
@@ -187,12 +191,39 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ef07dd7b914500408b1c5eb7df0d277, type: 3}
+      propertyPath: m_TagString
+      value: Product
+      objectReference: {fileID: 0}
     - target: {fileID: 5233112405309087440, guid: 9ef07dd7b914500408b1c5eb7df0d277, type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 5233112405309087440, guid: 9ef07dd7b914500408b1c5eb7df0d277, type: 3}
+      propertyPath: m_TagString
+      value: Product
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ef07dd7b914500408b1c5eb7df0d277, type: 3}
+--- !u!1 &2877683473731817240 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9ef07dd7b914500408b1c5eb7df0d277, type: 3}
+  m_PrefabInstance: {fileID: 3111701532031136329}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &9136349583734589517
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2877683473731817240}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!4 &3216772398124389794 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9ef07dd7b914500408b1c5eb7df0d277, type: 3}
