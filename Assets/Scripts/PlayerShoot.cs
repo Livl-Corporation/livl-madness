@@ -75,7 +75,7 @@ public class PlayerShoot : NetworkBehaviour
 
             ScanningAudioSource.Play();
 
-            bool scanResult = playerScanController.Scan(hit.collider.gameObject);
+            bool scanResult = playerScanController.Scan(storeItem.displayedName);
 
             if(!scanResult)
             {
