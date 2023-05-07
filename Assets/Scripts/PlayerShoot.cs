@@ -68,11 +68,9 @@ public class PlayerShoot : NetworkBehaviour
             }
 
             var hitName = hit.collider.name;
-            Debug.Log("You hitted " + hitName);
 
             StoreItem storeItem = hit.collider.gameObject.GetComponent<StoreItem>();
-            Debug.Log("scanned id :" + storeItem.id + "scanned name" + storeItem.displayedName);
-
+            Debug.Log("You hitted " + storeItem.displayedName);
             ScanningAudioSource.Play();
 
             bool scanResult = playerScanController.Scan(storeItem.displayedName);

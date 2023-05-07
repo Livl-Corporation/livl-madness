@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class StoreItemPrefabConfigurator : MonoBehaviour
 {
-    public int itemId;
+    //public int itemId;
+    [SerializeField]
     public string itemDisplayedName;
 
     private void Start()
@@ -13,7 +14,6 @@ public class StoreItemPrefabConfigurator : MonoBehaviour
         gameObject.AddComponent<StoreItem>();
 
         var storeItem = gameObject.GetComponent<StoreItem>();
-        storeItem.id = itemId;
         storeItem.displayedName = itemDisplayedName;
         this.tag = "Product";
         this.gameObject.layer = LayerMask.NameToLayer("Shootable");
@@ -26,9 +26,8 @@ public class StoreItemPrefabConfigurator : MonoBehaviour
         {
             var component = child.gameObject.AddComponent<StoreItem>();
 
-            if (component is StoreItem myCustomScript) // check if the added component is of the expected type
+            if (component is StoreItem myCustomScript)
             {
-                myCustomScript.id = this.itemId;
                 myCustomScript.displayedName = this.itemDisplayedName;
             }
 
@@ -38,9 +37,9 @@ public class StoreItemPrefabConfigurator : MonoBehaviour
             child.gameObject.AddComponent<MeshCollider>();
             
 
+            if (parent.childCount == 0) return;
             ApplyScriptRecursively(child);
         }
 
-        if (parent.childCount == 0) return;
     }
 }

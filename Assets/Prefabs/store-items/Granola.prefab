@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3459183298911576764}
   - component: {fileID: 2116855705568415377}
   - component: {fileID: 8633919746409474928}
-  m_Layer: 9
+  - component: {fileID: 6346774979368082629}
+  m_Layer: 0
   m_Name: Granola
-  m_TagString: Product
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65,6 +66,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &6346774979368082629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949541102741446563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea12a060b51a3f40902f2446c926392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDisplayedName: Granola
 --- !u!1001 &730506108293769137
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -138,33 +152,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fac51ad43a094824ab64cc1cce422f56, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fac51ad43a094824ab64cc1cce422f56, type: 3}
       propertyPath: m_TagString
-      value: Product
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fac51ad43a094824ab64cc1cce422f56, type: 3}
---- !u!1 &496010304809294560 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fac51ad43a094824ab64cc1cce422f56, type: 3}
-  m_PrefabInstance: {fileID: 730506108293769137}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &8899313133863800126
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 496010304809294560}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5495902117074765545, guid: fac51ad43a094824ab64cc1cce422f56, type: 3}
 --- !u!4 &984597347317514330 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fac51ad43a094824ab64cc1cce422f56, type: 3}

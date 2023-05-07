@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2056456091814872466}
   - component: {fileID: 6039846013154451436}
   - component: {fileID: 3395526234640116667}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Apple_juice_brick
-  m_TagString: Product
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
