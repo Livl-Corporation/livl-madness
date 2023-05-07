@@ -42,7 +42,7 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
         
         var productItems = productsController.GetItems()
             .OrderBy(a => random.Next())
-            .Select(a => new ProductItem(a.gameObject.GetComponent<StoreItem>().displayedName ?? a.name))
+            .Select(a => new ProductItem(a.gameObject.GetComponent<StoreItemPrefabConfigurator>().itemDisplayedName ?? a.name))
             .ToList();
         
         scanList.AddRange(productItems);
