@@ -43,7 +43,7 @@ public class PlayerShoot : NetworkBehaviour
         if (PlayerUI.isPaused)
             return;
 
-        if (Input.GetButtonDown("Fire1")) // if we click on the left mouse button
+        if (Input.GetButtonDown("Fire1") && inputManager.Aiming) // if we click on the left mouse button
         {
             Shoot();
         }
@@ -51,32 +51,26 @@ public class PlayerShoot : NetworkBehaviour
 
     private void Shoot()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, weapon.range, mask))
+        if (!Physics.Raycast(cam.transform.position, cam.transform.forward, out var hit, weapon.range, mask)) return;
+        
+        if(!hit.collider.CompareTag("Product"))
         {
-            if(!hit.collider.CompareTag("Product"))
-            {
-                Debug.Log("This is not a scannable product");
-                return;
-            }
+            Debug.Log("This is not a scannable product");
+            return;
+        }
+        
+        var hitName = hit.collider.name;
 
-            if(!inputManager.Aiming)
-            {
-                return;
-            }
+        StoreItem storeItem = hit.collider.gameObject.GetComponent<StoreItem>();
+        Debug.Log("You hitted " + storeItem.displayedName);
+        ScanningAudioSource.Play();
 
-            var hitName = hit.collider.name;
+        var isScanValid = playerScanController.Scan(storeItem.displayedName);
 
-            StoreItem storeItem = hit.collider.gameObject.GetComponent<StoreItem>();
-            Debug.Log("You hitted " + storeItem.displayedName);
-            ScanningAudioSource.Play();
+        if(!isScanValid)
 
-            bool scanResult = playerScanController.Scan(storeItem.displayedName);
-
-            if(!scanResult)
-            {
-                Debug.Log("This product is not in your scan list !");
-            }
+        {
+            Debug.Log("This product is not in your scan list !");
         }
     }
     
