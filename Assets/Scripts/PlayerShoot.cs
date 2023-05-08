@@ -67,7 +67,8 @@ public class PlayerShoot : NetworkBehaviour
 
         var isScanValid = playerScanController.Scan(storeItem.displayedName);
 
-        if(!scanResult)
+        if(!isScanValid)
+
         {
             Debug.Log("This product is not in your scan list !");
         }
