@@ -708,9 +708,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerScoreBoardItem: {fileID: 7175040780965992902, guid: 5857be1e0639c2e42a2ea7f895262c92, type: 3}
-  playerScoreBoardList: {fileID: 7150192804284611155}
+  transformPlayerScoreBoardList: {fileID: 7150192804284611155}
   playerImages:
   - {fileID: 21300000, guid: 7683120aacece624eaecae56c512615c, type: 3}
   - {fileID: 21300000, guid: 93e85ff69765f3c4fb809b46ac49592e, type: 3}
   - {fileID: 21300000, guid: 3dbda5666fb30804693a01e5d98aaa1e, type: 3}
   verticalLayoutGroup: {fileID: 6288237750227889821}
+  maxPlayersToDisplayScore: 3
