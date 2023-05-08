@@ -1,3 +1,4 @@
+using System;
 using Mirror;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
@@ -73,11 +74,32 @@ public class PlayerController : NetworkBehaviour
         _player = GetComponent<Player>();
     }
 
-    public void PauseAnimation()
+    private void Update()
     {
-        _animator.SetFloat(_xVelHash, 0);
-        _animator.SetFloat(_yVelHash, 0);
-        _animator.SetFloat(_zVelHash, 0);
+        HideCursor();
+    }
+
+    private void HideCursor()
+    {
+        if (PlayerUI.isPaused)
+        {
+            if (Cursor.lockState != CursorLockMode.None)
+            {
+                Cursor.lockState = CursorLockMode.None; // Unlock the cursor to be able to click on the UI
+            }
+
+            // Reset the animator values to put the player to idle state (not moving)
+            _animator.SetFloat(_xVelHash , 0);
+            _animator.SetFloat(_yVelHash, 0);
+            _animator.SetFloat(_zVelHash, 0);
+
+            return;
+        } 
+
+        if (Cursor.lockState != CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     private void FixedUpdate() {
