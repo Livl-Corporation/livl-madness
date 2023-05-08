@@ -111,7 +111,7 @@ RectTransform:
   m_Children:
   - {fileID: 2819854753882070465}
   - {fileID: 313383957369638130}
-  - {fileID: 1414174598953031122}
+  - {fileID: 3201855214269242709}
   - {fileID: 4750626563010762263}
   - {fileID: 215341943058607183}
   m_Father: {fileID: 0}
@@ -201,8 +201,8 @@ MonoBehaviour:
   pauseOverlay: {fileID: 4129418170017160847}
   phoneController: {fileID: 7374260649204609366}
   smartphoneCanvas: {fileID: 7701378481570597237}
-  leaderboardCanvas: {fileID: 941858503226741161}
-  leaderboard: {fileID: 4623778388133180311}
+  leaderboardCanvas: {fileID: 0}
+  leaderboard: {fileID: 0}
 --- !u!114 &2665049780233038357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,21 +554,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStatPrefab: {fileID: 1264395536379130489, guid: 40897ac5e3e184b30a0baa08298e9d3e, type: 3}
---- !u!1001 &8101394020798804813
+--- !u!1001 &5738290592687225802
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 2819854752636084173}
     m_Modifications:
-    - target: {fileID: 3478778934246621402, guid: dd4961b9d624bd944920e75a69aae2c1, type: 3}
-      propertyPath: smartphoneCanvas
-      value: 
-      objectReference: {fileID: 7701378481570597237}
-    - target: {fileID: 3478778934246621402, guid: dd4961b9d624bd944920e75a69aae2c1, type: 3}
-      propertyPath: leaderboardCanvas
-      value: 
-      objectReference: {fileID: 941858503226741161}
     - target: {fileID: 7191622700531869343, guid: dd4961b9d624bd944920e75a69aae2c1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -663,31 +655,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9043168273644741348, guid: dd4961b9d624bd944920e75a69aae2c1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd4961b9d624bd944920e75a69aae2c1, type: 3}
---- !u!1 &941858503226741161 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9043168273644741348, guid: dd4961b9d624bd944920e75a69aae2c1, type: 3}
-  m_PrefabInstance: {fileID: 8101394020798804813}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &1414174598953031122 stripped
+--- !u!224 &3201855214269242709 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7191622700531869343, guid: dd4961b9d624bd944920e75a69aae2c1, type: 3}
-  m_PrefabInstance: {fileID: 8101394020798804813}
+  m_PrefabInstance: {fileID: 5738290592687225802}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4623778388133180311 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3478778934246621402, guid: dd4961b9d624bd944920e75a69aae2c1, type: 3}
-  m_PrefabInstance: {fileID: 8101394020798804813}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 941858503226741161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57f2f0d7425928408be343efba34c43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &9209211558981080892
 PrefabInstance:
   m_ObjectHideFlags: 0
