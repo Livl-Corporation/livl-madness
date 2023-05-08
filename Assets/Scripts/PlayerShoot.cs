@@ -54,22 +54,29 @@ public class PlayerShoot : NetworkBehaviour
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, weapon.range, mask))
         {
-            var hitName = hit.collider.name;
-            Debug.Log("Hit " + hitName);
-
-            // check if player has right click on his mouse to scan
-            if (inputManager.Aiming && hit.collider.CompareTag("Product"))
+            if(!hit.collider.CompareTag("Product"))
             {
-                ScanningAudioSource.Play();
-                bool scanResult = playerScanController.Scan(hit.collider.gameObject);
-
-                if (!scanResult)
-                {
-                    Debug.Log("This product is not in your scan list !");
-                }
-                
+                Debug.Log("This is not a scannable product");
+                return;
             }
 
+            if(!inputManager.Aiming)
+            {
+                return;
+            }
+
+            var hitName = hit.collider.name;
+
+            StoreItem storeItem = hit.collider.gameObject.GetComponent<StoreItem>();
+            Debug.Log("You hitted " + storeItem.displayedName);
+            ScanningAudioSource.Play();
+
+            bool scanResult = playerScanController.Scan(storeItem.displayedName);
+
+            if(!scanResult)
+            {
+                Debug.Log("This product is not in your scan list !");
+            }
         }
     }
     
