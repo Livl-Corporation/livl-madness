@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerScanController : MonoBehaviour
@@ -9,7 +8,9 @@ public class PlayerScanController : MonoBehaviour
     [SerializeField] private ScanListController scanListController;
     [SerializeField] private PlayerStatsController playerStatsController;
 
-    [Header("Sounds")]
+    [Header("Sounds")] 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField, Range(0, 1)] private float volume = 0.3f;
     [SerializeField] private AudioClip successSound;
     [SerializeField] private AudioClip failSound;
 
@@ -48,10 +49,11 @@ public class PlayerScanController : MonoBehaviour
         return true;
     }
 
-    public IEnumerator DelayedSound(AudioClip clip)
+    private IEnumerator DelayedSound(AudioClip clip)
     {
         yield return new WaitForSeconds(scanSoundDelay);
-        AudioSource.PlayClipAtPoint(clip, transform.position);
+        audioSource.volume = volume;
+        audioSource.PlayOneShot(clip);
     }
 
 }
