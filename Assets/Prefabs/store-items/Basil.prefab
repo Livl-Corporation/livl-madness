@@ -114,4 +114,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea12a060b51a3f40902f2446c926392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDisplayedName: Basilic
+  itemDisplayedName: Basilic en pot
