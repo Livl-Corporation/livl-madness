@@ -1,11 +1,8 @@
-using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
-    
-    [SerializeField] private float skyboxRotationSpeed = 1f;
+    [SerializeField] private float skyboxRotationSpeed = 0.5f;
 
     public static GameManager Instance;
 
@@ -44,7 +41,7 @@ public class GameManager : MonoBehaviour
     {
         var skybox = RenderSettings.skybox;
         var rotation = skybox.GetFloat("_Rotation");
-        skybox.SetFloat("Rotation", rotation + skyboxRotationSpeed * Time.deltaTime);
+        skybox.SetFloat("_Rotation", rotation + skyboxRotationSpeed * Time.deltaTime);
     }
 
     public static void SetSceneCameraActive(bool isActive)
@@ -57,4 +54,9 @@ public class GameManager : MonoBehaviour
         Instance.sceneCamera.SetActive(isActive);
     }
 
+    private void OnDestroy()
+    {
+        var skybox = RenderSettings.skybox;
+        skybox.SetFloat("_Rotation", 0);
+    }
 }

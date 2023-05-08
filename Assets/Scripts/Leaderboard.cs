@@ -3,19 +3,17 @@ using System.Linq;
 using Interfaces;
 using Models;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Leaderboard : MonoBehaviour, IPlayerStatsObserver
 {
     [SerializeField] private GameObject playerScoreBoardItem;
     [SerializeField] private Transform transformPlayerScoreBoardList;
     [SerializeField] public Sprite[] playerImages;
-    [SerializeField] private VerticalLayoutGroup verticalLayoutGroup;
-    [SerializeField] private int maxPlayersToDisplayScore = 3;
-    
+    [SerializeField] private int maxPlayersToDisplayScore = 4;
+
     private PlayerStatsController _playerStatsController;
     private readonly Dictionary<string, PlayerScoreBoardItem> _playerStatItems = new Dictionary<string, PlayerScoreBoardItem>();
-    
+
     private void Start()
     {
         // Subscribe to the PlayerStatsController
@@ -30,6 +28,7 @@ public class Leaderboard : MonoBehaviour, IPlayerStatsObserver
     
     public void UpdatePlayerStats(Dictionary<string, PlayerStat> playerStats)
     {
+        Debug.Log("Leaderboard: UpdatePlayerStats");
         var missingKeys = new List<string>(_playerStatItems.Keys);
         
         // Order the player stats by score
@@ -65,7 +64,6 @@ public class Leaderboard : MonoBehaviour, IPlayerStatsObserver
         {
             RemovePlayerStat(missingKey);
         }
-        
     }
     
     private void AddPlayerStat(string playerName)
@@ -90,13 +88,5 @@ public class Leaderboard : MonoBehaviour, IPlayerStatsObserver
         {
             Destroy(child.gameObject);
         }
-    }
-
-    private int GetSpacingVerticalLayout(Player[] players)
-    {
-        int spacing = 0;
-        if (players.Length <= 2)
-            spacing = -150;
-        return spacing;
     }
 }

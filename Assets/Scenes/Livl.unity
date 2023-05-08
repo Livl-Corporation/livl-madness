@@ -19314,7 +19314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 132c9f9133fe9be4a9c5cf7247a08626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skyboxRotationSpeed: 1
+  skyboxRotationSpeed: 0.5
   sceneCamera: {fileID: 517037572}
   timer: {fileID: 2143361922}
 --- !u!4 &2143361921
@@ -19347,7 +19347,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0.1
-  timeLeft: 150
+  timeLeft: 180
 --- !u!114 &2143361923
 MonoBehaviour:
   m_ObjectHideFlags: 0
