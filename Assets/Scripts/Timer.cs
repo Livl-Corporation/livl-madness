@@ -12,7 +12,7 @@ public class Timer : NetworkBehaviour, ITimerObservable
     private bool isTimerRunning = false;
     
     private List<ITimerObserver> observers = new List<ITimerObserver>();
-    
+
     private void Update()
     {
         if (isServer && isTimerRunning)
@@ -26,10 +26,27 @@ public class Timer : NetworkBehaviour, ITimerObservable
                 isTimerRunning = false;
                 SetTimeLeft(timeLeft);
                 Debug.Log("Timer has finished");
+                CmdNotifyTimerFinished();
             }
         }
     }
     
+    [Command(requiresAuthority = false)]
+    private void CmdNotifyTimerFinished()
+    {
+        RpcOnTimerFinished();
+    }
+
+    [ClientRpc]
+    private void RpcOnTimerFinished()
+    {
+        PlayerUI playerUI = FindObjectOfType<PlayerUI>();
+        if (playerUI != null)
+        {
+            playerUI.TimerFinished();
+        }
+    }
+
     private void OnTimeLeftChanged(float oldValue, float newValue)
     {
         // This method is called on the clients when the value of timeLeft changes on the server
