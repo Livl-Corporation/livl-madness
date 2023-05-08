@@ -29,10 +29,10 @@ public class PlayerScanController : MonoBehaviour
 
     }
 
-    public bool Scan(GameObject item)
+    public bool Scan(string itemName)
     {
         
-        if (!scanListController.CanBeScanned(item.name))
+        if (!scanListController.CanBeScanned(itemName))
         {
             var coroutine = DelayedSound(failSound);
             StartCoroutine(coroutine);
@@ -42,7 +42,7 @@ public class PlayerScanController : MonoBehaviour
         var coroutine2 = DelayedSound(successSound);
         StartCoroutine(coroutine2);
 
-        scanListController.CmdScanArticle(item.name, gameObject.name);
+        scanListController.CmdScanArticle(itemName, gameObject.name);
         playerStatsController.CmdIncrementScore(Player.LocalPlayerName);
         
         return true;
