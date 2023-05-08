@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
 
@@ -13,17 +12,23 @@ public class RaycastScanner : NetworkBehaviour
     [SerializeField] private LineRenderer laserLine;
     
     [Header("Scanner")]
-    [SerializeField] private float gunRange = 50f;
+    [SerializeField] private float gunRange = 2.5f;
     [SerializeField] private float fireRate = 0.2f;
     [SerializeField] private float laserDuration = 0.05f;
     
     private float fireTimer;
+    private InputManager inputManager;
+
+    private void Start()
+    {
+        inputManager = GetComponent<InputManager>();
+    }
 
     void Update()
     {
-        if (!isLocalPlayer) return;
-        if (PlayerUI.isPaused) return;
-
+        
+        if (!isLocalPlayer || PlayerUI.isPaused || !inputManager.Aiming) return;
+        
         fireTimer += Time.deltaTime;
         if (Input.GetButtonDown("Fire1") && fireTimer > fireRate)
         {

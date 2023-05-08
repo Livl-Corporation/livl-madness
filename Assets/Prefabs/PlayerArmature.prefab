@@ -1417,7 +1417,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb70e3e0234429489b30fe3bd4bd382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 5047025276240836919}
 --- !u!1 &3916787991735197695
 GameObject:
   m_ObjectHideFlags: 0
@@ -2106,7 +2105,7 @@ MonoBehaviour:
   weapon:
     name: LivlArme
     damage: 10
-    range: 100
+    range: 2
   cam: {fileID: 5600155721534331628}
   mask:
     serializedVersion: 2
