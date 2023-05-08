@@ -65,7 +65,7 @@ public class PlayerShoot : NetworkBehaviour
         Debug.Log("You hitted " + storeItem.displayedName);
         ScanningAudioSource.Play();
 
-        var scanResult = playerScanController.Scan(storeItem.displayedName);
+        var isScanValid = playerScanController.Scan(storeItem.displayedName);
 
         if(!scanResult)
         {
