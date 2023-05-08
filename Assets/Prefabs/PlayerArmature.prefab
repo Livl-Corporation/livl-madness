@@ -1790,10 +1790,10 @@ GameObject:
   - component: {fileID: 7171617306425951833}
   - component: {fileID: 4957293698964314646}
   - component: {fileID: 4178844121355343724}
+  - component: {fileID: 2223097549820210296}
   - component: {fileID: 1076192539768894828}
   - component: {fileID: 6600266801110944348}
   - component: {fileID: 2755997920902424338}
-  - component: {fileID: 2223097549820210296}
   - component: {fileID: 3775695176468190791}
   - component: {fileID: 832358736077933042}
   - component: {fileID: 7229916533903214098}
@@ -2046,72 +2046,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   PlayerCamera: {fileID: 5047025276240836919}
---- !u!114 &1076192539768894828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4416926081852918481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41c658f574a4d42d6bb1a7ce3940f67a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0.1
-  componentsToDisable:
-  - {fileID: 9054706831724681974}
-  - {fileID: 4178844121355343724}
-  - {fileID: 5047025276240836919}
-  - {fileID: 4416926081852918493}
-  - {fileID: 7990268367222747987}
-  remoteLayerName: RemotePlayer
-  playerUIPrefab: {fileID: 2819854752636084169, guid: bfee0ce4e9ad9ed46861ce969e8ef775, type: 3}
-  playerUIInstance: {fileID: 2819854752636084169, guid: bfee0ce4e9ad9ed46861ce969e8ef775, type: 3}
-  playerStatsController: {fileID: 0}
---- !u!114 &6600266801110944348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4416926081852918481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 239c7572809bc1a43a15ba9cd0458ddb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 1
-  syncMode: 0
-  syncInterval: 0.1
-  footStepRange: 4
---- !u!114 &2755997920902424338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4416926081852918481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ac042bed767d4d21b7de785e255add8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0.1
-  weapon:
-    name: LivlArme
-    damage: 10
-    range: 2
-  cam: {fileID: 5600155721534331628}
-  mask:
-    serializedVersion: 2
-    m_Bits: 512
-  ScanningAudioClip: {fileID: 8300000, guid: 942d20ca363ed4eebbdd177ec124c714, type: 3}
-  ScanningAudioSource: {fileID: 3775695176468190791}
 --- !u!82 &2223097549820210296
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2208,6 +2142,72 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1076192539768894828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416926081852918481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c658f574a4d42d6bb1a7ce3940f67a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0.1
+  componentsToDisable:
+  - {fileID: 9054706831724681974}
+  - {fileID: 4178844121355343724}
+  - {fileID: 5047025276240836919}
+  - {fileID: 4416926081852918493}
+  - {fileID: 7990268367222747987}
+  remoteLayerName: RemotePlayer
+  playerUIPrefab: {fileID: 2819854752636084169, guid: bfee0ce4e9ad9ed46861ce969e8ef775, type: 3}
+  playerUIInstance: {fileID: 2819854752636084169, guid: bfee0ce4e9ad9ed46861ce969e8ef775, type: 3}
+  playerStatsController: {fileID: 0}
+--- !u!114 &6600266801110944348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416926081852918481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 239c7572809bc1a43a15ba9cd0458ddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0.1
+  footStepRange: 4
+--- !u!114 &2755997920902424338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416926081852918481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ac042bed767d4d21b7de785e255add8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0.1
+  weapon:
+    name: LivlArme
+    damage: 10
+    range: 2
+  cam: {fileID: 5600155721534331628}
+  mask:
+    serializedVersion: 2
+    m_Bits: 512
+  ScanningAudioClip: {fileID: 8300000, guid: 942d20ca363ed4eebbdd177ec124c714, type: 3}
+  ScanningAudioSource: {fileID: 3775695176468190791}
 --- !u!82 &3775695176468190791
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2563,6 +2563,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scanListController: {fileID: 0}
   playerStatsController: {fileID: 0}
+  audioSource: {fileID: 3775695176468190791}
+  volume: 0.3
   successSound: {fileID: 8300000, guid: 1746b3bcdb6034095ae528ec584f175b, type: 3}
   failSound: {fileID: 8300000, guid: 077c7288c79314613b3d427a69eb7446, type: 3}
   scanSoundDelay: 0.2
