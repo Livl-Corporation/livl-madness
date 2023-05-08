@@ -9,7 +9,7 @@ public class Leaderboard : MonoBehaviour, IPlayerStatsObserver
     [SerializeField] private GameObject playerScoreBoardItem;
     [SerializeField] private Transform transformPlayerScoreBoardList;
     [SerializeField] public Sprite[] playerImages;
-    [SerializeField] private int maxPlayersToDisplayScore = 3;
+    [SerializeField] private int maxPlayersToDisplayScore = 4;
 
     private PlayerStatsController _playerStatsController;
     private readonly Dictionary<string, PlayerScoreBoardItem> _playerStatItems = new Dictionary<string, PlayerScoreBoardItem>();

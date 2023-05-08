@@ -653,13 +653,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7693286850522355460, guid: dd4961b9d624bd944920e75a69aae2c1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 485005430}
     - target: {fileID: 9043168273644741348, guid: dd4961b9d624bd944920e75a69aae2c1, type: 3}
       propertyPath: m_Name
       value: LeaderboardCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 9043168273644741348, guid: dd4961b9d624bd944920e75a69aae2c1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd4961b9d624bd944920e75a69aae2c1, type: 3}
