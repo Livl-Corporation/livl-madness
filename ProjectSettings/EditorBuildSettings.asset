@@ -11,16 +11,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Livl.unity
     guid: ed51aed68170e074e893a23f9d7b876c
-  - enabled: 0
-    path: Assets/Scenes/Lobby-test-Raffael.unity
-    guid: 2889770371a9bd64fbece6f6cc255db2
-  - enabled: 0
-    path: 
-    guid: 01d5c0f30a22e444da795024dea785b3
-  - enabled: 1
-    path: Assets/Scenes/loby-tes-traff.unity
-    guid: 9d7e6a1b06d5f954ab0895c37197d7f0
-  - enabled: 1
-    path: Assets/Scenes/Livl-test-raff.unity
-    guid: 1b8921020dc255c4aa3738c2035950b2
   m_configObjects: {}
