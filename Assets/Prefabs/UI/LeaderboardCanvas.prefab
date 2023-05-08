@@ -936,6 +936,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7191622700531869343}
   - component: {fileID: 3478778934246621402}
+  - component: {fileID: 5275255088881190090}
   m_Layer: 0
   m_Name: LeaderboardCanvas
   m_TagString: Untagged
@@ -985,3 +986,24 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3dbda5666fb30804693a01e5d98aaa1e, type: 3}
   - {fileID: 21300000, guid: c8cfcd431873619499fd0ff347f7b1b6, type: 3}
   maxPlayersToDisplayScore: 4
+--- !u!223 &5275255088881190090
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9043168273644741348}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: -1
+  m_SortingLayerID: 0
+  m_SortingOrder: 1
+  m_TargetDisplay: 0

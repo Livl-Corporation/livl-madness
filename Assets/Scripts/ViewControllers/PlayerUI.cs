@@ -43,7 +43,7 @@ public class PlayerUI : NetworkBehaviour
         smartphoneCanvas.SetActive(false);
         paused = true;
         endGame = true;
-        //pauseOverlay.SetActive(true);
+        pauseOverlay.SetActive(true);
     }
     
     public void SetPlayer(Player _player)
