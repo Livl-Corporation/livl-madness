@@ -18,7 +18,9 @@ public class PlayerSetup : NetworkBehaviour
     [SerializeField]
     private PlayerStatsController playerStatsController;
     
-    Camera sceneCamera;
+    private Camera sceneCamera;
+    private ChatBehaviour chatBehaviour;
+    private PlayerUI playerUI;
     
     // Start is called before the first frame update
     private void Start()
@@ -78,18 +80,51 @@ public class PlayerSetup : NetworkBehaviour
         // Création du UI du joueur local
         playerUIInstance = Instantiate(playerUIPrefab);
         playerUIInstance.SetActive(true);
-        
+
         // Configuration du UI
-        PlayerUI ui = playerUIInstance.GetComponent<PlayerUI>();
-        
-        if(ui == null)
+        playerUI = playerUIInstance.GetComponent<PlayerUI>();
+
+        if(playerUI == null)
         {
             Debug.LogError("Pas de component PlayerUI sur playerUIInstance");
             return;
         }
-
-        ui.SetPlayer(GetComponent<Player>());
         
+        // Configuration du chat
+        InitChatBehaviour();
+
+        playerUI.SetPlayer(GetComponent<Player>());
+    }
+
+    private void InitChatBehaviour()
+    {
+        chatBehaviour = GetComponent<ChatBehaviour>();
+        
+        if(chatBehaviour == null)
+        {
+            Debug.LogError("Pas de component ChatBehaviour sur PlayerArmature");
+            return;
+        }
+        
+        chatBehaviour.chatPanel = playerUI.chatPanel;
+        chatBehaviour.chatText = playerUI.chatText;
+        chatBehaviour.chatInput = playerUI.chatInput;
+        chatBehaviour.chatInput.onEndEdit.AddListener(chatBehaviour.Send);
+        chatBehaviour.isInitialized = true;
+        
+        chatBehaviour.OnStartAuthority();
+    }
+    
+    private void Update()
+    {
+        // Check if the "T" key is pressed
+        if (Input.GetKeyDown(KeyCode.T) && chatBehaviour != null)
+        {
+            // Select the chatBehaviour input field to set focus on it
+            chatBehaviour.chatInput.Select();
+            chatBehaviour.chatInput.ActivateInputField();
+            PlayerUI.isPaused = true;
+        }
     }
 
     private void RegisterPlayerStats(string playerName)
