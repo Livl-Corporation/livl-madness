@@ -41,32 +41,32 @@ public class ChatBehaviour : NetworkBehaviour
         chatText.text += message;
     }
     
-
+    [Client]
     public void Send(string message)
     {
         PlayerUI.isPaused = false;
-        
+
         if (!Input.GetKeyDown(KeyCode.Return)) { return; }
 
         if (string.IsNullOrWhiteSpace(message)) { return; }
 
         Debug.Log($"Send message: {message}");
         
-        CmdSendMessage(message);
+        CmdSendMessage(message, Player.LocalPlayerName);
 
         chatInput.text = string.Empty;
     }
     
     [Command]
-    private void CmdSendMessage(string message)
+    private void CmdSendMessage(string message, string playerName)
     {
-        Debug.Log($"CmdSendMessage: {message}");
-        RpcHandleMessage($"[{connectionToClient.connectionId}]: {message}");
+        RpcHandleMessage(playerName, message);
     }
 
     [ClientRpc]
-    private void RpcHandleMessage(string message)
+    private void RpcHandleMessage(string playerName, string message)
     {
-        OnMessage?.Invoke($"\n{message}");
+        string formattedMessage = $"\n<color=blue><b>[{playerName}]</b></color>: {message}";
+        OnMessage?.Invoke(formattedMessage);
     }
 }
