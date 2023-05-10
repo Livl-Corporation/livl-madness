@@ -13,20 +13,13 @@ public class ChatBehaviour : NetworkBehaviour
 
     [Header("Commons")]
     [HideInInspector] public bool isInitialized; // add an initialization flag
-    [SerializeField] private float hideChatPanelAfterDelay = 5f;
+    [SerializeField] public float hideChatPanelAfterDelay = 5f;
     
     private static event Action<string> OnMessage;
 
     public override void OnStartAuthority()
     {
-        if (!isInitialized)
-        {
-            Debug.LogWarning("ChatBehaviour is not initialized");
-            return;
-        }
-        
-        ShowChatPanel();
-
+        if (!isInitialized) return;
         OnMessage += HandleNewMessage;
     }
 

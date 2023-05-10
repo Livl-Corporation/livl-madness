@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using Mirror;
 
@@ -120,12 +121,24 @@ public class PlayerSetup : NetworkBehaviour
         if (Input.GetKeyDown(KeyCode.T) && chatBehaviour != null)
         {
             // Select the chatBehaviour input field to set focus on it
+            StopAllCoroutines();
             chatBehaviour.chatPanel.SetActive(true);
             chatBehaviour.chatInput.Select();
             chatBehaviour.chatInput.ActivateInputField();
-            chatBehaviour.StopAllCoroutines(); // Stop the coroutine that will hide the chatPanel within the next seconds
             PlayerUI.isPaused = true;
         }
+        else if (chatBehaviour != null && !chatBehaviour.chatInput.isFocused && !PlayerUI.isPaused && chatBehaviour.chatPanel.activeSelf)
+        {
+            // If the player is not interacting with the input field and has not pressed any key recently,
+            // start a coroutine to hide the chat panel after a delay
+            StartCoroutine(HideChatAfterDelay());
+        }
+    }
+    
+    private IEnumerator HideChatAfterDelay()
+    {
+        yield return new WaitForSeconds(chatBehaviour.hideChatPanelAfterDelay);
+        chatBehaviour.chatPanel.SetActive(false);
     }
 
     private void RegisterPlayerStats(string playerName)
