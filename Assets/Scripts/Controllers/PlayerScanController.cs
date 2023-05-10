@@ -14,7 +14,7 @@ public class PlayerScanController : MonoBehaviour
     [SerializeField] private AudioClip successSound;
     [SerializeField] private AudioClip failSound;
 
-    [Header("Conig")] [SerializeField] private float scanSoundDelay = 0.2f;
+    [Header("Conig")] [SerializeField] private float scanSoundDelay = 0.1f;
     
     public void Start()
     {
@@ -37,6 +37,7 @@ public class PlayerScanController : MonoBehaviour
         {
             var coroutine = DelayedSound(failSound);
             StartCoroutine(coroutine);
+            playerStatsController.CmdDecrementScore(Player.LocalPlayerName);
             return false;
         }
         
