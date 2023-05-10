@@ -57,7 +57,8 @@ public class ChatBehaviour : NetworkBehaviour
     private IEnumerator HideChatPanel()
     {
         yield return new WaitForSeconds(hideChatPanelAfterDelay);
-        chatPanel.SetActive(false);
+        if(!PlayerUI.isPaused) // if PlayerUI is pause means that the user is typing a message
+            chatPanel.SetActive(false);
     }
 
     [Client]
@@ -66,15 +67,11 @@ public class ChatBehaviour : NetworkBehaviour
         PlayerUI.isPaused = false;
         if (!Input.GetKeyDown(KeyCode.Return)) { return; }
         if (string.IsNullOrWhiteSpace(message)) { return; }
-
-        Debug.Log($"Send message: {message}");
-
+        
         CmdSendMessage(message, Player.LocalPlayerName);
 
-        chatInput.text = String.Empty;
-
-        TextMeshProUGUI placeholder = (TextMeshProUGUI)chatInput.placeholder;
-        placeholder.text = "Press 'T' to chat";
+        chatInput.text = string.Empty;
+        chatInput.placeholder.GetComponent<TextMeshProUGUI>().text = "Press 'T' to chat";
     }
 
     [Command]

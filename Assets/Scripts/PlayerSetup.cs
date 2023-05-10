@@ -117,13 +117,13 @@ public class PlayerSetup : NetworkBehaviour
     
     private void Update()
     {
-        // Check if the "T" key is pressed
         if (Input.GetKeyDown(KeyCode.T) && chatBehaviour != null)
         {
             // Select the chatBehaviour input field to set focus on it
             chatBehaviour.chatPanel.SetActive(true);
             chatBehaviour.chatInput.Select();
             chatBehaviour.chatInput.ActivateInputField();
+            chatBehaviour.StopAllCoroutines(); // Stop the coroutine that will hide the chatPanel within the next seconds
             PlayerUI.isPaused = true;
         }
     }
