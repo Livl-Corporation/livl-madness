@@ -6,6 +6,7 @@ public class PlayerUI : NetworkBehaviour
 {
 
     private static bool paused = false;
+    private static bool endGame = false;
     
     private Player player;
     private NetworkManager networkManager;
@@ -17,7 +18,11 @@ public class PlayerUI : NetworkBehaviour
     [SerializeField] private GameObject smartphoneCanvas;
     [SerializeField] private MessageController messageController;
     
+    [SerializeField] private GameObject leaderboardCanvas;
+    [SerializeField] private Leaderboard leaderboard;
+
     public static bool isPaused => paused;
+    public static bool isEndGame => endGame;
 
     private void Awake()
     {
@@ -29,10 +34,20 @@ public class PlayerUI : NetworkBehaviour
         networkManager = NetworkManager.singleton;
         
         pauseOverlay.SetActive(false);
+        leaderboardCanvas.SetActive(false);
         smartphoneCanvas.SetActive(true);
         paused = false;
     }
-
+    
+    public void TimerFinished()
+    {
+        leaderboardCanvas.SetActive(true);
+        smartphoneCanvas.SetActive(false);
+        paused = true;
+        endGame = true;
+        pauseOverlay.SetActive(true);
+    }
+    
     public void SetPlayer(Player _player)
     {
         player = _player;
@@ -47,7 +62,7 @@ public class PlayerUI : NetworkBehaviour
     
     void HandlePauseInput()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !endGame)
         {
             TogglePauseMenu();
         }

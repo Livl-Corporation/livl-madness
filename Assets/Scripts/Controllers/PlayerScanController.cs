@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerScanController : MonoBehaviour
@@ -9,7 +8,9 @@ public class PlayerScanController : MonoBehaviour
     [SerializeField] private ScanListController scanListController;
     [SerializeField] private PlayerStatsController playerStatsController;
 
-    [Header("Sounds")]
+    [Header("Sounds")] 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField, Range(0, 1)] private float volume = 0.3f;
     [SerializeField] private AudioClip successSound;
     [SerializeField] private AudioClip failSound;
 
@@ -29,10 +30,10 @@ public class PlayerScanController : MonoBehaviour
 
     }
 
-    public bool Scan(GameObject item)
+    public bool Scan(string itemName)
     {
         
-        if (!scanListController.CanBeScanned(item.name))
+        if (!scanListController.CanBeScanned(itemName))
         {
             var coroutine = DelayedSound(failSound);
             StartCoroutine(coroutine);
@@ -42,16 +43,17 @@ public class PlayerScanController : MonoBehaviour
         var coroutine2 = DelayedSound(successSound);
         StartCoroutine(coroutine2);
 
-        scanListController.CmdScanArticle(item.name, gameObject.name);
+        scanListController.CmdScanArticle(itemName, gameObject.name);
         playerStatsController.CmdIncrementScore(Player.LocalPlayerName);
         
         return true;
     }
 
-    public IEnumerator DelayedSound(AudioClip clip)
+    private IEnumerator DelayedSound(AudioClip clip)
     {
         yield return new WaitForSeconds(scanSoundDelay);
-        AudioSource.PlayClipAtPoint(clip, transform.position);
+        audioSource.volume = volume;
+        audioSource.PlayOneShot(clip);
     }
 
 }

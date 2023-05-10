@@ -27,8 +27,9 @@ public class ShelfController : NetworkBehaviour
 
         var selectedSpawnPoint = availableSpawnPoints.Dequeue();
         var position = selectedSpawnPoint.transform.position;
+        var rotationY = selectedSpawnPoint.transform.rotation.eulerAngles.y + item.transform.rotation.eulerAngles.y;
         
-        var spawnedObject = Instantiate(item, position, Quaternion.identity);
+        var spawnedObject = Instantiate(item, position, Quaternion.Euler(0f, rotationY, 0f));
         spawnedObject.name = item.name;
         NetworkServer.Spawn(spawnedObject);
         

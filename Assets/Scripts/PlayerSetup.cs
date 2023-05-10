@@ -39,31 +39,6 @@ public class PlayerSetup : NetworkBehaviour
 
     }
 
-    private void Update()
-    {
-        HideCursor();
-    }
-    
-    private void HideCursor()
-    {
-        if (PlayerUI.isPaused)
-        {
-            if (Cursor.lockState != CursorLockMode.None)
-            {
-                Cursor.lockState = CursorLockMode.None; // Unlock the cursor to be able to click on the UI
-                PlayerController controller = GetComponent<PlayerController>();
-                controller.PauseAnimation();
-            }
-
-            return;
-        } 
-        
-        if (Cursor.lockState != CursorLockMode.Locked)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-    }
-
     private void DisableComponents()
     {
         foreach (Behaviour component in componentsToDisable)
