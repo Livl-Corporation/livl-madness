@@ -15,7 +15,7 @@ public class ChatBehaviour : NetworkBehaviour
     [HideInInspector] public bool isInitialized; // add an initialization flag
     [SerializeField] private float hideChatPanelAfterDelay = 5f;
     
-    [HideInInspector] private static event Action<string> OnMessage;
+    private static event Action<string> OnMessage;
 
     public override void OnStartAuthority()
     {
