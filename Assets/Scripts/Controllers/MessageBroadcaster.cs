@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Mirror;
@@ -25,15 +26,16 @@ public class MessageBroadcaster : NetworkBehaviour
     
     private Queue<PhoneMessage> messageQueue = new Queue<PhoneMessage>();
     
-    public void SetMessageController(MessageController _messageController)
-    {
-        messageController = _messageController;
-    }
-    
     public override void OnStartServer()
     {
         startMessages = ReadMessages(startMessagesFile);
         gameMessages = ReadMessages(gameMessageFile);
+    }
+
+    public void SetPlayerUI(MessageController instance)
+    {
+        messageController = instance;
+        Debug.Log("MessageController set");
     }
 
     private List<PhoneMessage> ReadMessages(TextAsset source)
@@ -65,24 +67,25 @@ public class MessageBroadcaster : NetworkBehaviour
     
     private void SendStartMessage()
     {
-        SendMessage(RandomMessage(startMessages));
+        RpcReceiveMessage(RandomMessage(startMessages));
     }
     
     private void SendGameMessage()
     {
-        SendMessage(messageQueue.Dequeue());
+        RpcReceiveMessage(messageQueue.Dequeue());
         SendGameMessageDelayed();
     }
 
-    private void SendMessage(PhoneMessage message)
+    [ClientRpc]
+    private void RpcReceiveMessage(PhoneMessage message)
     {
         if (messageController == null)
         {
-            Debug.LogError("No MessageController set, message lost...");
+            Debug.LogError("Le message controller est nul !!");
             return;
         }
         
-        messageController.RpcReceiveMessage(message);
+        messageController.ReceiveMessage(message);
     }
     
     private void SendGameMessageDelayed()

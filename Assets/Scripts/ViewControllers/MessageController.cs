@@ -26,27 +26,25 @@ public class MessageController : NetworkBehaviour
         playerUi = _playerUi;
     }
 
-    private void Awake()
-    {
-        var messageBroadcaster = FindObjectOfType<MessageBroadcaster>();
-        
-        if (messageBroadcaster == null)
-        {
-            Debug.LogError("No MessageBroadcaster found in scene.");
-            return;
-        }
-        
-        messageBroadcaster.SetMessageController(this);
-    }
-
     // Start is called before the first frame update
     void Start()
     {
+        
         HideMessage(false);
+
+        var messageBroadcaster = FindObjectOfType<MessageBroadcaster>();
+
+        if (messageBroadcaster == null)
+        {
+            Debug.Log("No message broadcaster found");
+            return;
+        }
+        
+        messageBroadcaster.SetPlayerUI(this);
+        
     }
     
-    [ClientRpc]
-    public void RpcReceiveMessage(PhoneMessage message)
+    public void ReceiveMessage(PhoneMessage message)
     {
         Debug.Log("Message received : " + message.Sender + " : " + message.Message + " !");
         

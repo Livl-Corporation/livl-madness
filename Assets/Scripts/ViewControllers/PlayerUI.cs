@@ -1,5 +1,6 @@
 using UnityEngine;
 using Mirror;
+using Models;
 
 public class PlayerUI : NetworkBehaviour
 {
@@ -14,7 +15,8 @@ public class PlayerUI : NetworkBehaviour
     [SerializeField] private GameObject pauseOverlay;
     [SerializeField] private PhoneController phoneController;
     [SerializeField] private GameObject smartphoneCanvas;
-
+    [SerializeField] private MessageController messageController;
+    
     public static bool isPaused => paused;
 
     private void Awake()
@@ -84,4 +86,5 @@ public class PlayerUI : NetworkBehaviour
     {
         controller.PlayIOSMessageSound();
     }
+
 }

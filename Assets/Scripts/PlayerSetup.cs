@@ -36,6 +36,7 @@ public class PlayerSetup : NetworkBehaviour
         Player.LocalPlayerName = playerName;
         GameManager.SetSceneCameraActive(false);
         InitPlayerUI();
+
     }
 
     private void Update()
@@ -106,15 +107,15 @@ public class PlayerSetup : NetworkBehaviour
         
         // Configuration du UI
         PlayerUI ui = playerUIInstance.GetComponent<PlayerUI>();
-        
+    
         if(ui == null)
         {
             Debug.LogError("Pas de component PlayerUI sur playerUIInstance");
             return;
         }
-
-        ui.SetPlayer(GetComponent<Player>());
         
+        ui.SetPlayer(GetComponent<Player>());
+
     }
 
     private void RegisterPlayerStats(string playerName)
