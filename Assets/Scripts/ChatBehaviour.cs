@@ -1,29 +1,31 @@
 using Mirror;
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
 public class ChatBehaviour : NetworkBehaviour
 {
+    [Header("Chat panel Canvas")]
     [HideInInspector] public GameObject chatPanel;
     [HideInInspector] public TMP_Text chatText;
     [HideInInspector] public TMP_InputField chatInput;
-    
-    [HideInInspector] public bool isInitialized = false; // add an initialization flag
 
-    private static event Action<string> OnMessage;
+    [Header("Commons")]
+    [HideInInspector] public bool isInitialized; // add an initialization flag
+    [SerializeField] private float hideChatPanelAfterDelay = 5f;
+    
+    [HideInInspector] private static event Action<string> OnMessage;
 
     public override void OnStartAuthority()
     {
-        if (!isInitialized) // check if the component is initialized before continuing
+        if (!isInitialized)
         {
             Debug.LogWarning("ChatBehaviour is not initialized");
             return;
         }
         
-        Debug.Log("OnStartAuthority");
-
-        chatPanel.SetActive(true);
+        ShowChatPanel();
 
         OnMessage += HandleNewMessage;
     }
@@ -39,24 +41,42 @@ public class ChatBehaviour : NetworkBehaviour
     private void HandleNewMessage(string message)
     {
         chatText.text += message;
+        
+        ShowChatPanel(); 
     }
     
+    /**
+     * Activate the chatPanel of all clients when a message is received
+     */
+    private void ShowChatPanel()
+    {
+        chatPanel.SetActive(true);
+        StartCoroutine(HideChatPanel());
+    }
+
+    private IEnumerator HideChatPanel()
+    {
+        yield return new WaitForSeconds(hideChatPanelAfterDelay);
+        chatPanel.SetActive(false);
+    }
+
     [Client]
     public void Send(string message)
     {
         PlayerUI.isPaused = false;
-
         if (!Input.GetKeyDown(KeyCode.Return)) { return; }
-
         if (string.IsNullOrWhiteSpace(message)) { return; }
 
         Debug.Log($"Send message: {message}");
-        
+
         CmdSendMessage(message, Player.LocalPlayerName);
 
-        chatInput.text = string.Empty;
+        chatInput.text = String.Empty;
+
+        TextMeshProUGUI placeholder = (TextMeshProUGUI)chatInput.placeholder;
+        placeholder.text = "Press 'T' to chat";
     }
-    
+
     [Command]
     private void CmdSendMessage(string message, string playerName)
     {

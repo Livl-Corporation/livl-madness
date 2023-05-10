@@ -121,6 +121,7 @@ public class PlayerSetup : NetworkBehaviour
         if (Input.GetKeyDown(KeyCode.T) && chatBehaviour != null)
         {
             // Select the chatBehaviour input field to set focus on it
+            chatBehaviour.chatPanel.SetActive(true);
             chatBehaviour.chatInput.Select();
             chatBehaviour.chatInput.ActivateInputField();
             PlayerUI.isPaused = true;
