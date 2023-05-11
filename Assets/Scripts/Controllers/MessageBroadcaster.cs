@@ -22,7 +22,7 @@ public class MessageBroadcaster : NetworkBehaviour
     private List<PhoneMessage> gameMessages = new List<PhoneMessage>();
     
     private Queue<PhoneMessage> messageQueue = new Queue<PhoneMessage>();
-
+    
     public override void OnStartServer()
     {
         base.OnStartServer();
@@ -67,6 +67,13 @@ public class MessageBroadcaster : NetworkBehaviour
     [Command]
     public void SendGameMessage()
     {
+
+        if (FindObjectOfType<Timer>().IsTimerFinished())
+        {
+            Debug.Log("Timer terminé, j'envoie pas");
+            return;
+        }
+        
         RpcReceiveMessage(messageQueue.Dequeue());
         SendGameMessageDelayed();
     }
@@ -93,6 +100,7 @@ public class MessageBroadcaster : NetworkBehaviour
         Invoke(nameof(SendGameMessage), delay);
     }
 
+    [Command]
     public void StartMessageLoop()
     {
         ResetMessageQueue();

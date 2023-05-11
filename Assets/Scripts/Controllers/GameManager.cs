@@ -62,6 +62,24 @@ public class GameManager : NetworkBehaviour
         Instance.sceneCamera.SetActive(isActive);
     }
 
+    [Command(requiresAuthority = false)]
+    public void CmdNotifyTimerFinished()
+    {
+        RpcOnTimerFinished();
+    }
+
+    [ClientRpc]
+    public void RpcOnTimerFinished()
+    {
+        var playerUI = FindObjectOfType<PlayerUI>();
+        
+        if (playerUI != null)
+        {
+            playerUI.TimerFinished();
+        }
+
+    }
+    
     private void OnDestroy()
     {
         var skybox = RenderSettings.skybox;

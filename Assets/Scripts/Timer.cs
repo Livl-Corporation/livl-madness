@@ -26,27 +26,11 @@ public class Timer : NetworkBehaviour, ITimerObservable
                 isTimerRunning = false;
                 SetTimeLeft(timeLeft);
                 Debug.Log("Timer has finished");
-                CmdNotifyTimerFinished();
+                FindObjectOfType<GameManager>().CmdNotifyTimerFinished();
             }
         }
     }
     
-    [Command(requiresAuthority = false)]
-    private void CmdNotifyTimerFinished()
-    {
-        RpcOnTimerFinished();
-    }
-
-    [ClientRpc]
-    private void RpcOnTimerFinished()
-    {
-        PlayerUI playerUI = FindObjectOfType<PlayerUI>();
-        if (playerUI != null)
-        {
-            playerUI.TimerFinished();
-        }
-    }
-
     private void OnTimeLeftChanged(float oldValue, float newValue)
     {
         // This method is called on the clients when the value of timeLeft changes on the server
@@ -65,6 +49,11 @@ public class Timer : NetworkBehaviour, ITimerObservable
         isTimerRunning = true;
     }
 
+    public bool IsTimerFinished()
+    {
+        return timeLeft <= 0;
+    }
+    
     public void AddObserver(ITimerObserver observer)
     {
         observers.Add(observer);
