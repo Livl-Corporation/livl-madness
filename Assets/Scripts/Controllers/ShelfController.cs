@@ -16,13 +16,13 @@ public class ShelfController : NetworkBehaviour
             .OrderBy(a => rnd.Next()).ToList());
     }
     
-    public void SpawnProduct(GameObject item)
+    public GameObject SpawnProduct(GameObject item)
     {
 
         if (!IsEmptySpaceAvailable())
         {
             Debug.LogError("No more available space in this shelve");
-            return;
+            return null;
         }
 
         var selectedSpawnPoint = availableSpawnPoints.Dequeue();
@@ -32,7 +32,8 @@ public class ShelfController : NetworkBehaviour
         var spawnedObject = Instantiate(item, position, Quaternion.Euler(0f, rotationY, 0f));
         spawnedObject.name = item.name;
         NetworkServer.Spawn(spawnedObject);
-        
+
+        return spawnedObject;
     }
 
     public bool IsEmptySpaceAvailable()
