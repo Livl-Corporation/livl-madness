@@ -15,27 +15,19 @@ public class MessageBroadcaster : NetworkBehaviour
     
     [Header("Config")]
     [SerializeField] private char csvSeparator = ';';
-    [SerializeField] private int minMessageDelay = 10;
-    [SerializeField] private int maxMessageDelay = 180;
-    
-    [Header("Components")]
-    [SerializeField] private MessageController messageController;
+    [SerializeField] private int minMessageDelay = 5;
+    [SerializeField] private int maxMessageDelay = 10;
     
     private List<PhoneMessage> startMessages = new List<PhoneMessage>();
     private List<PhoneMessage> gameMessages = new List<PhoneMessage>();
     
     private Queue<PhoneMessage> messageQueue = new Queue<PhoneMessage>();
-    
+
     public override void OnStartServer()
     {
+        base.OnStartServer();
         startMessages = ReadMessages(startMessagesFile);
         gameMessages = ReadMessages(gameMessageFile);
-    }
-
-    public void SetPlayerUI(MessageController instance)
-    {
-        messageController = instance;
-        Debug.Log("MessageController set");
     }
 
     private List<PhoneMessage> ReadMessages(TextAsset source)
@@ -54,7 +46,7 @@ public class MessageBroadcaster : NetworkBehaviour
     
     private PhoneMessage RandomMessage(IReadOnlyList<PhoneMessage> messages)
     {
-        return messages[Random.Range(0, messages.Count)];
+        return messages[Random.Range(1, messages.Count-1)];
     }
     
     private void ResetMessageQueue()
@@ -62,7 +54,9 @@ public class MessageBroadcaster : NetworkBehaviour
         messageQueue.Clear();
         var rnd = new System.Random();
         messageQueue = new Queue<PhoneMessage>(
-            gameMessages.OrderBy(a => rnd.Next()));
+            gameMessages
+                .GetRange(1, gameMessages.Count-1)
+                .OrderBy(a => rnd.Next()));
     }
     
     private void SendStartMessage()
@@ -70,15 +64,19 @@ public class MessageBroadcaster : NetworkBehaviour
         RpcReceiveMessage(RandomMessage(startMessages));
     }
     
-    private void SendGameMessage()
+    [Command]
+    public void SendGameMessage()
     {
         RpcReceiveMessage(messageQueue.Dequeue());
         SendGameMessageDelayed();
     }
 
     [ClientRpc]
-    private void RpcReceiveMessage(PhoneMessage message)
+    public void RpcReceiveMessage(PhoneMessage message)
     {
+        
+        var messageController = FindObjectOfType<MessageController>();
+        
         if (messageController == null)
         {
             Debug.LogError("Le message controller est nul !!");

@@ -14,7 +14,7 @@ public class PlayerScanController : MonoBehaviour
     [SerializeField] private AudioClip successSound;
     [SerializeField] private AudioClip failSound;
 
-    [Header("Conig")] [SerializeField] private float scanSoundDelay = 0.2f;
+    [Header("Config")] [SerializeField] private float scanSoundDelay = 0.2f;
     
     public void Start()
     {

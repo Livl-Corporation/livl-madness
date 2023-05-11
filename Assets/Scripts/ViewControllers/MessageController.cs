@@ -29,19 +29,7 @@ public class MessageController : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         HideMessage(false);
-
-        var messageBroadcaster = FindObjectOfType<MessageBroadcaster>();
-
-        if (messageBroadcaster == null)
-        {
-            Debug.Log("No message broadcaster found");
-            return;
-        }
-        
-        messageBroadcaster.SetPlayerUI(this);
-        
     }
     
     public void ReceiveMessage(PhoneMessage message)
