@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,6 +7,9 @@ using Mirror;
 
 public class ProductsController : NetworkBehaviour
 {
+    
+    [SerializeField] private int productRespawnDelay = 10;   
+    
     [SerializeField] private List<GameObject> items = new List<GameObject>();
     [SerializeField] private List<ShelfController> shelves = new List<ShelfController> ();
     
@@ -39,15 +43,19 @@ public class ProductsController : NetworkBehaviour
             Debug.LogError($"Product {productName} not found in spawned products");
             return;
         }
+        
         outOfStockProducts.Add(productName);
         spawnedProducts[productName].ForEach((obj) =>
         {
             NetworkServer.UnSpawn(obj);
             obj.SetActive(false);
         });
+        
+        StartCoroutine(DelayedProductSpawn(productName));
+        
     }
     
-    [Command]
+    [Command(requiresAuthority = false)]
     public void SetInStock(string productName)
     {
         if (!spawnedProducts.ContainsKey(productName))
@@ -61,6 +69,12 @@ public class ProductsController : NetworkBehaviour
             NetworkServer.Spawn(obj);
             obj.SetActive(true);
         });
+    }
+
+    private IEnumerator DelayedProductSpawn(string productName)
+    {
+        yield return new WaitForSeconds(productRespawnDelay);
+        SetInStock(productName);
     }
 
     private void Awake()
