@@ -8,10 +8,12 @@ using Mirror;
 public class ProductsController : NetworkBehaviour
 {
     
-    [SerializeField] private int productRespawnDelay = 10;   
+    [SerializeField] private int productRespawnDelay = 20;   
     
     [SerializeField] private List<GameObject> items = new List<GameObject>();
     [SerializeField] private List<ShelfController> shelves = new List<ShelfController> ();
+    
+    [SerializeField] private ScanListController scanListController;
     
     private readonly SyncDictionary<string, List<GameObject>> spawnedProducts = new SyncDictionary<string, List<GameObject>>();
     private readonly SyncList<string> outOfStockProducts = new SyncList<string>();
@@ -51,6 +53,8 @@ public class ProductsController : NetworkBehaviour
             obj.SetActive(false);
         });
         
+        scanListController.CmdUpdateStock();
+        
         StartCoroutine(DelayedProductSpawn(productName));
         
     }
@@ -69,12 +73,19 @@ public class ProductsController : NetworkBehaviour
             NetworkServer.Spawn(obj);
             obj.SetActive(true);
         });
+        
+        scanListController.CmdUpdateStock();
     }
 
     private IEnumerator DelayedProductSpawn(string productName)
     {
         yield return new WaitForSeconds(productRespawnDelay);
         SetInStock(productName);
+    }
+    
+    public List<string> GetOutOfStockProducts()
+    {
+        return new List<string>(outOfStockProducts);
     }
 
     private void Awake()
@@ -87,6 +98,8 @@ public class ProductsController : NetworkBehaviour
                 ProductDestroyDelegate
             );
         }
+        
+        scanListController = FindObjectOfType<ScanListController>();
     }
 
     public override void OnStartServer()

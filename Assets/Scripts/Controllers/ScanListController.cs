@@ -41,6 +41,7 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
         // Server populate the scan list
         
         var productItems = productsController.GetItems()
+            .GetRange(0, 5)
             .OrderBy(a => random.Next())
             .Select(a => new ProductItem(a.gameObject.GetComponent<StoreItemPrefabConfigurator>().itemDisplayedName))
             .ToList();
@@ -109,6 +110,17 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
 
     }
 
+    [Command(requiresAuthority = false)]
+    public void CmdUpdateStock()
+    {
+        var outOfStockProducts = this.productsController.GetOutOfStockProducts();
+        foreach (var productItem in scanList)
+        {
+            productItem.OutOfStock = outOfStockProducts.Contains(productItem.Name);
+        }
+        UpdateSyncList();
+    }
+
     private void CheckProduct(int productIndex, string scannedBy)
     {
         if (productIndex < 0 || productIndex >= scanListSize)
@@ -117,8 +129,8 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
             return;
         }
 
-        var product = scanList[productIndex];
-        scanList[productIndex] = new ProductItem(product.Name, scannedBy);
+        scanList[productIndex].Scanned = true;
+        scanList[productIndex].ScannedBy = scannedBy;
         UpdateSyncList();
     }
 

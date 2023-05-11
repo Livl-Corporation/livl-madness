@@ -68,6 +68,12 @@ public class ProductListController : MonoBehaviour, IProductListObserver
             return;
         }
         
+        if (item == null)
+        {
+            productItems[index].SetProduct(null);
+            return;
+        }
+        
         productItems[index].SetProduct(item);
  
     }
