@@ -41,7 +41,6 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
         // Server populate the scan list
         
         var productItems = productsController.GetItems()
-            .GetRange(0, 5)
             .OrderBy(a => random.Next())
             .Select(a => new ProductItem(a.gameObject.GetComponent<StoreItemPrefabConfigurator>().itemDisplayedName))
             .ToList();
