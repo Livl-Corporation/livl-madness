@@ -179,6 +179,7 @@ public class PlayerController : NetworkBehaviour
 
     private void HandleJump()
     {
+        if(PlayerUI.isPaused) return;
         if(!_hasAnimator) return;
         if(!_inputManager.Jump) return;
         if(!_grounded) return;

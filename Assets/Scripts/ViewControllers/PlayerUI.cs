@@ -1,6 +1,7 @@
 using UnityEngine;
 using Mirror;
 using Models;
+using TMPro;
 
 public class PlayerUI : NetworkBehaviour
 {
@@ -20,8 +21,16 @@ public class PlayerUI : NetworkBehaviour
     
     [SerializeField] private GameObject leaderboardCanvas;
     [SerializeField] private Leaderboard leaderboard;
-
-    public static bool isPaused => paused;
+    
+    [Header("Chat system")]
+    [SerializeField] public GameObject chatPanel;
+    [SerializeField] public TMP_Text chatText;
+    [SerializeField] public TMP_InputField chatInput;
+    public static bool isPaused
+    {
+        get => paused;
+        set => paused = value;
+    }
     public static bool isEndGame => endGame;
 
     private void Awake()
@@ -32,7 +41,7 @@ public class PlayerUI : NetworkBehaviour
     private void Start()
     {
         networkManager = NetworkManager.singleton;
-        
+        Debug.Log("isOwned" + isOwned);
         pauseOverlay.SetActive(false);
         leaderboardCanvas.SetActive(false);
         smartphoneCanvas.SetActive(true);
