@@ -46,7 +46,7 @@ public class MessageController : NetworkBehaviour
         }
         else
         {
-            messageInitials.text = name.Substring(0, 2);
+            messageInitials.text = message.Sender.Substring(0, 2);
         }
 
         messageName.text = message.Sender;
