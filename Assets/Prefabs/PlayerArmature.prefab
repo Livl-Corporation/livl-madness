@@ -1805,6 +1805,7 @@ GameObject:
   - component: {fileID: 3291634424326720288}
   - component: {fileID: 6549255688500616013}
   - component: {fileID: 6717103498096639098}
+  - component: {fileID: 5836573403214798025}
   m_Layer: 6
   m_Name: PlayerArmature
   m_TagString: Player
@@ -2589,6 +2590,25 @@ MonoBehaviour:
   gunRange: 50
   fireRate: 0.2
   laserDuration: 0.05
+--- !u!114 &5836573403214798025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416926081852918481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4007b516d49b1742947ccb199185a35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0.1
+  chatPanel: {fileID: 0}
+  chatText: {fileID: 0}
+  chatInput: {fileID: 0}
+  isInitialized: 0
 --- !u!1 &4456592374060248320
 GameObject:
   m_ObjectHideFlags: 0
