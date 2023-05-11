@@ -1806,6 +1806,7 @@ GameObject:
   - component: {fileID: 6549255688500616013}
   - component: {fileID: 6717103498096639098}
   - component: {fileID: 5836573403214798025}
+  - component: {fileID: 6114772045017858437}
   m_Layer: 6
   m_Name: PlayerArmature
   m_TagString: Player
@@ -2164,6 +2165,7 @@ MonoBehaviour:
   - {fileID: 5047025276240836919}
   - {fileID: 4416926081852918493}
   - {fileID: 7990268367222747987}
+  - {fileID: 6114772045017858437}
   remoteLayerName: RemotePlayer
   playerUIPrefab: {fileID: 2819854752636084169, guid: bfee0ce4e9ad9ed46861ce969e8ef775, type: 3}
   playerUIInstance: {fileID: 2819854752636084169, guid: bfee0ce4e9ad9ed46861ce969e8ef775, type: 3}
@@ -2609,6 +2611,27 @@ MonoBehaviour:
   chatText: {fileID: 0}
   chatInput: {fileID: 0}
   isInitialized: 0
+  hideChatPanelAfterDelay: 5
+--- !u!114 &6114772045017858437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416926081852918481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0314930d629f4e4796684133c1d0742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0.1
+  startMessagesFile: {fileID: 4900000, guid: 93db0c9f0745b417c82c0c5d7c6fe481, type: 3}
+  gameMessageFile: {fileID: 4900000, guid: a382c7789c0ab440f83f83cd7f3aa011, type: 3}
+  csvSeparator: 59
+  minMessageDelay: 10
+  maxMessageDelay: 100
 --- !u!1 &4456592374060248320
 GameObject:
   m_ObjectHideFlags: 0

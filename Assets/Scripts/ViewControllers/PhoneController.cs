@@ -50,10 +50,7 @@ public class PhoneController : MonoBehaviour, ITimerObserver, IPlayerStatsObserv
 
         // Start on the product list screen
         Navigate(Phone.Screen.ProductList);
-        
-        // TODO : Remove test message
-        messageController.ShowMessage("Jean Marc Muller", "Salut, ça va ?");
-        
+
         SetupTimer();
         SetupScore();
 

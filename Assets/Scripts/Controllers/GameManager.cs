@@ -1,6 +1,7 @@
+using Mirror;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : NetworkBehaviour
 {
     [SerializeField] private float skyboxRotationSpeed = 0.5f;
 
@@ -22,11 +23,18 @@ public class GameManager : MonoBehaviour
         Debug.LogError("More than one GameManager in scene.");
     }
 
-    private void Start()
+    public override void OnStartServer()
+    {
+        // Start game after 1 second
+        Invoke(nameof(StartGame), 1f);
+    }
+
+    public void StartGame()
     {
         timer.StartTimer();
+        FindObjectOfType<MessageBroadcaster>().StartMessageLoop();
     }
-    
+
     private void Update()
     {
         MoveSkybox();
@@ -54,6 +62,24 @@ public class GameManager : MonoBehaviour
         Instance.sceneCamera.SetActive(isActive);
     }
 
+    [Command(requiresAuthority = false)]
+    public void CmdNotifyTimerFinished()
+    {
+        RpcOnTimerFinished();
+    }
+
+    [ClientRpc]
+    public void RpcOnTimerFinished()
+    {
+        var playerUI = FindObjectOfType<PlayerUI>();
+        
+        if (playerUI != null)
+        {
+            playerUI.TimerFinished();
+        }
+
+    }
+    
     private void OnDestroy()
     {
         var skybox = RenderSettings.skybox;

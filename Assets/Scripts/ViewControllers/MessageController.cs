@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
+using Mirror;
+using Models;
 using UnityEngine;
 using TMPro;
 
-public class MessageController : MonoBehaviour
+public class MessageController : NetworkBehaviour
 {
     [Header("Message Components")]
     [SerializeField] private GameObject messagePanel;
@@ -29,12 +32,12 @@ public class MessageController : MonoBehaviour
         HideMessage(false);
     }
     
-    public void ShowMessage(string name, string message)
+    public void ReceiveMessage(PhoneMessage message)
     {
-        Debug.Log("Message received : " + name + " : " + message + " !");
+        Debug.Log("Message received : " + message.Sender + " : " + message.Message + " !");
         
         // Split name & lastname
-        string[] nameParts = name.Split(' ');
+        string[] nameParts = message.Sender.Split(' ');
 
         // Make initials from first letter of each part
         if (nameParts.Length > 1)
@@ -43,11 +46,11 @@ public class MessageController : MonoBehaviour
         }
         else
         {
-            messageInitials.text = name.Substring(0, 2);
+            messageInitials.text = message.Sender.Substring(0, 2);
         }
 
-        messageName.text = name;
-        messageText.text = message;
+        messageName.text = message.Sender;
+        messageText.text = message.Message;
         
         // Start animation
         messagePanel.transform.LeanMoveLocal(messagePanel.transform.up * messageShownMultiplier, messageTransitionTime).setEaseOutQuint();

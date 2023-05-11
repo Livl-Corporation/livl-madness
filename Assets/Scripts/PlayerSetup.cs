@@ -39,6 +39,7 @@ public class PlayerSetup : NetworkBehaviour
         Player.LocalPlayerName = playerName;
         GameManager.SetSceneCameraActive(false);
         InitPlayerUI();
+
     }
 
     private void DisableComponents()
@@ -84,7 +85,7 @@ public class PlayerSetup : NetworkBehaviour
 
         // Configuration du UI
         playerUI = playerUIInstance.GetComponent<PlayerUI>();
-
+    
         if(playerUI == null)
         {
             Debug.LogError("Pas de component PlayerUI sur playerUIInstance");
@@ -95,7 +96,7 @@ public class PlayerSetup : NetworkBehaviour
         InitChatBehaviour();
 
         playerUI.SetPlayer(GetComponent<Player>());
-    }
+}
 
     private void InitChatBehaviour()
     {
