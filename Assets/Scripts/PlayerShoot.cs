@@ -33,6 +33,9 @@ public class PlayerShoot : NetworkBehaviour
         playerScanController = GetComponent<PlayerScanController>();
         inputManager = GetComponent<InputManager>();
         
+        ScanningAudioSource.volume = 1f;
+        ScanningAudioSource.clip = ScanningAudioClip;
+        
     }
 
     private void Update()
@@ -40,7 +43,7 @@ public class PlayerShoot : NetworkBehaviour
         if (PlayerUI.isPaused)
             return;
 
-        if (Input.GetButtonDown("Fire1")) // if we click on the left mouse button
+        if (Input.GetButtonDown("Fire1") && inputManager.Aiming) // if we click on the left mouse button
         {
             Shoot();
         }
@@ -48,34 +51,29 @@ public class PlayerShoot : NetworkBehaviour
 
     private void Shoot()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, weapon.range, mask))
+        if (!Physics.Raycast(cam.transform.position, cam.transform.forward, out var hit, weapon.range, mask)) return;
+        
+        if(!hit.collider.CompareTag("Product"))
         {
-            var hitName = hit.collider.name;
-            Debug.Log("Hit " + hitName);
+            Debug.Log("This is not a scannable product");
+            return;
+        }
+        
+        var hitName = hit.collider.name;
 
-            // check if player has right click on his mouse to scan
-            if (inputManager.Aiming && hit.collider.CompareTag("Product"))
-            {
-                PlayScanningAudio();
-                bool scanResult = playerScanController.Scan(hit.collider.gameObject);
+        StoreItem storeItem = hit.collider.gameObject.GetComponent<StoreItem>();
+        Debug.Log("You hitted " + storeItem.displayedName);
+        ScanningAudioSource.Play();
 
-                if (!scanResult)
-                {
-                    Debug.Log("This product is not in your scan list !");
-                }
-                
-            }
+        var isScanValid = playerScanController.Scan(storeItem.displayedName);
 
+        if(!isScanValid)
+
+        {
+            Debug.Log("This product is not in your scan list !");
         }
     }
     
-    private void PlayScanningAudio()
-    {
-        ScanningAudioSource.volume = 1f;
-        ScanningAudioSource.clip = ScanningAudioClip;
-        ScanningAudioSource.Play();
-    }
     
     /**
      * TODO : Make the sound be also heard to all clients near the scanned article

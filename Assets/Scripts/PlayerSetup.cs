@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using Mirror;
 
@@ -15,48 +16,30 @@ public class PlayerSetup : NetworkBehaviour
     [HideInInspector]
     public GameObject playerUIInstance;
     
-    Camera sceneCamera;
+    [SerializeField]
+    private PlayerStatsController playerStatsController;
+    
+    private Camera sceneCamera;
+    private ChatBehaviour chatBehaviour;
+    private PlayerUI playerUI;
     
     // Start is called before the first frame update
     private void Start()
     {
+        var playerName = DefinePlayerName();
+
         if (!isLocalPlayer)
         {
             DisableComponents();
             AssignRemoteLayer();
+            return;
         }
-        else
-        {
-            // Création du UI du joueur local
-            playerUIInstance = Instantiate(playerUIPrefab);
-            
-            // Configuration du UI
-            PlayerUI ui = playerUIInstance.GetComponent<PlayerUI>();
-            if(ui == null)
-            {
-                Debug.LogError("Pas de component PlayerUI sur playerUIInstance");
-            }
-            else
-            {
-                ui.SetPlayer(GetComponent<Player>());
-            }
 
-            var player = GetComponent<Player>();
-            GameManager.RegisterPlayer(player.GetNetId(), player);
-            GameManager.RegisterPhoneController(player.GetNetId(), ui.GetPhoneController());
-            player.Setup();
-        }
-    }
-    
-    [Command]
-    void CmdSetUsername(string playerID, string username)
-    {
-        Player player = GameManager.GetPlayer(playerID);
-        if(player != null)
-        {
-            Debug.Log(username + " has joined !");
-            player.username = username;
-        }
+        RegisterPlayerStats(playerName);
+        Player.LocalPlayerName = playerName;
+        GameManager.SetSceneCameraActive(false);
+        InitPlayerUI();
+
     }
 
     private void DisableComponents()
@@ -75,14 +58,106 @@ public class PlayerSetup : NetworkBehaviour
     // When player quit the server
     private void OnDisable()
     {
+
+        if (!isLocalPlayer)
+            return;
+        
+        if (sceneCamera != null)
+            sceneCamera.gameObject.SetActive(true);
+
+        playerStatsController.CmdRemovePlayer(transform.name);
         Destroy(playerUIInstance);
         
-        if (sceneCamera != null && isLocalPlayer)
+    }
+
+    private string DefinePlayerName()
+    {
+        var playerName = "Player" + GetComponent<NetworkIdentity>().netId;
+        transform.name = playerName;
+        return playerName;
+    }
+
+    private void InitPlayerUI()
+    {
+        // Création du UI du joueur local
+        playerUIInstance = Instantiate(playerUIPrefab);
+        playerUIInstance.SetActive(true);
+
+        // Configuration du UI
+        playerUI = playerUIInstance.GetComponent<PlayerUI>();
+    
+        if(playerUI == null)
         {
-            sceneCamera.gameObject.SetActive(true);
+            Debug.LogError("Pas de component PlayerUI sur playerUIInstance");
+            return;
         }
         
-        GameManager.UnregisterPlayer(transform.name);
+        // Configuration du chat
+        InitChatBehaviour();
+
+        playerUI.SetPlayer(GetComponent<Player>());
+}
+
+    private void InitChatBehaviour()
+    {
+        chatBehaviour = GetComponent<ChatBehaviour>();
+        
+        if(chatBehaviour == null)
+        {
+            Debug.LogError("Pas de component ChatBehaviour sur PlayerArmature");
+            return;
+        }
+        
+        chatBehaviour.chatPanel = playerUI.chatPanel;
+        chatBehaviour.chatText = playerUI.chatText;
+        chatBehaviour.chatInput = playerUI.chatInput;
+        chatBehaviour.chatInput.onEndEdit.AddListener(chatBehaviour.Send);
+        chatBehaviour.isInitialized = true;
+        
+        chatBehaviour.OnStartAuthority();
+    }
+    
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T) && chatBehaviour != null)
+        {
+            // Select the chatBehaviour input field to set focus on it
+            StopAllCoroutines();
+            chatBehaviour.chatPanel.SetActive(true);
+            chatBehaviour.chatInput.Select();
+            chatBehaviour.chatInput.ActivateInputField();
+            PlayerUI.isPaused = true;
+        }
+        else if (chatBehaviour != null && !chatBehaviour.chatInput.isFocused && !PlayerUI.isPaused && chatBehaviour.chatPanel.activeSelf)
+        {
+            // If the player is not interacting with the input field and has not pressed any key recently,
+            // start a coroutine to hide the chat panel after a delay
+            StartCoroutine(HideChatAfterDelay());
+        }
+    }
+    
+    private IEnumerator HideChatAfterDelay()
+    {
+        yield return new WaitForSeconds(chatBehaviour.hideChatPanelAfterDelay);
+        chatBehaviour.chatPanel.SetActive(false);
+    }
+
+    private void RegisterPlayerStats(string playerName)
+    {
+        if (playerStatsController == null)
+        {
+            playerStatsController = FindObjectOfType<PlayerStatsController>();
+        }
+        
+        if (playerStatsController == null)
+        {
+            Debug.LogError("PlayerStatsController not found");
+            return;
+        }
+        
+        // Ajout du joueur aux statistiques
+        playerStatsController.CmdAddPlayer(playerName);
+
     }
     
 }

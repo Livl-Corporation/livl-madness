@@ -24,8 +24,11 @@ public class ColliderLivl : MonoBehaviour
 
         if (this.GameObject().tag == "EnterLivl")
         {
-            parent.GetComponent<AudioSource>().clip = LivlClip;
-            parent.GetComponent<AudioSource>().Play();
+            if (!parent.GetComponent<AudioSource>().isPlaying)
+            {
+                parent.GetComponent<AudioSource>().clip = LivlClip;
+                parent.GetComponent<AudioSource>().Play();
+            }
         }
         else if(this.GameObject().tag == "ExitLivl")
         {
