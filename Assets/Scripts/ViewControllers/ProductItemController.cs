@@ -36,7 +36,7 @@ public class ProductItemController
         var hasItem = item != null;
         
         SetText(hasItem ? item.Name :  "---");
-        SetOutOfStock(hasItem && item.OutOfStock);
+        SetOutOfStock(hasItem && (item.OutOfStock && !item.Scanned));
         SetState(hasItem ? item.Status : ProductState.UNCHECKED);
     }
 

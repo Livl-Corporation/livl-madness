@@ -15,11 +15,11 @@ namespace Models
             ScannedBy = null;
         }
         
-        public ProductItem(string name, string scannedBy)
+        public ProductItem(ProductItem product, string scannedBy)
         {
-            Name = name;
+            Name = product.Name;
             Scanned = true;
-            OutOfStock = false;
+            OutOfStock = product.OutOfStock;
             ScannedBy = scannedBy;
         }
 
@@ -30,5 +30,14 @@ namespace Models
             OutOfStock = false;
             ScannedBy = null;
         }
+        
+        public ProductItem(ProductItem item, bool outOfStock)
+        {
+            Name = item.Name;
+            Scanned = item.Scanned;
+            OutOfStock = outOfStock;
+            ScannedBy = item.ScannedBy;
+        }
+        
     }
 }

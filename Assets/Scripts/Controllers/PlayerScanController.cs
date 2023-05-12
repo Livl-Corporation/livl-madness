@@ -7,6 +7,7 @@ public class PlayerScanController : MonoBehaviour
     [Header("Components")]
     [SerializeField] private ScanListController scanListController;
     [SerializeField] private PlayerStatsController playerStatsController;
+    [SerializeField] private ProductsController productsController;
 
     [Header("Sounds")] 
     [SerializeField] private AudioSource audioSource;
@@ -27,6 +28,11 @@ public class PlayerScanController : MonoBehaviour
         {
             playerStatsController = FindObjectOfType<PlayerStatsController>();
         }
+        
+        if (productsController == null)
+        {
+            productsController = FindObjectOfType<ProductsController>();
+        }
 
     }
 
@@ -46,6 +52,7 @@ public class PlayerScanController : MonoBehaviour
 
         scanListController.CmdScanArticle(itemName, gameObject.name);
         playerStatsController.CmdIncrementScore(Player.LocalPlayerName);
+        productsController.CmdSetOutOfStock(itemName);
         
         return true;
     }

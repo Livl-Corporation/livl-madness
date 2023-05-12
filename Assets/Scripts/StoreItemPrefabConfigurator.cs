@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class StoreItemPrefabConfigurator : MonoBehaviour
 {
-    //public int itemId;
     [SerializeField]
     public string itemDisplayedName;
 
-    private void Start()
+    private void Awake()
     {
         ApplyScriptRecursively(transform);
         gameObject.AddComponent<StoreItem>();
