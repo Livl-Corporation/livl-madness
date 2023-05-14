@@ -79,4 +79,17 @@ public class ChatBehaviour : NetworkBehaviour
         string formattedMessage = $"\n<color=blue><b>[{playerName}]</b></color>: {message}";
         OnMessage?.Invoke(formattedMessage);
     }
+    
+    [Command]
+    public void CmdSendSystemMessage(string message)
+    {
+        RpcHandleSystemMessage(message);
+    }
+    
+    [ClientRpc]
+    private void RpcHandleSystemMessage(string message)
+    {
+        string formattedMessage = $"\n<color=blue><b><i>{message}</i></b></color>";
+        OnMessage?.Invoke(formattedMessage);
+    }
 }
