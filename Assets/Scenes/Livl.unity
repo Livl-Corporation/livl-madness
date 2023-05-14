@@ -14788,6 +14788,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0.1
+  productRespawnDelay: 20
   items:
   - {fileID: 3710293056515886210, guid: 6453a41db695266469cc1f23a1129b4e, type: 3}
   - {fileID: 8906852758320002484, guid: 662647dd2aa933b47b42ae640456f539, type: 3}
@@ -14836,6 +14837,12 @@ MonoBehaviour:
   - {fileID: 4755164860115664492, guid: c7b6864fdeb66f243a8ae3077dbb735d, type: 3}
   - {fileID: 3049281923028856062, guid: 0e83cb48505b7ff4eba44738652bb64a, type: 3}
   - {fileID: 3354387106256405619, guid: 17580aa7d14b0bd448b034eecc33c443, type: 3}
+  - {fileID: 7791838221019217702, guid: b26dd16071369e64daff4b22addbce2d, type: 3}
+  - {fileID: 2784643643348718839, guid: f806f1efdcaca364dacaba8ee85ef10f, type: 3}
+  - {fileID: 9195024724595215041, guid: 3c3950d36e60cad46bd51527904d6cb4, type: 3}
+  - {fileID: 6047965423159920627, guid: b209b0d480159d04abd0558d6db89d8a, type: 3}
+  - {fileID: 4788282383978585852, guid: 2b6bcda02b9f29d4eb86ac2bec49d259, type: 3}
+  - {fileID: 8334951736517576466, guid: 59d2b1edd63148b4ca98798cd569fbbe, type: 3}
   shelves:
   - {fileID: 1925121461}
   - {fileID: 1387917589}
@@ -14856,6 +14863,7 @@ MonoBehaviour:
   - {fileID: 257105707}
   - {fileID: 587614489}
   - {fileID: 1253534006}
+  scanListController: {fileID: 0}
 --- !u!4 &1955201348
 Transform:
   m_ObjectHideFlags: 0
