@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 3639491423843451490}
   - component: {fileID: 722026989771184622}
   - component: {fileID: 7043366995274254512}
-  - component: {fileID: 2527530866807405387}
-  - component: {fileID: 847373033429396808}
   m_Layer: 0
   m_Name: Dough (1)
   m_TagString: Untagged
@@ -85,36 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2527530866807405387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 953029524334535979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  _assetId: 2980289957
-  serverOnly: 0
-  visible: 0
-  hasSpawned: 0
---- !u!114 &847373033429396808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 953029524334535979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ea12a060b51a3f40902f2446c926392, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDisplayedName: "P\xE2te \xE0 pizza"
 --- !u!1 &3750626736414086994
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,8 +94,6 @@ GameObject:
   - component: {fileID: 875505171572017279}
   - component: {fileID: 5582107590314811004}
   - component: {fileID: 971176152124898544}
-  - component: {fileID: 7580062958584574589}
-  - component: {fileID: 5394865482425538437}
   m_Layer: 0
   m_Name: Dough (2)
   m_TagString: Untagged
@@ -202,36 +168,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7580062958584574589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3750626736414086994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  _assetId: 2980289957
-  serverOnly: 0
-  visible: 0
-  hasSpawned: 0
---- !u!114 &5394865482425538437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3750626736414086994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ea12a060b51a3f40902f2446c926392, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDisplayedName: "P\xE2te \xE0 pizza"
 --- !u!1 &4432959718372342389
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,8 +179,6 @@ GameObject:
   - component: {fileID: 5700709090123351275}
   - component: {fileID: 2990201134209888798}
   - component: {fileID: 1395360060624215497}
-  - component: {fileID: 6397969460284240470}
-  - component: {fileID: 9055054101506285971}
   m_Layer: 0
   m_Name: Dough
   m_TagString: Untagged
@@ -317,36 +251,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6397969460284240470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4432959718372342389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  _assetId: 2980289957
-  serverOnly: 0
-  visible: 0
-  hasSpawned: 0
---- !u!114 &9055054101506285971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4432959718372342389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ea12a060b51a3f40902f2446c926392, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDisplayedName: "P\xE2te \xE0 pizza"
 --- !u!1 &4663957152214326244
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,8 +380,6 @@ GameObject:
   - component: {fileID: 4928305353608346925}
   - component: {fileID: 5808773023132135668}
   - component: {fileID: 3671297334523908191}
-  - component: {fileID: 5065318756376938175}
-  - component: {fileID: 8154378868668348978}
   m_Layer: 0
   m_Name: Dough
   m_TagString: Untagged
@@ -550,36 +452,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5065318756376938175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6157524329670094665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  _assetId: 2980289957
-  serverOnly: 0
-  visible: 0
-  hasSpawned: 0
---- !u!114 &8154378868668348978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6157524329670094665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ea12a060b51a3f40902f2446c926392, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDisplayedName: "P\xE2te \xE0 pizza"
 --- !u!1 &7112872861784857565
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,8 +463,6 @@ GameObject:
   - component: {fileID: 2585045339692590586}
   - component: {fileID: 162737273984710166}
   - component: {fileID: 7168036616049412851}
-  - component: {fileID: 2272880169079309273}
-  - component: {fileID: 1949870664663453001}
   m_Layer: 0
   m_Name: Dough (1)
   m_TagString: Untagged
@@ -665,33 +535,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2272880169079309273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7112872861784857565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  _assetId: 2980289957
-  serverOnly: 0
-  visible: 0
-  hasSpawned: 0
---- !u!114 &1949870664663453001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7112872861784857565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ea12a060b51a3f40902f2446c926392, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDisplayedName: "P\xE2te \xE0 pizza"
