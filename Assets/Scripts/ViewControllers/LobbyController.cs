@@ -113,5 +113,10 @@ public class LobbyController : MonoBehaviour
 		errorText.enabled = true;
 		errorText.text = text;
 	}
+
+	public void ButtonQuit()
+	{
+		Application.Quit();
+	}
     
 }
