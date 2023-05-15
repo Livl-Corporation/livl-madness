@@ -407,7 +407,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &6991290969207237382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -916,7 +916,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Shopping list
+  m_text: Liste de courses
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 08716f7b9b08e4d338333643e4e3e52d, type: 2}
   m_sharedMaterial: {fileID: 6306152652128369894, guid: 08716f7b9b08e4d338333643e4e3e52d, type: 2}
@@ -1102,7 +1102,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Resume
+  m_text: Reprendre
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 55ba0235c5b474c90a28a640b1f49433, type: 2}
   m_sharedMaterial: {fileID: -1324399849698427691, guid: 55ba0235c5b474c90a28a640b1f49433, type: 2}
@@ -2557,9 +2557,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Leave
-
-'
+  m_text: Quitter
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 55ba0235c5b474c90a28a640b1f49433, type: 2}
   m_sharedMaterial: {fileID: -1324399849698427691, guid: 55ba0235c5b474c90a28a640b1f49433, type: 2}

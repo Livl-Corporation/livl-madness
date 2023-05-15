@@ -50,6 +50,7 @@ public class PlayerScanController : MonoBehaviour
             var coroutine = DelayedSound(failSound);
             StartCoroutine(coroutine);
             playerStatsController.CmdDecrementScore(Player.LocalPlayerName);
+            chatBehaviour.CmdSendSystemMessage($"{Player.LocalPlayerName} a scanné {itemName} alors que ça n'était pas dans la liste !");
             return false;
         }
         
@@ -59,7 +60,7 @@ public class PlayerScanController : MonoBehaviour
         scanListController.CmdScanArticle(itemName, gameObject.name);
         playerStatsController.CmdIncrementScore(Player.LocalPlayerName);
         productsController.CmdSetOutOfStock(itemName);
-        chatBehaviour.CmdSendSystemMessage($"{Player.LocalPlayerName} scanned {itemName} !");
+        chatBehaviour.CmdSendSystemMessage($"{Player.LocalPlayerName} a scanné {itemName} !");
         
         return true;
     }
