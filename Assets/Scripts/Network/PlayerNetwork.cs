@@ -9,7 +9,7 @@ namespace Network
     public class PlayerNetwork : NetworkBehaviour
     {
         public static PlayerNetwork localPlayerNetwork;
-        
+
         [SyncVar] public string matchID;
         [SyncVar] public int playerIndex;
 
@@ -25,7 +25,7 @@ namespace Network
             }
             else
             {
-                UILobby.instance.SpawnPlayerFramePrefab(this);  
+                UILobby.instance.SpawnPlayerFramePrefab(this);
             }
         }
 
@@ -41,7 +41,7 @@ namespace Network
         [Command]
         void CmdHostGame(string matchId)
         {
-            matchID = matchId; 
+            matchID = matchId;
             bool hostedSuccesfully = MatchMaker.instance.HostGame(matchId, this, out playerIndex);
 
             if (hostedSuccesfully)
@@ -54,7 +54,7 @@ namespace Network
             {
                 Debug.Log("Game hosted failed");
             }
-            
+
             TargetHostGame(hostedSuccesfully, matchId);
         }
 
@@ -64,11 +64,11 @@ namespace Network
             Debug.Log($"MatchID : {matchID} == {this.matchID}");
             UILobby.instance.HostSuccess(success);
         }
-        
+
         /**
          * JOIN PART
          */
-        
+
         public void JoinGame(string matchID)
         {
             CmdJoinGame(matchID);
@@ -77,7 +77,7 @@ namespace Network
         [Command]
         void CmdJoinGame(string matchId)
         {
-            matchID = matchId; 
+            matchID = matchId;
             bool joinedSuccesfully = MatchMaker.instance.JoinGame(matchId, this, out playerIndex);
 
             if (joinedSuccesfully)
@@ -90,7 +90,7 @@ namespace Network
             {
                 Debug.Log("Game joined failed");
             }
-            
+
             TargetJoinGame(joinedSuccesfully, matchId);
         }
 
@@ -100,7 +100,7 @@ namespace Network
             Debug.Log($"MatchID : {matchID}");
             UILobby.instance.JoinSuccess(success);
         }
-        
+
         /**
          * BEGIN PART
          */
@@ -111,7 +111,7 @@ namespace Network
 
         [Command]
         void CmdBeginGame()
-        { 
+        {
             Debug.Log("Game started");
 
             MatchMaker.instance.BeginGame(matchID);
@@ -130,7 +130,7 @@ namespace Network
                 gameObject.GetComponent<PlayerSetup>().Init();
             };
         }
-        
+
         public void StartGame()
         {
             RpcBeginGame();
@@ -140,32 +140,40 @@ namespace Network
          *   DISCONNECT
          */
 
-        public void DisconnectGame () {
-            CmdDisconnectGame ();
+        public void DisconnectGame()
+        {
+            CmdDisconnectGame();
         }
 
         [Command]
-        void CmdDisconnectGame () {
-            ServerDisconnect ();
+        void CmdDisconnectGame()
+        {
+            ServerDisconnect();
         }
 
-        void ServerDisconnect ()
+        void ServerDisconnect()
         {
             MatchMaker.instance.PlayerDisconnected(matchID, this);
-            RpcDisconnectGame ();
+            RpcDisconnectGame();
             networkMatch.matchId = Guid.Empty;
         }
 
         [ClientRpc]
-        void RpcDisconnectGame () {
-            ClientDisconnect ();
+        void RpcDisconnectGame()
+        {
+            ClientDisconnect();
         }
 
-        void ClientDisconnect () {
-            if (UILobby.instance != null) {
-                if (!isServer) {
-                    Destroy (UILobby.instance.gameObject);
-                } else {
+        void ClientDisconnect()
+        {
+            if (UILobby.instance != null)
+            {
+                if (!isServer)
+                {
+                    Destroy(UILobby.instance.gameObject);
+                }
+                else
+                {
                     UILobby.instance.gameObject.SetActive(false);
                 }
             }

@@ -54,6 +54,11 @@ public class PlayerSetup : NetworkBehaviour
         GameManager.RegisterPlayer(player.GetNetId(), player, ui.GetPhoneController());
         player.Setup();
         
+        // Reset spawn position
+        NetworkServer.UnSpawn(gameObject);
+        gameObject.transform.position = NetworkManager.singleton.GetStartPosition().position;
+        gameObject.transform.rotation = NetworkManager.singleton.GetStartPosition().rotation;
+        NetworkServer.Spawn(gameObject);
     }
     
     [Command]
