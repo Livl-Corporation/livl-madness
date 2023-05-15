@@ -13,6 +13,9 @@ public class LobbyController : MonoBehaviour
 	[Header("Buttons")]
 	[SerializeField]
     public Button hostButton;
+	    
+	[Header("Input")]
+	[SerializeField] public TMP_InputField usernameInput;
 
     [Header("Texts")]
 	[SerializeField]
@@ -36,10 +39,15 @@ public class LobbyController : MonoBehaviour
 	    }
 	    
 	    SetError("");
-	    
-		if (Application.platform == RuntimePlatform.WebGLPlayer)
+
+	    if (Application.platform == RuntimePlatform.WebGLPlayer)
 			hostButton.gameObject.SetActive(false);
-		
+
+	    if (!Application.isPlaying) return;
+	    var username = PlayerPrefs.GetString("Username");
+	    if (!string.IsNullOrEmpty(username))
+		    usernameInput.text = username;
+
     }
 
 	private void Update()
@@ -57,7 +65,6 @@ public class LobbyController : MonoBehaviour
 		}
 		
 		PlayerPrefs.SetString("Username", username);
-		Debug.Log("Username changed to " + username);
 	}
 
 	public void ButtonHost()
@@ -68,9 +75,9 @@ public class LobbyController : MonoBehaviour
 		{
 			NetworkManager.singleton.StartHost();
 		}
-		catch (System.Exception e)
+		catch (Exception e)
 		{
-			SetError("An error happened : " + e.Message);
+			SetError("An error happened : " + e.Message);	
 		}
 		
     }
@@ -83,7 +90,7 @@ public class LobbyController : MonoBehaviour
 		{
 			NetworkManager.singleton.StartClient();
 		}
-		catch (System.Exception e)
+		catch (Exception e)
 		{
 			SetError("An error happened : " + e.Message);
 		}

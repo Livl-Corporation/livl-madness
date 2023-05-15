@@ -241,6 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hostButton: {fileID: 5555427327574336304}
+  usernameInput: {fileID: 7037045339797398518}
   errorText: {fileID: 9146045471939777615}
   hourText: {fileID: 4361501889509739185}
   networkManagerHUD: {fileID: 302304350}
@@ -2601,7 +2602,7 @@ MonoBehaviour:
       - m_Target: {fileID: 232506137}
         m_TargetAssemblyTypeName: LobbyController, Assembly-CSharp
         m_MethodName: OnUsernameChanged
-        m_Mode: 5
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

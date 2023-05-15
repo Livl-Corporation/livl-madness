@@ -1225,6 +1225,7 @@ MonoBehaviour:
   messageController: {fileID: 746864559362294727}
   scoreText: {fileID: 8509201371413349995}
   productListController: {fileID: 8572822910479937323}
+  logo: {fileID: 4755661309647625163}
   productListScreen: {fileID: 7450623235125515094}
   pauseScreen: {fileID: 2710551009452779681}
   screenTransitionTime: 0.25
@@ -1398,8 +1399,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -92.49997, y: 205.08}
-  m_SizeDelta: {x: 22.5345, y: 22.5345}
+  m_AnchoredPosition: {x: -67.21411, y: 206.71046}
+  m_SizeDelta: {x: 73.1063, y: 19.2736}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4030143189749557013
 CanvasRenderer:
@@ -1429,9 +1430,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7babd96352e8a49e39afd391cc2b25e8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 15b5421c5b08d43a683a5d094f336488, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
