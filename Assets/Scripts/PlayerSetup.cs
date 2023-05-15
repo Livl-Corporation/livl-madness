@@ -21,10 +21,9 @@ public class PlayerSetup : NetworkBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        if (!isLocalPlayer || SceneManager.GetActiveScene().name != "Livl")
+        if (SceneManager.GetActiveScene().name != "Livl")
         {
-            EnableComponents(false);
-            AssignRemoteLayer();
+            EnableComponents(false); 
         }
         else
         {
@@ -34,7 +33,15 @@ public class PlayerSetup : NetworkBehaviour
 
     public void Init()
     {
-        Debug.Log("Initialisation du Player " + (isLocalPlayer ? "local." : "distant."));
+        if (!isLocalPlayer)
+        {
+            Debug.Log("Initialisation du player distant.");
+            EnableComponents(false);
+            AssignRemoteLayer();
+            return;
+        }
+        
+        Debug.Log("Initialisation du Player local.");
         EnableComponents(true);
         // Création du UI du joueur local
         playerUIInstance = Instantiate(playerUIPrefab);
