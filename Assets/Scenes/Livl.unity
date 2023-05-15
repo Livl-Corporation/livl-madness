@@ -14767,7 +14767,7 @@ GameObject:
   - component: {fileID: 1955201347}
   - component: {fileID: 1955201349}
   m_Layer: 0
-  m_Name: ShelvesItemsManager
+  m_Name: ProductsController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14788,6 +14788,8 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0.1
+  productRespawnMinDelay: 30
+  productRespawnMaxDelay: 120
   items:
   - {fileID: 3710293056515886210, guid: 6453a41db695266469cc1f23a1129b4e, type: 3}
   - {fileID: 8906852758320002484, guid: 662647dd2aa933b47b42ae640456f539, type: 3}
@@ -14856,6 +14858,7 @@ MonoBehaviour:
   - {fileID: 257105707}
   - {fileID: 587614489}
   - {fileID: 1253534006}
+  scanListController: {fileID: 0}
 --- !u!4 &1955201348
 Transform:
   m_ObjectHideFlags: 0

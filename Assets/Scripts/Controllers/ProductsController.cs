@@ -8,7 +8,8 @@ using Mirror;
 public class ProductsController : NetworkBehaviour
 {
     
-    [SerializeField] private int productRespawnDelay = 20;   
+    [SerializeField] private int productRespawnMinDelay = 30;  
+    [SerializeField] private int productRespawnMaxDelay = 120;
     
     [SerializeField] private List<GameObject> items = new List<GameObject>();
     [SerializeField] private List<ShelfController> shelves = new List<ShelfController> ();
@@ -79,7 +80,7 @@ public class ProductsController : NetworkBehaviour
 
     private IEnumerator DelayedProductSpawn(string productName)
     {
-        yield return new WaitForSeconds(productRespawnDelay);
+        yield return new WaitForSeconds(UnityEngine.Random.Range(productRespawnMinDelay, productRespawnMaxDelay));
         SetInStock(productName);
     }
     
