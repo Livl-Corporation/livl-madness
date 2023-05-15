@@ -1,5 +1,6 @@
 ﻿using System;
 using Mirror;
+using Mirror.SimpleWeb;
 using UnityEngine;
 
 namespace Network
@@ -13,7 +14,8 @@ namespace Network
         {
             if (Application.isBatchMode) // headless build
             {
-                Debug.Log("=== Server build ===");
+                Debug.Log($"=== Server build ===");
+                Debug.Log($"Listening to port {(networkManager.transport as SimpleWebTransport).port}");
                 return;
             }
             

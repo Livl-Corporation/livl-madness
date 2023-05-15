@@ -52,13 +52,13 @@ MonoBehaviour:
   autoStartServerBuild: 1
   autoConnectClientBuild: 0
   sendRate: 30
-  offlineScene: Assets/Scenes/Lobby.unity
-  onlineScene: 
+  offlineScene: Assets/Scenes/Offline.unity
+  onlineScene: Assets/Scenes/Lobby.unity
   transport: {fileID: 9016440220411718647}
-  networkAddress: localhost
+  networkAddress: chouffe.tgimenez.fr
   maxConnections: 100
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 2438772479995991687, guid: 2d21f2414b87f43cdb69b06b78eca2be, type: 3}
+  playerPrefab: {fileID: 4416926081852918481, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 1
   spawnPrefabs: []
