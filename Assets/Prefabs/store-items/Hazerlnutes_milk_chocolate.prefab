@@ -1,0 +1,460 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2784643643348718839
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4969998352767150159}
+  - component: {fileID: 6653928841472368494}
+  - component: {fileID: 8108024660754476671}
+  m_Layer: 0
+  m_Name: Hazerlnutes_milk_chocolate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4969998352767150159
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784643643348718839}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 39.4792, y: 0.0626, z: 55.89093}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8693011446980927900}
+  - {fileID: 9058180369219241677}
+  - {fileID: 9215942887799802344}
+  - {fileID: 1127233393380883688}
+  - {fileID: 9162391033020151983}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6653928841472368494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784643643348718839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  _assetId: 3660167537
+  serverOnly: 0
+  visible: 0
+  hasSpawned: 0
+--- !u!114 &8108024660754476671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784643643348718839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea12a060b51a3f40902f2446c926392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDisplayedName: Chocolat au lait aux noisettes
+--- !u!1001 &589414863190727427
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4969998352767150159}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.5919588
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.5919588
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.5919588
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.05719757
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.047399998
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.49999997
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_Name
+      value: hazerlnutes_milk_chocolate (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+--- !u!4 &1127233393380883688 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+  m_PrefabInstance: {fileID: 589414863190727427}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8678192695558352387
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4969998352767150159}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.5919588
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.5919588
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.5919588
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.018196106
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.047399998
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.49999997
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_Name
+      value: hazerlnutes_milk_chocolate (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+--- !u!4 &9215942887799802344 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+  m_PrefabInstance: {fileID: 8678192695558352387}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8695856477897662276
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4969998352767150159}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.5919588
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.5919588
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.5919588
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.09819794
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.047399998
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.49999997
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_Name
+      value: hazerlnutes_milk_chocolate (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+--- !u!4 &9162391033020151983 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+  m_PrefabInstance: {fileID: 8695856477897662276}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8808942399549579558
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4969998352767150159}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.5919588
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.5919588
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.5919588
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.018802643
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.047399998
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.49999997
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_Name
+      value: hazerlnutes_milk_chocolate (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+--- !u!4 &9058180369219241677 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+  m_PrefabInstance: {fileID: 8808942399549579558}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &9162994172637906551
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4969998352767150159}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.5919588
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.5919588
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.5919588
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.057804108
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.047399998
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.49999997
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+      propertyPath: m_Name
+      value: hazerlnutes_milk_chocolate
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+--- !u!4 &8693011446980927900 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dd0124c4e1be42744b9369174268870c, type: 3}
+  m_PrefabInstance: {fileID: 9162994172637906551}
+  m_PrefabAsset: {fileID: 0}

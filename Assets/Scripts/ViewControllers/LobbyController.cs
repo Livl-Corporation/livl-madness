@@ -58,7 +58,7 @@ public class LobbyController : MonoBehaviour
 	public void OnUsernameChanged(string username)
 	{
 		
-		if (string.IsNullOrEmpty(username))
+		if (string.IsNullOrWhiteSpace(username))
 		{
 			PlayerPrefs.DeleteKey("Username");
 			return;
