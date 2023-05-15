@@ -1,0 +1,302 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8334951736517576466
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2676566069603181490}
+  - component: {fileID: 341388034938054480}
+  - component: {fileID: 3983562306721631417}
+  m_Layer: 0
+  m_Name: Pizza_margherita
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2676566069603181490
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8334951736517576466}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 39.491, y: 0.0622, z: 57.229}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6829407829778407867}
+  - {fileID: 4022593170903455818}
+  - {fileID: 7018477831323683131}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &341388034938054480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8334951736517576466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea12a060b51a3f40902f2446c926392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDisplayedName: Pizza margherita
+--- !u!114 &3983562306721631417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8334951736517576466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  _assetId: 602183363
+  serverOnly: 0
+  visible: 0
+  hasSpawned: 0
+--- !u!1001 &3483998650837876641
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2676566069603181490}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.6396914
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 14.437824
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 14.437824
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0802
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.5003509
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.49964717
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.499649
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.50035256
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90.081
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_Name
+      value: pizza_margherita (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+--- !u!4 &4022593170903455818 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+  m_PrefabInstance: {fileID: 3483998650837876641}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6434613907352700496
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2676566069603181490}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.6396914
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 14.437824
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 14.437824
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.027800005
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.5003509
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.49964717
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.499649
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.50035256
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90.081
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_Name
+      value: pizza_margherita
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+--- !u!4 &6829407829778407867 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+  m_PrefabInstance: {fileID: 6434613907352700496}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7416334690568498896
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2676566069603181490}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.6396914
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 14.437824
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 14.437824
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.13340001
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.5003509
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.49964717
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.499649
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.50035256
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90.081
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+      propertyPath: m_Name
+      value: pizza_margherita (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+--- !u!4 &7018477831323683131 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 739ab45ecb9c4ab469050de12f2addf9, type: 3}
+  m_PrefabInstance: {fileID: 7416334690568498896}
+  m_PrefabAsset: {fileID: 0}
