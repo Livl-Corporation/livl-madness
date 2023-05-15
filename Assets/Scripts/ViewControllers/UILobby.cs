@@ -14,6 +14,7 @@ namespace UI
 	    [SerializeField] TMP_InputField matchIdInputField;
 	    [SerializeField] Button joinButton;
 	    [SerializeField] Button hostButton;
+	    [SerializeField] Canvas UICanvas;
 	    [SerializeField] Canvas lobbyCanvas;
 
 	    [Header("Lobby")] 
@@ -53,10 +54,10 @@ namespace UI
 	    public void Join()
 	    {
 		    EnableComponents(false);
-
+		    
 		    string matchID = matchIdInputField.text;
 		    
-		    Network.PlayerNetwork.localPlayerNetwork.JoinGame(matchID);
+		    PlayerNetwork.localPlayerNetwork.JoinGame(matchID);
 	    }
 
 	    public void JoinSuccess(bool success)
@@ -88,6 +89,9 @@ namespace UI
 
 	    public void BeginGame()
 	    {
+		    lobbyCanvas.enabled = false;
+		    UICanvas.enabled = false;
+		    
 		    PlayerNetwork.localPlayerNetwork.BeginGame();
 	    }
     }

@@ -82,6 +82,8 @@ public class PlayerController : NetworkBehaviour
 
     private void HideCursor()
     {
+        Debug.Log("HideCursor()");
+        
         if (PlayerUI.isPaused)
         {
             if (Cursor.lockState != CursorLockMode.None)
@@ -98,6 +100,7 @@ public class PlayerController : NetworkBehaviour
         
         if (Cursor.lockState != CursorLockMode.Locked)
         {
+            Debug.Log("Lock du curseur");
             Cursor.lockState = CursorLockMode.Locked;
         }
     }

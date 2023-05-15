@@ -12,7 +12,7 @@ namespace Network
         
         [SyncVar] public string matchID;
         [SyncVar] public int playerIndex;
-        
+
         NetworkMatch networkMatch;
 
         void Start()
@@ -113,17 +113,62 @@ namespace Network
         void CmdBeginGame()
         { 
             Debug.Log("Game started");
-            
-            RpcBeginGame();
+
+            MatchMaker.instance.BeginGame(matchID);
         }
 
         [ClientRpc]
         void RpcBeginGame()
         {
-            Debug.Log($"MatchID : {matchID} | Beginning");
-            // Load game scene
-            SceneManager.LoadScene("Livl");
+            Debug.Log($"MatchID: {matchID} | Beginning");
+
+            AsyncOperation op = SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive);
+
+            op.completed += (AsyncOperation o) =>
+            {
+                SceneManager.SetActiveScene(SceneManager.GetSceneByName("Livl"));
+                gameObject.GetComponent<PlayerSetup>().Init();
+            };
         }
         
+        public void StartGame()
+        {
+            RpcBeginGame();
+        }
+
+        /** 
+         *   DISCONNECT
+         */
+
+        public void DisconnectGame () {
+            CmdDisconnectGame ();
+        }
+
+        [Command]
+        void CmdDisconnectGame () {
+            ServerDisconnect ();
+        }
+
+        void ServerDisconnect ()
+        {
+            MatchMaker.instance.PlayerDisconnected(matchID, this);
+            RpcDisconnectGame ();
+            networkMatch.matchId = Guid.Empty;
+        }
+
+        [ClientRpc]
+        void RpcDisconnectGame () {
+            ClientDisconnect ();
+        }
+
+        void ClientDisconnect () {
+            if (UILobby.instance != null) {
+                if (!isServer) {
+                    Destroy (UILobby.instance.gameObject);
+                } else {
+                    UILobby.instance.gameObject.SetActive(false);
+                }
+            }
+        }
     }
 }

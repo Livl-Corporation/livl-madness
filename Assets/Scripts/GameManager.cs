@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -36,11 +35,13 @@ public class GameManager : MonoBehaviour
     {
         if(instance == null)
         {
+            Debug.Log("AVANT LE START Bkfhdgkjfguhfdgugeufgvdfuvsfrduvgudrkfvgskdvjygser");
             instance = this;
             return;
         }
 
         Debug.LogError("More than one GameManager in scene.");
+        Destroy(this);
     }
 
     private void Start()
@@ -83,12 +84,15 @@ public class GameManager : MonoBehaviour
     }
     
     public static void RegisterPlayer(uint netID, Player player, PhoneController controller)
-    {
+    { 
         var playerId = MakePlayerId(netID);
+        
+        Debug.Log("RegisterPLayer " + playerId);
+        
         players.Add(playerId, player);
         phoneControllers.Add(playerId, controller);
         player.transform.name = playerId;
-        
+
         // Add timer observable
         if (instance.timer != null)
         {
@@ -103,7 +107,6 @@ public class GameManager : MonoBehaviour
         
         // TODO : remove test
         controller.messageController.ShowMessage("Jean Marc Muller", "Salut, ça va ?");
-
     }
     
     public static void UnregisterPlayer(string playerId)

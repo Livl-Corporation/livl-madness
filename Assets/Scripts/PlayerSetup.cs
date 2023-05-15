@@ -23,29 +23,37 @@ public class PlayerSetup : NetworkBehaviour
     {
         if (!isLocalPlayer || SceneManager.GetActiveScene().name != "Livl")
         {
-            DisableComponents();
+            EnableComponents(false);
             AssignRemoteLayer();
         }
         else
         {
-            // Création du UI du joueur local
-            playerUIInstance = Instantiate(playerUIPrefab);
-            
-            // Configuration du UI
-            PlayerUI ui = playerUIInstance.GetComponent<PlayerUI>();
-            if(ui == null)
-            {
-                Debug.LogError("Pas de component PlayerUI sur playerUIInstance");
-            }
-            else
-            {
-                ui.SetPlayer(GetComponent<Player>());
-            }
-
-            var player = GetComponent<Player>();
-            GameManager.RegisterPlayer(player.GetNetId(), player, ui.GetPhoneController());
-            player.Setup();
+            Init();
         }
+    }
+
+    public void Init()
+    {
+        Debug.Log("Initialisation du Player " + (isLocalPlayer ? "local." : "distant."));
+        EnableComponents(true);
+        // Création du UI du joueur local
+        playerUIInstance = Instantiate(playerUIPrefab);
+            
+        // Configuration du UI
+        PlayerUI ui = playerUIInstance.GetComponent<PlayerUI>();
+        if(ui == null)
+        {
+            Debug.LogError("Pas de component PlayerUI sur playerUIInstance");
+        }
+        else
+        {
+            ui.SetPlayer(GetComponent<Player>());
+        }
+
+        var player = GetComponent<Player>();
+        GameManager.RegisterPlayer(player.GetNetId(), player, ui.GetPhoneController());
+        player.Setup();
+        
     }
     
     [Command]
@@ -59,11 +67,11 @@ public class PlayerSetup : NetworkBehaviour
         }
     }
 
-    private void DisableComponents()
+    private void EnableComponents(bool state)
     {
         foreach (Behaviour component in componentsToDisable)
         {
-            component.enabled = false;
+            component.enabled = state;
         }
     }
 

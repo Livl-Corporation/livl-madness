@@ -12,11 +12,13 @@ namespace Network
     public class Match
     {
         public string matchID;
+        public bool started;
         public List<PlayerNetwork> players = new List<PlayerNetwork>();
 
         public Match(string matchID, PlayerNetwork playerNetwork)
         {
             this.matchID = matchID;
+            this.started = false;
             this.players.Add(playerNetwork);
         }
         
@@ -77,6 +79,41 @@ namespace Network
             
             Debug.Log($"Match ID {matchID} joined");
             return true;
+        }
+
+        public void BeginGame(string matchID)
+        {
+            for (int i = 0; i < matches.Count; i++)
+            {
+                if (matches[i].matchID == matchID)
+                {
+                    matches[i].started = true;
+                    foreach (PlayerNetwork player in matches[i].players)
+                    {
+                        player.StartGame();
+                    }
+                    break;
+                }
+            }
+
+        }
+        
+        public void PlayerDisconnected (string matchID, PlayerNetwork playerNetwork) {
+            for (int i = 0; i < matches.Count; i++) {
+                if (matches[i].matchID == matchID) {
+                    int playerIndex = matches[i].players.IndexOf (playerNetwork);
+                    if (matches[i].players.Count > playerIndex) matches[i].players.RemoveAt (playerIndex);
+                    Debug.Log ($"Player disconnected from match {matchID} | {matches[i].players.Count} players remaining");
+
+                    if (matches[i].players.Count == 0) {
+                        Debug.Log ($"No more players in Match. Terminating {matchID}");
+                        matches.RemoveAt (i);
+                        matchIds.Remove (matchID);
+                    }
+                    
+                    break;
+                }
+            }
         }
 
         public static string GetRandomMatchID()
