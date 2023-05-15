@@ -72,7 +72,7 @@ public class PlayerSetup : NetworkBehaviour
 
     private string DefinePlayerName()
     {
-        var playerName = "Player" + GetComponent<NetworkIdentity>().netId;
+        var playerName = PlayerPrefs.GetString("Username", "Player" + GetComponent<NetworkIdentity>().netId);
         transform.name = playerName;
         return playerName;
     }
