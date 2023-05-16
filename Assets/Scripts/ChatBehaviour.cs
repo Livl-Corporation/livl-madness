@@ -61,7 +61,7 @@ public class ChatBehaviour : NetworkBehaviour
     
     public bool IsChatFocused()
     {
-        return chatInput.isFocused;
+        return chatInput != null && chatInput.isFocused;
     }
 
     /**

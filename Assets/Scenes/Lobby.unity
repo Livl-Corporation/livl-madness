@@ -241,6 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hostButton: {fileID: 5555427327574336304}
+  quitButton: {fileID: 1828320832}
   usernameInput: {fileID: 7037045339797398518}
   errorText: {fileID: 9146045471939777615}
   hourText: {fileID: 4361501889509739185}

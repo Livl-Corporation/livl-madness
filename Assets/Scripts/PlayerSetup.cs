@@ -26,6 +26,11 @@ public class PlayerSetup : NetworkBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        if (playerStatsController == null)
+        {
+            playerStatsController = FindObjectOfType<PlayerStatsController>();
+        }
+        
         var playerName = DefinePlayerName();
 
         if (!isLocalPlayer)
@@ -40,6 +45,7 @@ public class PlayerSetup : NetworkBehaviour
         GameManager.SetSceneCameraActive(false);
         EnableAudioListener();
         InitPlayerUI();
+        InitChatBehaviour();
     }
 
     private void DisableComponents()
@@ -79,7 +85,15 @@ public class PlayerSetup : NetworkBehaviour
 
     private string DefinePlayerName()
     {
+        var usedPlayerNames = playerStatsController.GetPlayerNames();
         var playerName = PlayerPrefs.GetString("Username", "Player" + GetComponent<NetworkIdentity>().netId);
+        
+        // Check if player name is used
+        while (usedPlayerNames.Contains(playerName))
+        {
+            playerName += "1";
+        }
+        
         transform.name = playerName;
         return playerName;
     }
@@ -99,9 +113,6 @@ public class PlayerSetup : NetworkBehaviour
             return;
         }
         
-        // Configuration du chat
-        InitChatBehaviour();
-
         playerUI.SetPlayer(GetComponent<Player>());
 }
 
@@ -128,18 +139,12 @@ public class PlayerSetup : NetworkBehaviour
     {
         if (playerStatsController == null)
         {
-            playerStatsController = FindObjectOfType<PlayerStatsController>();
-        }
-        
-        if (playerStatsController == null)
-        {
             Debug.LogError("PlayerStatsController not found");
             return;
         }
         
         // Ajout du joueur aux statistiques
         playerStatsController.CmdAddPlayer(playerName);
-
     }
     
 }
