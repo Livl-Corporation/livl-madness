@@ -69,7 +69,11 @@ public class ChatBehaviour : NetworkBehaviour
      */
     private void ShowChatPanel()
     {
-        chatPanel.GetComponent<CanvasGroup>().LeanAlpha(1f, 0.5f);
+        var canvasGroup = chatPanel.GetComponent<CanvasGroup>();
+            
+        if (!canvasGroup) return;
+            
+        canvasGroup.LeanAlpha(1f, 0.5f);
         StartCoroutine(HideChatPanel());
     }
 
@@ -78,7 +82,9 @@ public class ChatBehaviour : NetworkBehaviour
         yield return new WaitForSeconds(hideChatPanelAfterDelay);
         if (!PlayerUI.isPaused) // if PlayerUI is pause means that the user is typing a message
         {
-            chatPanel.GetComponent<CanvasGroup>().LeanAlpha(0.5f, 0.5f);
+            var canvasGroup = chatPanel.GetComponent<CanvasGroup>();
+            if (canvasGroup) 
+                chatPanel.GetComponent<CanvasGroup>().LeanAlpha(0.5f, 0.5f);
         }
     }
 
