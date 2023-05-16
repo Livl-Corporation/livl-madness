@@ -5,7 +5,6 @@ public class LivlNetworkManager : NetworkManager
 {
     public override void OnServerDisconnect(NetworkConnectionToClient conn)
     {
-        base.OnServerDisconnect(conn);
         
         var playerStatsController = FindObjectOfType<PlayerStatsController>();
         
@@ -17,5 +16,7 @@ public class LivlNetworkManager : NetworkManager
         
         playerStatsController.CmdRemovePlayer(conn.identity.netId);
         
+        base.OnServerDisconnect(conn);
+
     }
 }
