@@ -78,7 +78,6 @@ public class PlayerSetup : NetworkBehaviour
         if (sceneCamera != null)
             sceneCamera.gameObject.SetActive(true);
 
-        playerStatsController.CmdRemovePlayer(transform.name);
         Destroy(playerUIInstance);
         
     }
@@ -144,7 +143,7 @@ public class PlayerSetup : NetworkBehaviour
         }
         
         // Ajout du joueur aux statistiques
-        playerStatsController.CmdAddPlayer(playerName);
+        playerStatsController.CmdAddPlayer(playerName, netId);
     }
     
 }

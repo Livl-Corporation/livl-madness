@@ -5021,7 +5021,7 @@ MonoBehaviour:
   usernameInput: {fileID: 444396380}
   errorText: {fileID: 357839347}
   hourText: {fileID: 353050102}
-  networkManagerHUD: {fileID: 1933533522}
+  networkManagerHUD: {fileID: 1933533526}
 --- !u!114 &738911775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13187,9 +13187,9 @@ Transform:
   m_Father: {fileID: 928518642}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1933533522 stripped
+--- !u!114 &1933533526 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9016440220411718646, guid: 1caeaeef5b34d3241b3ca26221e1ff6d, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1946042412636836388, guid: 1caeaeef5b34d3241b3ca26221e1ff6d, type: 3}
   m_PrefabInstance: {fileID: 2123068221}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

@@ -28,6 +28,7 @@ public class GameManager : NetworkBehaviour
 
     public override void OnStartServer()
     {
+        
         // Start game after 1 second
         Invoke(nameof(StartGame), 1f);
     }
