@@ -99,20 +99,14 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
     [Command(requiresAuthority = false)]
     public void CmdScanArticle(string itemName, string scannedBy)
     {
-
-        var productIndex = IndexOfProduct(itemName);
-        
-        CheckProduct(productIndex, scannedBy);
-
-        var coroutine = DelayedDeleteProduct(productIndex);
-        StartCoroutine(coroutine);
-
+        CheckProduct(itemName, scannedBy);
+        StartCoroutine(DelayedDeleteProduct(itemName));
     }
 
     [Command(requiresAuthority = false)]
     public void CmdUpdateStock()
     {
-        var outOfStockProducts = this.productsController.GetOutOfStockProducts();
+        var outOfStockProducts = productsController.GetOutOfStockProducts();
         foreach (var productItem in scanList)
         {
             productItem.OutOfStock = outOfStockProducts.Contains(productItem.Name);
@@ -120,8 +114,10 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
         UpdateSyncList();
     }
 
-    private void CheckProduct(int productIndex, string scannedBy)
+    private void CheckProduct(string itemName, string scannedBy)
     {
+        var productIndex = IndexOfProduct(itemName);
+        
         if (productIndex < 0 || productIndex >= scanListSize)
         {
             Debug.LogError("Product index out of range");
@@ -138,8 +134,10 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
         return GetScanListNames().IndexOf(itemName);
     } 
 
-    private void DeleteProduct(int productIndex)
+    private void DeleteProduct(string itemName)
     {
+        var productIndex = IndexOfProduct(itemName);
+        
         if (productIndex < 0 || productIndex >= scanListSize)
         {
             Debug.LogError("Product index out of range");
@@ -156,10 +154,10 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
         UpdateSyncList();
     }
     
-    private IEnumerator DelayedDeleteProduct(int productIndex)
+    private IEnumerator DelayedDeleteProduct(string productName)
     {
         yield return new WaitForSeconds(newProductDelay);
-        DeleteProduct(productIndex);
+        DeleteProduct(productName);
     }
     
 

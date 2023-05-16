@@ -52,7 +52,7 @@ MonoBehaviour:
   autoStartServerBuild: 0
   autoConnectClientBuild: 0
   sendRate: 30
-  offlineScene: Assets/Scenes/Lobby.unity
+  offlineScene: Assets/Scenes/LobbLivl.unity
   onlineScene: Assets/Scenes/Room.unity
   transport: {fileID: 3032535145747475926}
   networkAddress: chouffe.tgimenez.fr
