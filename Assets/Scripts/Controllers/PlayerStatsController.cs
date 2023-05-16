@@ -88,5 +88,10 @@ public class PlayerStatsController : NetworkBehaviour, IPlayerStatsObservable
             observer.UpdatePlayerStats(playerStats);
         }
     }
+
+    public List<string> GetPlayerNames()
+    {
+        return _playerStats.Keys.ToList();
+    }
     
 }
