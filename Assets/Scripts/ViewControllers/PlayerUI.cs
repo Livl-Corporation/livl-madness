@@ -21,6 +21,7 @@ public class PlayerUI : NetworkBehaviour
     
     [SerializeField] private GameObject leaderboardCanvas;
     [SerializeField] private Leaderboard leaderboard;
+    [SerializeField] private GameObject controls;
     
     [Header("Chat system")]
     [SerializeField] public GameObject chatPanel;
@@ -53,6 +54,7 @@ public class PlayerUI : NetworkBehaviour
         smartphoneCanvas.SetActive(false);
         paused = true;
         endGame = true;
+        controls.SetActive(false);
         pauseOverlay.SetActive(true);
     }
     

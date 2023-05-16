@@ -206,6 +206,7 @@ MonoBehaviour:
   messageController: {fileID: 0}
   leaderboardCanvas: {fileID: 3665166236640811310}
   leaderboard: {fileID: 9215943625852566288}
+  controls: {fileID: 3191782810636052667}
   chatPanel: {fileID: 4294866489288816370}
   chatText: {fileID: 4981713398731180636}
   chatInput: {fileID: 8825299692363671607}
