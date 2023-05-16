@@ -1,0 +1,302 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8894608775559225091
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2694020593657130487}
+  - component: {fileID: 849562641661440218}
+  - component: {fileID: 9069334807337278274}
+  m_Layer: 0
+  m_Name: Quiche_lorraine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2694020593657130487
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8894608775559225091}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 35.101, y: 0.061, z: 56.603382}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8396872165795324910}
+  - {fileID: 569334513081114740}
+  - {fileID: 4615769202586844909}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &849562641661440218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8894608775559225091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea12a060b51a3f40902f2446c926392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDisplayedName: Quiche Lorraine
+--- !u!114 &9069334807337278274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8894608775559225091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  _assetId: 1378711694
+  serverOnly: 0
+  visible: 0
+  hasSpawned: 0
+--- !u!1001 &30425429612201887
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2694020593657130487}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.6306014
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 14.388105
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 14.388105
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.04699707
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.036000002
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.500094
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5000934
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.49990636
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.4999062
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0.021
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_Name
+      value: quiche_lorraine (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+--- !u!4 &569334513081114740 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+  m_PrefabInstance: {fileID: 30425429612201887}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5153306404515027206
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2694020593657130487}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.6306014
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 14.388105
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 14.388105
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.04699707
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.098000005
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.48488656
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5148516
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.51467025
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.4846932
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0.021
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -93.435
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_Name
+      value: quiche_lorraine (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+--- !u!4 &4615769202586844909 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+  m_PrefabInstance: {fileID: 5153306404515027206}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8290308612998628357
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2694020593657130487}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.6306012
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 14.388105
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 14.388105
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.12000275
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.139
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+      propertyPath: m_Name
+      value: quiche_lorraine
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+--- !u!4 &8396872165795324910 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 834328100df4fc14eb9fadf09e9bf3fd, type: 3}
+  m_PrefabInstance: {fileID: 8290308612998628357}
+  m_PrefabAsset: {fileID: 0}
