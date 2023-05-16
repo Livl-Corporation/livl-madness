@@ -84,7 +84,7 @@ public class LobbyController : MonoBehaviour
 		}
 		catch (Exception e)
 		{
-			SetError("An error happened : " + e.Message);	
+			SetError("Erreur : " + e.Message);	
 		}
 		
     }
@@ -99,7 +99,7 @@ public class LobbyController : MonoBehaviour
 		}
 		catch (Exception e)
 		{
-			SetError("An error happened : " + e.Message);
+			SetError("Erreur : " + e.Message);
 		}
 		
     }
