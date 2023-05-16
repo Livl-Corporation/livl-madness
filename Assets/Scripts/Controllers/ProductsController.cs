@@ -18,6 +18,14 @@ public class ProductsController : NetworkBehaviour
     
     private readonly SyncDictionary<string, List<GameObject>> spawnedProducts = new SyncDictionary<string, List<GameObject>>();
     private readonly SyncList<string> outOfStockProducts = new SyncList<string>();
+    
+    public void Start()
+    {
+        if (scanListController == null)
+        {
+            scanListController = FindObjectOfType<ScanListController>();
+        }
+    }
 
     private void RegisterSpawnedProduct(GameObject product)
     {
