@@ -2633,6 +2633,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1269365901244075768}
     m_Modifications:
+    - target: {fileID: 1144846214344625224, guid: 44b0d533e822641339ceba623088077a, type: 3}
+      propertyPath: m_text
+      value: Rupture de stock
+      objectReference: {fileID: 0}
     - target: {fileID: 2098124867608779332, guid: 44b0d533e822641339ceba623088077a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2735,6 +2739,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1269365901244075768}
     m_Modifications:
+    - target: {fileID: 1144846214344625224, guid: 44b0d533e822641339ceba623088077a, type: 3}
+      propertyPath: m_text
+      value: Rupture de stock
+      objectReference: {fileID: 0}
     - target: {fileID: 2098124867608779332, guid: 44b0d533e822641339ceba623088077a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2837,6 +2845,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1269365901244075768}
     m_Modifications:
+    - target: {fileID: 1144846214344625224, guid: 44b0d533e822641339ceba623088077a, type: 3}
+      propertyPath: m_text
+      value: Rupture de stock
+      objectReference: {fileID: 0}
     - target: {fileID: 2098124867608779332, guid: 44b0d533e822641339ceba623088077a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3072,6 +3084,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1269365901244075768}
     m_Modifications:
+    - target: {fileID: 1144846214344625224, guid: 44b0d533e822641339ceba623088077a, type: 3}
+      propertyPath: m_text
+      value: Rupture de stock
+      objectReference: {fileID: 0}
     - target: {fileID: 2098124867608779332, guid: 44b0d533e822641339ceba623088077a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
