@@ -23,7 +23,6 @@ public class PlayerSetup : NetworkBehaviour
     private ChatBehaviour chatBehaviour;
     private PlayerUI playerUI;
     
-    
     // Start is called before the first frame update
     private void Start()
     {
@@ -44,6 +43,7 @@ public class PlayerSetup : NetworkBehaviour
         RegisterPlayerStats(playerName);
         Player.LocalPlayerName = playerName;
         GameManager.SetSceneCameraActive(false);
+        EnableAudioListener();
         InitPlayerUI();
         InitChatBehaviour();
     }
@@ -51,8 +51,15 @@ public class PlayerSetup : NetworkBehaviour
     private void DisableComponents()
     {
         foreach (Behaviour component in componentsToDisable)
-        {
             component.enabled = false;
+    }
+    
+    private void EnableAudioListener()
+    {
+        foreach (Behaviour component in componentsToDisable)
+        {
+            if (component is Camera)
+                component.GetComponent<AudioListener>().enabled = true;
         }
     }
 
@@ -130,7 +137,6 @@ public class PlayerSetup : NetworkBehaviour
     
     private void RegisterPlayerStats(string playerName)
     {
-
         if (playerStatsController == null)
         {
             Debug.LogError("PlayerStatsController not found");
@@ -139,7 +145,6 @@ public class PlayerSetup : NetworkBehaviour
         
         // Ajout du joueur aux statistiques
         playerStatsController.CmdAddPlayer(playerName);
-
     }
     
 }
