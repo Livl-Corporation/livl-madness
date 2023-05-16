@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MovingSkybox : MonoBehaviour
@@ -17,6 +15,11 @@ public class MovingSkybox : MonoBehaviour
     void Update()
     {
         MoveSkybox();
-        Debug.Log("Skybox is moving");
+    }
+    
+    private void OnDestroy()
+    {
+        var skybox = RenderSettings.skybox;
+        skybox.SetFloat("_Rotation", 0);
     }
 }
