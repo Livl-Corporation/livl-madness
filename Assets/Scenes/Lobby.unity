@@ -1917,7 +1917,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3219,8 +3219,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -79.284, y: 467}
-  m_SizeDelta: {x: 356.338, y: 98.463}
+  m_AnchoredPosition: {x: -78.25283, y: 467.44193}
+  m_SizeDelta: {x: 358.4004, y: 97.5791}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8867259011860506913
 CanvasRenderer:
