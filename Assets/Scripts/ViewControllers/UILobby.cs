@@ -89,10 +89,13 @@ namespace UI
 
 	    public void BeginGame()
 	    {
+		    PlayerNetwork.localPlayerNetwork.BeginGame();
+	    }
+
+	    public void HideCanvas()
+	    {
 		    lobbyCanvas.enabled = false;
 		    UICanvas.enabled = false;
-		    
-		    PlayerNetwork.localPlayerNetwork.BeginGame();
 	    }
     }
 }

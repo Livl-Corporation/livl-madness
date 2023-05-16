@@ -126,6 +126,7 @@ namespace Network
 
             op.completed += (AsyncOperation o) =>
             {
+                UILobby.instance.HideCanvas();
                 SceneManager.SetActiveScene(SceneManager.GetSceneByName("Livl"));
                 gameObject.GetComponent<PlayerSetup>().Init();
             };
