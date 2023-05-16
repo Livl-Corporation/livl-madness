@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class GameManager : NetworkBehaviour
 {
-    [SerializeField] private float skyboxRotationSpeed = 0.5f;
-
     public static GameManager Instance;
 
     [SerializeField]
@@ -23,6 +21,11 @@ public class GameManager : NetworkBehaviour
         Debug.LogError("More than one GameManager in scene.");
     }
 
+    private void Start()
+    {
+        sceneCamera.GetComponent<AudioListener>().enabled = false;
+    }
+
     public override void OnStartServer()
     {
         // Start game after 1 second
@@ -35,23 +38,10 @@ public class GameManager : NetworkBehaviour
         FindObjectOfType<MessageBroadcaster>().StartMessageLoop();
     }
 
-    private void Update()
-    {
-        MoveSkybox();
-    }
-    
     public Timer GetTimer()
     {
         return timer;
     }
-
-    private void MoveSkybox()
-    {
-        var skybox = RenderSettings.skybox;
-        var rotation = skybox.GetFloat("_Rotation");
-        skybox.SetFloat("_Rotation", rotation + skyboxRotationSpeed * Time.deltaTime);
-    }
-
     public static void SetSceneCameraActive(bool isActive)
     {
         if(Instance.sceneCamera == null)
@@ -78,11 +68,5 @@ public class GameManager : NetworkBehaviour
             playerUI.TimerFinished();
         }
 
-    }
-    
-    private void OnDestroy()
-    {
-        var skybox = RenderSettings.skybox;
-        skybox.SetFloat("_Rotation", 0);
     }
 }

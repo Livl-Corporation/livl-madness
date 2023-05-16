@@ -8,7 +8,8 @@ using Mirror;
 public class ProductsController : NetworkBehaviour
 {
     
-    [SerializeField] private int productRespawnDelay = 20;   
+    [SerializeField] private int productRespawnMinDelay = 30;  
+    [SerializeField] private int productRespawnMaxDelay = 120;
     
     [SerializeField] private List<GameObject> items = new List<GameObject>();
     [SerializeField] private List<ShelfController> shelves = new List<ShelfController> ();
@@ -17,6 +18,16 @@ public class ProductsController : NetworkBehaviour
     
     private readonly SyncDictionary<string, List<GameObject>> spawnedProducts = new SyncDictionary<string, List<GameObject>>();
     private readonly SyncList<string> outOfStockProducts = new SyncList<string>();
+    
+    private Queue<GameObject> itemSpawnList;
+    
+    public void Start()
+    {
+        if (scanListController == null)
+        {
+            scanListController = FindObjectOfType<ScanListController>();
+        }
+    }
 
     private void RegisterSpawnedProduct(GameObject product)
     {
@@ -29,12 +40,13 @@ public class ProductsController : NetworkBehaviour
         }
         
         var productName = storeItem.displayedName;
+
+        var productList = new List<GameObject> {product};
         
-        if (!spawnedProducts.ContainsKey(productName))
-        {
-            spawnedProducts.Add(productName, new List<GameObject>());
-        }
-        spawnedProducts[productName] = new List<GameObject> {product};
+        if (spawnedProducts.TryGetValue(productName, out var list))
+            productList.AddRange(list);
+        
+        spawnedProducts[productName] = productList;
     }
     
     [Command(requiresAuthority = false)]
@@ -60,7 +72,7 @@ public class ProductsController : NetworkBehaviour
     }
     
     [Command(requiresAuthority = false)]
-    public void SetInStock(string productName)
+    private void SetInStock(string productName)
     {
         if (!spawnedProducts.ContainsKey(productName))
         {
@@ -79,13 +91,20 @@ public class ProductsController : NetworkBehaviour
 
     private IEnumerator DelayedProductSpawn(string productName)
     {
-        yield return new WaitForSeconds(productRespawnDelay);
+        yield return new WaitForSeconds(UnityEngine.Random.Range(productRespawnMinDelay, productRespawnMaxDelay));
         SetInStock(productName);
     }
     
     public List<string> GetOutOfStockProducts()
     {
         return new List<string>(outOfStockProducts);
+    }
+
+    public GameObject GetProductToSpawn()
+    {
+        var productToSpawn = itemSpawnList.Dequeue();
+        itemSpawnList.Enqueue(productToSpawn);
+        return productToSpawn;
     }
 
     private void Awake()
@@ -107,46 +126,29 @@ public class ProductsController : NetworkBehaviour
         base.OnStartServer();
 
         var rnd = new System.Random();
+        
         var availableShelves = new Queue<ShelfController>(shelves
             .OrderBy(a => rnd.Next()).ToList());
-
-        // Randomly place each item;
-        items.ForEach(item =>
-        {
-
-            if (availableShelves.Count <= 0)
-            {
-                Debug.LogError("No more shelves space left for prducts ...");
-                return;
-            }
-
-            var selectedShelve = availableShelves.Dequeue();
-            var spawnedProduct = selectedShelve.SpawnProduct(item);
-            
-            // Register spawned product
-            if (spawnedProduct != null)
-            {
-                RegisterSpawnedProduct(spawnedProduct);
-            }
-            
-            // If space left on selected shelve, put it again in the list
-            if (selectedShelve.IsEmptySpaceAvailable())
-                availableShelves.Enqueue(selectedShelve);
-            
-        });
         
-        Debug.Log("Product initialisation finished !");
+        itemSpawnList = new Queue<GameObject>(items
+            .OrderBy(a => rnd.Next()).ToList());
         
+        var spawnedItems = availableShelves
+            .SelectMany((shelf) => shelf.FillShelf(this))
+            .ToList();
+        
+        spawnedItems.ForEach(RegisterSpawnedProduct);
+
     }
-    
-    public static GameObject ProductSpawnDelegate(SpawnMessage msg, GameObject item)
+
+    private static GameObject ProductSpawnDelegate(SpawnMessage msg, GameObject item)
     {
         var spawnedObject = Instantiate(item, msg.position, msg.rotation);
         spawnedObject.name = item.name;
         return spawnedObject;
     }
-    
-    public static void ProductDestroyDelegate(GameObject spawnedObject)
+
+    private static void ProductDestroyDelegate(GameObject spawnedObject)
     {
         Destroy(spawnedObject);
     }

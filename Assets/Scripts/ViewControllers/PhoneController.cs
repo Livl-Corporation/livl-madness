@@ -15,6 +15,7 @@ public class PhoneController : MonoBehaviour, ITimerObserver, IPlayerStatsObserv
     [SerializeField] public MessageController messageController;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private ProductListController productListController;
+    [SerializeField] private GameObject logo;
     
     [Header("Screens")]
     [SerializeField] private GameObject productListScreen;
@@ -90,6 +91,7 @@ public class PhoneController : MonoBehaviour, ITimerObserver, IPlayerStatsObserv
     public void SetScreenTitle(string title)
     {
         screenTitle.text = title;
+        logo.SetActive(string.IsNullOrEmpty(title));
     }
 
     public void UpdateTimer(string time)

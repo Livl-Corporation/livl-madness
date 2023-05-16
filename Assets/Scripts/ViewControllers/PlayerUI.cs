@@ -41,7 +41,6 @@ public class PlayerUI : NetworkBehaviour
     private void Start()
     {
         networkManager = NetworkManager.singleton;
-        Debug.Log("isOwned" + isOwned);
         pauseOverlay.SetActive(false);
         leaderboardCanvas.SetActive(false);
         smartphoneCanvas.SetActive(true);
@@ -71,7 +70,7 @@ public class PlayerUI : NetworkBehaviour
     
     void HandlePauseInput()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !endGame)
+        if (Input.GetKeyDown(KeyCode.Escape) && !endGame && !chatInput.isFocused)
         {
             TogglePauseMenu();
         }

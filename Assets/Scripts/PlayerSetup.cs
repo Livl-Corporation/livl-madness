@@ -26,6 +26,11 @@ public class PlayerSetup : NetworkBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        if (playerStatsController == null)
+        {
+            playerStatsController = FindObjectOfType<PlayerStatsController>();
+        }
+        
         var playerName = DefinePlayerName();
 
         if (!isLocalPlayer)
@@ -38,15 +43,23 @@ public class PlayerSetup : NetworkBehaviour
         RegisterPlayerStats(playerName);
         Player.LocalPlayerName = playerName;
         GameManager.SetSceneCameraActive(false);
+        EnableAudioListener();
         InitPlayerUI();
-
+        InitChatBehaviour();
     }
 
     private void DisableComponents()
     {
         foreach (Behaviour component in componentsToDisable)
-        {
             component.enabled = false;
+    }
+    
+    private void EnableAudioListener()
+    {
+        foreach (Behaviour component in componentsToDisable)
+        {
+            if (component is Camera)
+                component.GetComponent<AudioListener>().enabled = true;
         }
     }
 
@@ -72,7 +85,15 @@ public class PlayerSetup : NetworkBehaviour
 
     private string DefinePlayerName()
     {
-        var playerName = "Player" + GetComponent<NetworkIdentity>().netId;
+        var usedPlayerNames = playerStatsController.GetPlayerNames();
+        var playerName = PlayerPrefs.GetString("Username", "Player" + GetComponent<NetworkIdentity>().netId);
+        
+        // Check if player name is used
+        while (usedPlayerNames.Contains(playerName))
+        {
+            playerName += "1";
+        }
+        
         transform.name = playerName;
         return playerName;
     }
@@ -92,9 +113,6 @@ public class PlayerSetup : NetworkBehaviour
             return;
         }
         
-        // Configuration du chat
-        InitChatBehaviour();
-
         playerUI.SetPlayer(GetComponent<Player>());
 }
 
@@ -117,38 +135,8 @@ public class PlayerSetup : NetworkBehaviour
         chatBehaviour.OnStartAuthority();
     }
     
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T) && chatBehaviour != null)
-        {
-            // Select the chatBehaviour input field to set focus on it
-            StopAllCoroutines();
-            chatBehaviour.chatPanel.SetActive(true);
-            chatBehaviour.chatInput.Select();
-            chatBehaviour.chatInput.ActivateInputField();
-            PlayerUI.isPaused = true;
-        }
-        else if (chatBehaviour != null && !chatBehaviour.chatInput.isFocused && !PlayerUI.isPaused && chatBehaviour.chatPanel.activeSelf)
-        {
-            // If the player is not interacting with the input field and has not pressed any key recently,
-            // start a coroutine to hide the chat panel after a delay
-            StartCoroutine(HideChatAfterDelay());
-        }
-    }
-    
-    private IEnumerator HideChatAfterDelay()
-    {
-        yield return new WaitForSeconds(chatBehaviour.hideChatPanelAfterDelay);
-        chatBehaviour.chatPanel.SetActive(false);
-    }
-
     private void RegisterPlayerStats(string playerName)
     {
-        if (playerStatsController == null)
-        {
-            playerStatsController = FindObjectOfType<PlayerStatsController>();
-        }
-        
         if (playerStatsController == null)
         {
             Debug.LogError("PlayerStatsController not found");
@@ -157,7 +145,6 @@ public class PlayerSetup : NetworkBehaviour
         
         // Ajout du joueur aux statistiques
         playerStatsController.CmdAddPlayer(playerName);
-
     }
     
 }

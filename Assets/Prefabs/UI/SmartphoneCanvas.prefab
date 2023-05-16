@@ -916,7 +916,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Shopping list
+  m_text: Liste de courses
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 08716f7b9b08e4d338333643e4e3e52d, type: 2}
   m_sharedMaterial: {fileID: 6306152652128369894, guid: 08716f7b9b08e4d338333643e4e3e52d, type: 2}
@@ -1001,7 +1001,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3307274109612445861
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1102,7 +1102,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Resume
+  m_text: Reprendre
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 55ba0235c5b474c90a28a640b1f49433, type: 2}
   m_sharedMaterial: {fileID: -1324399849698427691, guid: 55ba0235c5b474c90a28a640b1f49433, type: 2}
@@ -1225,6 +1225,7 @@ MonoBehaviour:
   messageController: {fileID: 746864559362294727}
   scoreText: {fileID: 8509201371413349995}
   productListController: {fileID: 8572822910479937323}
+  logo: {fileID: 4755661309647625163}
   productListScreen: {fileID: 7450623235125515094}
   pauseScreen: {fileID: 2710551009452779681}
   screenTransitionTime: 0.25
@@ -1398,8 +1399,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -92.49997, y: 205.08}
-  m_SizeDelta: {x: 22.5345, y: 22.5345}
+  m_AnchoredPosition: {x: -67.21411, y: 206.71046}
+  m_SizeDelta: {x: 73.1063, y: 19.2736}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4030143189749557013
 CanvasRenderer:
@@ -1429,9 +1430,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7babd96352e8a49e39afd391cc2b25e8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 15b5421c5b08d43a683a5d094f336488, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1505,7 +1506,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a80cb185587af4a158cf6a4cbc5cd2ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 46e7c869ee1ad944790d695aceaff9f7, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1996,7 +1997,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1b7d65f4041ee4176b8ca96415a59c11, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7b0239b64274a2e4399b5bc972b89b4c, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2027,11 +2028,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.11764706}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0.23529412}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 0.39215687}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0.3137255}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.3137255}
     m_ColorMultiplier: 1.11
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2216,8 +2217,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
+    m_PressedColor: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -2556,9 +2557,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Leave
-
-'
+  m_text: Quitter
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 55ba0235c5b474c90a28a640b1f49433, type: 2}
   m_sharedMaterial: {fileID: -1324399849698427691, guid: 55ba0235c5b474c90a28a640b1f49433, type: 2}
@@ -2634,6 +2633,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1269365901244075768}
     m_Modifications:
+    - target: {fileID: 1144846214344625224, guid: 44b0d533e822641339ceba623088077a, type: 3}
+      propertyPath: m_text
+      value: Rupture de stock
+      objectReference: {fileID: 0}
     - target: {fileID: 2098124867608779332, guid: 44b0d533e822641339ceba623088077a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2736,6 +2739,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1269365901244075768}
     m_Modifications:
+    - target: {fileID: 1144846214344625224, guid: 44b0d533e822641339ceba623088077a, type: 3}
+      propertyPath: m_text
+      value: Rupture de stock
+      objectReference: {fileID: 0}
     - target: {fileID: 2098124867608779332, guid: 44b0d533e822641339ceba623088077a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2838,6 +2845,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1269365901244075768}
     m_Modifications:
+    - target: {fileID: 1144846214344625224, guid: 44b0d533e822641339ceba623088077a, type: 3}
+      propertyPath: m_text
+      value: Rupture de stock
+      objectReference: {fileID: 0}
     - target: {fileID: 2098124867608779332, guid: 44b0d533e822641339ceba623088077a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3073,6 +3084,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1269365901244075768}
     m_Modifications:
+    - target: {fileID: 1144846214344625224, guid: 44b0d533e822641339ceba623088077a, type: 3}
+      propertyPath: m_text
+      value: Rupture de stock
+      objectReference: {fileID: 0}
     - target: {fileID: 2098124867608779332, guid: 44b0d533e822641339ceba623088077a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

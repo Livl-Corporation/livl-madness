@@ -8,6 +8,7 @@ public class PlayerScanController : MonoBehaviour
     [SerializeField] private ScanListController scanListController;
     [SerializeField] private PlayerStatsController playerStatsController;
     [SerializeField] private ProductsController productsController;
+    [SerializeField] private ChatBehaviour chatBehaviour;
 
     [Header("Sounds")] 
     [SerializeField] private AudioSource audioSource;
@@ -33,6 +34,11 @@ public class PlayerScanController : MonoBehaviour
         {
             productsController = FindObjectOfType<ProductsController>();
         }
+        
+        if (chatBehaviour == null)
+        {
+            chatBehaviour = FindObjectOfType<ChatBehaviour>();
+        }
 
     }
 
@@ -44,6 +50,7 @@ public class PlayerScanController : MonoBehaviour
             var coroutine = DelayedSound(failSound);
             StartCoroutine(coroutine);
             playerStatsController.CmdDecrementScore(Player.LocalPlayerName);
+            chatBehaviour.CmdSendSystemMessage($"<color=red>{Player.LocalPlayerName} s'est trompé en scannant {itemName} !</color>");
             return false;
         }
         
@@ -53,6 +60,7 @@ public class PlayerScanController : MonoBehaviour
         scanListController.CmdScanArticle(itemName, gameObject.name);
         playerStatsController.CmdIncrementScore(Player.LocalPlayerName);
         productsController.CmdSetOutOfStock(itemName);
+        chatBehaviour.CmdSendSystemMessage($"<color=green>{Player.LocalPlayerName} a scanné {itemName} !</color>");
         
         return true;
     }
