@@ -40,12 +40,13 @@ public class ProductsController : NetworkBehaviour
         }
         
         var productName = storeItem.displayedName;
+
+        var productList = new List<GameObject> {product};
         
-        if (!spawnedProducts.ContainsKey(productName))
-        {
-            spawnedProducts.Add(productName, new List<GameObject>());
-        }
-        spawnedProducts[productName] = new List<GameObject> {product};
+        if (spawnedProducts.TryGetValue(productName, out var list))
+            productList.AddRange(list);
+        
+        spawnedProducts[productName] = productList;
     }
     
     [Command(requiresAuthority = false)]
