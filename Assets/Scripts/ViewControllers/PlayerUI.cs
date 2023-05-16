@@ -71,7 +71,7 @@ public class PlayerUI : NetworkBehaviour
     
     void HandlePauseInput()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !endGame)
+        if (Input.GetKeyDown(KeyCode.Escape) && !endGame && !chatInput.isFocused)
         {
             TogglePauseMenu();
         }

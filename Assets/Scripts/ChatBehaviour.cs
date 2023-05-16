@@ -37,34 +37,72 @@ public class ChatBehaviour : NetworkBehaviour
         
         ShowChatPanel(); 
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && IsChatFocused())
+        {
+            UnfocusChat();
+            HideChatPanel();
+            return;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            // Select the chatBehaviour input field to set focus on it
+            ShowChatPanel();
+            chatInput.placeholder.GetComponent<TextMeshProUGUI>().text = "Écrivez votre message ici...";
+            chatInput.Select();
+            chatInput.ActivateInputField();
+            PlayerUI.isPaused = true;
+        }
+        
+    }
     
+    public bool IsChatFocused()
+    {
+        return chatInput.isFocused;
+    }
+
     /**
      * Activate the chatPanel of all clients when a message is received
      */
     private void ShowChatPanel()
     {
-        chatPanel.SetActive(true);
+        chatPanel.GetComponent<CanvasGroup>().LeanAlpha(1f, 0.5f);
         StartCoroutine(HideChatPanel());
     }
 
-    private IEnumerator HideChatPanel()
+    public IEnumerator HideChatPanel()
     {
         yield return new WaitForSeconds(hideChatPanelAfterDelay);
-        if(!PlayerUI.isPaused) // if PlayerUI is pause means that the user is typing a message
-            chatPanel.SetActive(false);
+        if (!PlayerUI.isPaused) // if PlayerUI is pause means that the user is typing a message
+        {
+            chatPanel.GetComponent<CanvasGroup>().LeanAlpha(0.5f, 0.5f);
+        }
+    }
+
+    public void UnfocusChat()
+    {
+        PlayerUI.isPaused = false;
+        GUI.FocusControl(null);
+        chatInput.placeholder.GetComponent<TextMeshProUGUI>().text = "Appuyez sur 'T' pour parler";
+        chatInput.DeactivateInputField();
+        chatInput.text = string.Empty;
     }
 
     [Client]
     public void Send(string message)
     {
-        PlayerUI.isPaused = false;
+        
+        UnfocusChat();
+        HideChatPanel();
+
         if (!Input.GetKeyDown(KeyCode.Return)) { return; }
         if (string.IsNullOrWhiteSpace(message)) { return; }
         
         CmdSendMessage(message, Player.LocalPlayerName);
 
-        chatInput.text = string.Empty;
-        chatInput.placeholder.GetComponent<TextMeshProUGUI>().text = "Press 'T' to chat";
     }
 
     [Command]
