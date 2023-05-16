@@ -14552,7 +14552,6 @@ GameObject:
   - component: {fileID: 1655889365}
   - component: {fileID: 1655889364}
   - component: {fileID: 1655889363}
-  - component: {fileID: 1655889366}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -14569,7 +14568,7 @@ TerrainCollider:
   m_GameObject: {fileID: 1655889362}
   m_Material: {fileID: 0}
   m_Enabled: 1
-  m_TerrainData: {fileID: 15600000, guid: 201ac2d46a23610428efa17a7e738725, type: 2}
+  m_TerrainData: {fileID: 15600000, guid: b54ef860974c6994f95fba39655d6ab7, type: 2}
   m_EnableTreeColliders: 0
 --- !u!218 &1655889364
 Terrain:
@@ -14613,58 +14612,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655889362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45.7, y: -0.0005, z: -92.1}
+  m_LocalPosition: {x: -1.8, y: -0.0005, z: -92.1}
   m_LocalScale: {x: 1, y: 1, z: 0.38416713}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1655889366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1655889362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 910771039, guid: f56d46228aee4734f9114056c53bb57e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  surfacevecs: []
-  tdataFloat: []
-  terrainData: {fileID: 15600000, guid: 201ac2d46a23610428efa17a7e738725, type: 2}
-  xStart: 0
-  zStart: 0
-  roadSurface: {fileID: 0}
-  surfaceMesh: {fileID: 0}
-  surfaceCollider: {fileID: 0}
-  terrainDataStored: []
-  terrainChanges: []
-  terrainTrees: []
-  detailInstances: []
-  detailInstanceStarts: 
-  surfaceObjects: []
-  terrainTestPoints: []
-  splatData: []
-  addedTrees: []
-  holes: []
-  terrainHeightsBackup: []
-  terrainTreesBackup: []
-  terrainDetailBackup: []
-  terrainSplatBackup: []
-  detailInstanceStartsBackUp: 
-  heightmapFlag: 0
-  splatmapFlag: 0
-  treeFlag: 0
-  detailFlag: 0
-  holesFlag: 0
-  terrainDone: 0
-  backupFlagNotification: 0
-  ignore: 0
-  backupObject: {fileID: 0}
-  terrain: {fileID: 0}
 --- !u!1 &1657423987
 GameObject:
   m_ObjectHideFlags: 0
