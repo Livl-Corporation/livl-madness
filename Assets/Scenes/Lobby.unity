@@ -245,7 +245,7 @@ MonoBehaviour:
   usernameInput: {fileID: 7037045339797398518}
   errorText: {fileID: 9146045471939777615}
   hourText: {fileID: 4361501889509739185}
-  networkManagerHUD: {fileID: 302304350}
+  networkManagerHUD: {fileID: 0}
 --- !u!82 &232506138
 AudioSource:
   m_ObjectHideFlags: 0
@@ -342,17 +342,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &302304350 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9016440220411718646, guid: 1caeaeef5b34d3241b3ca26221e1ff6d, type: 3}
-  m_PrefabInstance: {fileID: 421372880}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6442dc8070ceb41f094e44de0bf87274, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &421372880
 PrefabInstance:
   m_ObjectHideFlags: 0
