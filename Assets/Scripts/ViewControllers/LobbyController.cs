@@ -85,6 +85,7 @@ public class LobbyController : MonoBehaviour
 		catch (Exception e)
 		{
 			SetError("Erreur : " + e.Message);	
+			Debug.LogError(e);
 		}
 		
     }
@@ -100,6 +101,7 @@ public class LobbyController : MonoBehaviour
 		catch (Exception e)
 		{
 			SetError("Erreur : " + e.Message);
+			Debug.LogError(e);
 		}
 		
     }
