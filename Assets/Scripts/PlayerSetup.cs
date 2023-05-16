@@ -38,15 +38,22 @@ public class PlayerSetup : NetworkBehaviour
         RegisterPlayerStats(playerName);
         Player.LocalPlayerName = playerName;
         GameManager.SetSceneCameraActive(false);
+        EnableAudioListener();
         InitPlayerUI();
-
     }
 
     private void DisableComponents()
     {
         foreach (Behaviour component in componentsToDisable)
-        {
             component.enabled = false;
+    }
+    
+    private void EnableAudioListener()
+    {
+        foreach (Behaviour component in componentsToDisable)
+        {
+            if (component is Camera)
+                component.GetComponent<AudioListener>().enabled = true;
         }
     }
 
