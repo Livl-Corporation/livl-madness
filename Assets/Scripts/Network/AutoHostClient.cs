@@ -15,7 +15,10 @@ namespace Network
             if (Application.isBatchMode) // headless build
             {
                 Debug.Log($"=== Server build ===");
+                
+                networkManager.StartServer();
                 Debug.Log($"Listening to port {(networkManager.transport as SimpleWebTransport).port}");
+                
                 return;
             }
             
