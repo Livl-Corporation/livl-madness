@@ -118,7 +118,7 @@ public class ProductsController : NetworkBehaviour
         var rnd = new System.Random();
         var availableShelves = new Queue<ShelfController>(shelves
             .OrderBy(a => rnd.Next()).ToList());
-
+        
         // Randomly place each item;
         items.ForEach(item =>
         {
