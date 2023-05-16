@@ -71,7 +71,7 @@ public class ChatBehaviour : NetworkBehaviour
     {
         var canvasGroup = chatPanel.GetComponent<CanvasGroup>();
             
-        if (!canvasGroup || canvasGroup.alpha == 1f) return;
+        if (!canvasGroup) return;
             
         canvasGroup.LeanAlpha(1f, 0.5f);
         StartCoroutine(HideChatPanel());
@@ -83,7 +83,7 @@ public class ChatBehaviour : NetworkBehaviour
         if (!PlayerUI.isPaused) // if PlayerUI is pause means that the user is typing a message
         {
             var canvasGroup = chatPanel.GetComponent<CanvasGroup>();
-            if (canvasGroup && canvasGroup.alpha != 0.5f) 
+            if (canvasGroup) 
                 chatPanel.GetComponent<CanvasGroup>().LeanAlpha(0.5f, 0.5f);
         }
     }
