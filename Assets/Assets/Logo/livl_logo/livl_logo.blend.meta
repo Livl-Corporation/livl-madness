@@ -1,24 +1,9 @@
 fileFormatVersion: 2
-guid: 54f5ca2142b22804980f59a4f09bb936
+guid: a73af0a4d96d65e4bbe33e8d8f8b4396
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: tic_tac_back
-    second: {fileID: 2800000, guid: 3d9cd04d466ba364c9fd3e2d2b3a4822, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: tic_tac_side
-    second: {fileID: 2800000, guid: b730cdc365d5cfb4e9afc412fe0d3caf, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: tic_tac_top
-    second: {fileID: 2800000, guid: f97fe42df3e741c49bdd74bb187f597b, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -47,7 +32,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
