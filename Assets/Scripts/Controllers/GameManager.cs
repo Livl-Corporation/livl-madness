@@ -1,3 +1,4 @@
+using System;
 using Mirror;
 using UnityEngine;
 
@@ -21,6 +22,11 @@ public class GameManager : NetworkBehaviour
         }
 
         Debug.LogError("More than one GameManager in scene.");
+    }
+
+    private void Start()
+    {
+        sceneCamera.GetComponent<AudioListener>().enabled = false;
     }
 
     public override void OnStartServer()
