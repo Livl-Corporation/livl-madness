@@ -114,7 +114,7 @@ public class ChatBehaviour : NetworkBehaviour
     [ClientRpc]
     private void RpcHandleMessage(string playerName, string message)
     {
-        string formattedMessage = $"\n<color=blue><b>[{playerName}]</b></color>: {message}";
+        var formattedMessage = $"\n<b>{playerName}</b>: <color=#DDD>{message}</color>";
         OnMessage?.Invoke(formattedMessage);
     }
     
@@ -127,7 +127,7 @@ public class ChatBehaviour : NetworkBehaviour
     [ClientRpc]
     private void RpcHandleSystemMessage(string message)
     {
-        string formattedMessage = $"\n<color=blue><b><i>{message}</i></b></color>";
+        var formattedMessage = $"\n{message}";
         OnMessage?.Invoke(formattedMessage);
     }
 }

@@ -1339,8 +1339,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 67630fd0057f6472ba275ff630d6cae5, type: 2}
-  m_sharedMaterial: {fileID: 4626558205928569274, guid: 67630fd0057f6472ba275ff630d6cae5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 74ddb8d8adeba424b8add02717292987, type: 2}
+  m_sharedMaterial: {fileID: 36946376128988469, guid: 74ddb8d8adeba424b8add02717292987, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1507,7 +1507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9043168273644741348, guid: dd4961b9d624bd944920e75a69aae2c1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd4961b9d624bd944920e75a69aae2c1, type: 3}
