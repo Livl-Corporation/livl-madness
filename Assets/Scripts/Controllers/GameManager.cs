@@ -8,6 +8,8 @@ public class GameManager : NetworkBehaviour
     [SerializeField]
     private GameObject sceneCamera;
     
+    [SerializeField] private AudioSource backgroundMusic;
+    
     [SerializeField] private Timer timer;
 
     private void Awake()
@@ -61,8 +63,10 @@ public class GameManager : NetworkBehaviour
     [ClientRpc]
     public void RpcOnTimerFinished()
     {
-        var playerUI = FindObjectOfType<PlayerUI>();
+        backgroundMusic.Stop();
         
+        var playerUI = FindObjectOfType<PlayerUI>();
+
         if (playerUI != null)
         {
             playerUI.TimerFinished();
