@@ -13578,7 +13578,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   timeLeft: 4
-  timeFormat: ss
+  timeFormat: '%s'
 --- !u!114 &1521662697
 MonoBehaviour:
   m_ObjectHideFlags: 0
