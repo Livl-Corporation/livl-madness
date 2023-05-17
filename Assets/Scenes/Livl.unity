@@ -2220,7 +2220,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0.1
-  timeLeft: 10
+  timeLeft: 180
   timeFormat: mm\:ss
 --- !u!114 &286596230
 MonoBehaviour:
@@ -12147,7 +12147,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0.1
-  timeLeft: 10
+  timeLeft: 4
   timeFormat: ss
 --- !u!114 &1521662697
 MonoBehaviour:
