@@ -7,14 +7,25 @@ public class LivlNetworkRoomManager : NetworkRoomManager
     {
         var playerStatsController = FindObjectOfType<PlayerStatsController>();
 
-        if (playerStatsController == null)
+        if (playerStatsController != null)
         {
-            Debug.LogError("PlayerStatsController not found");
-            return;
+            playerStatsController.CmdRemovePlayer(conn.identity.netId);
+        }
+        
+        var roomController = FindObjectOfType<RoomController>();
+
+        if (roomController != null)
+        {
+            roomController.CmdRemovePlayer(conn.identity.netId);
+        }
+        
+        var playerRoomController = FindObjectOfType<PlayerRoomSpawn>();
+
+        if (playerRoomController != null)
+        {
+            playerRoomController.CmdUnspawnPlayerPrefab();
         }
 
-        playerStatsController.CmdRemovePlayer(conn.identity.netId);
-        
         base.OnRoomServerDisconnect(conn);
     }
 }
