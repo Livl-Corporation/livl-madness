@@ -12,14 +12,14 @@
 
 # Table of contents
 
-- [🎮 Game specification](#Game-specification)
-- [🕹️ How to play ?](#How-to-play-?)
-  - [🙋 Play in solo](#Play-in-solo)
-  - [🏚️ Play in local multiplayer](Play-in-local-multiplayer)
-  - [🌍 Play in multiplayer over the internet](#Play-in-multiplayer-over-the-internet)
-  - [🙅 Troubleshooting](#Troubleshooting)
-- [⚙️ Technical Specification](#Technical-Specification)
-- [💖 Credits](#Credits)
+- [🎮 Game specification](#game-specification)
+- [🕹️ How to play ?](#how-to-play-?)
+  - [🙋 Play in solo](#play-in-solo)
+  - [🏚️ Play in local multiplayer](#play-in-local-multiplayer)
+  - [🌍 Play in multiplayer over the internet](#play-in-multiplayer-over-the-internet)
+  - [🙅 Troubleshooting](#troubleshooting)
+- [⚙️ Technical Specification](#technical-Specification)
+- [💖 Credits](#credits)
 
 # 🎮 Game specification
 
