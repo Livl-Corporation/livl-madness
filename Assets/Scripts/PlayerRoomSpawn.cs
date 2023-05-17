@@ -42,8 +42,7 @@ public class PlayerRoomSpawn : NetworkBehaviour
         Debug.Log("PlayerPrefab spawned");
     }
 
-    [Command(requiresAuthority = false)]
-    public void CmdUnspawnPlayerPrefab()
+    public void UnspawnPlayerPrefab()
     {
         if (spawnedPlayers.Count == 0)
         {

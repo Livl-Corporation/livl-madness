@@ -28,9 +28,8 @@ public class PlayerStatsController : NetworkBehaviour, IPlayerStatsObservable
         
         _playerStats.Add(playerName, new PlayerStat(playerName, playerNetId));
     }
-
-    [Command(requiresAuthority = false)]
-    public void CmdRemovePlayer(uint playerNetId)
+    
+    public void RemovePlayer(uint playerNetId)
     {
         
         var playerStat = _playerStats.Values.FirstOrDefault(a => a.NetId == playerNetId);
