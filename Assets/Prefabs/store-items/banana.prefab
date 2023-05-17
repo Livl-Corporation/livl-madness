@@ -115,8 +115,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ea12a060b51a3f40902f2446c926392, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  itemDisplayedName: Bananne
+  m_EditorClassIdentifier:
+  itemDisplayedName: Banane
 --- !u!1 &2673760281838294057
 GameObject:
   m_ObjectHideFlags: 0

@@ -1071,6 +1071,7 @@ GameObject:
   - component: {fileID: 3478778934246621402}
   - component: {fileID: 5275255088881190090}
   - component: {fileID: 735231913571136445}
+  - component: {fileID: 795956835352387885}
   m_Layer: 0
   m_Name: LeaderboardCanvas
   m_TagString: Untagged
@@ -1159,3 +1160,15 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &795956835352387885
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9043168273644741348}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

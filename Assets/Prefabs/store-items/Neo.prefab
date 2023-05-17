@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea12a060b51a3f40902f2446c926392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDisplayedName: Neo (oreo lidl)
+  itemDisplayedName: Neo
 --- !u!1 &6321234869296648311
 GameObject:
   m_ObjectHideFlags: 0
