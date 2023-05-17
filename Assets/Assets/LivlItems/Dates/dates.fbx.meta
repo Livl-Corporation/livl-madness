@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: dates_front
-    second: {fileID: 2800000, guid: 022bd5983910c9c46984a073fde85b8d, type: 3}
+    second: {fileID: 2800000, guid: 58e5c02f4fbc740448a72f634be2ecbf, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: dates_side
-    second: {fileID: 2800000, guid: 6e9d365a3cc07274db9210901cc81df5, type: 3}
+    second: {fileID: 2800000, guid: d030944dea507ad4b87d84d69e020f92, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
