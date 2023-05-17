@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Interfaces;
+using Mirror;
 using TMPro;
 using UnityEngine;
 
@@ -8,7 +9,6 @@ public class StartTimerView : MonoBehaviour, ITimerObserver
 {
     
     [SerializeField] private TMP_Text startTimerText;
-    [SerializeField] private ITimerObservable timerObservable;
     
     public void UpdateTimer(string time)
     {
@@ -18,12 +18,17 @@ public class StartTimerView : MonoBehaviour, ITimerObserver
     // Start is called before the first frame update
     void Start()
     {
-        if (timerObservable != null)
+        var gameManager = FindObjectOfType<GameManager>();
+        
+        if (gameManager == null)
         {
-            timerObservable.AddObserver(this);
-        }   
+            Debug.LogError("StartTimerView: GameManager not found");
+            return;
+        }
+        
+        gameManager.GetStartTimer().AddObserver(this);
     }
-
+    
     public void OnTimerFinished()
     {
         startTimerText.text = "GO";
