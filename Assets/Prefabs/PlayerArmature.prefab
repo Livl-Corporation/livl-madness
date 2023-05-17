@@ -1505,7 +1505,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: d485c9cc15e7b944ba09d626252f15c4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2166,6 +2166,7 @@ MonoBehaviour:
   - {fileID: 4416926081852918493}
   - {fileID: 7990268367222747987}
   - {fileID: 6114772045017858437}
+  - {fileID: 5836573403214798025}
   remoteLayerName: RemotePlayer
   playerUIPrefab: {fileID: 2819854752636084169, guid: bfee0ce4e9ad9ed46861ce969e8ef775, type: 3}
   playerUIInstance: {fileID: 2819854752636084169, guid: bfee0ce4e9ad9ed46861ce969e8ef775, type: 3}
@@ -2566,6 +2567,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scanListController: {fileID: 0}
   playerStatsController: {fileID: 0}
+  productsController: {fileID: 0}
+  chatBehaviour: {fileID: 0}
   audioSource: {fileID: 3775695176468190791}
   volume: 0.3
   successSound: {fileID: 8300000, guid: 1746b3bcdb6034095ae528ec584f175b, type: 3}
@@ -3119,7 +3122,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5600155721534331628}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &7871705939740034703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3697,7 +3700,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: d485c9cc15e7b944ba09d626252f15c4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

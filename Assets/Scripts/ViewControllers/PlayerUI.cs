@@ -41,7 +41,6 @@ public class PlayerUI : NetworkBehaviour
     private void Start()
     {
         networkManager = NetworkManager.singleton;
-        Debug.Log("isOwned" + isOwned);
         pauseOverlay.SetActive(false);
         leaderboardCanvas.SetActive(false);
         smartphoneCanvas.SetActive(true);

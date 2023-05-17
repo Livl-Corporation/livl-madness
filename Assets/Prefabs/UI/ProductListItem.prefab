@@ -240,7 +240,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Out of stock
+  m_text: Rupture de stock
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 20b1302bea58a4de0a1941023961d5cb, type: 2}
   m_sharedMaterial: {fileID: -3111691581342566771, guid: 20b1302bea58a4de0a1941023961d5cb, type: 2}

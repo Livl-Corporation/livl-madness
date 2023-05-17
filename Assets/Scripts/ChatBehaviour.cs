@@ -61,7 +61,7 @@ public class ChatBehaviour : NetworkBehaviour
     
     public bool IsChatFocused()
     {
-        return chatInput.isFocused;
+        return chatInput != null && chatInput.isFocused;
     }
 
     /**
@@ -69,7 +69,11 @@ public class ChatBehaviour : NetworkBehaviour
      */
     private void ShowChatPanel()
     {
-        chatPanel.GetComponent<CanvasGroup>().LeanAlpha(1f, 0.5f);
+        var canvasGroup = chatPanel.GetComponent<CanvasGroup>();
+            
+        if (!canvasGroup) return;
+            
+        canvasGroup.LeanAlpha(1f, 0.5f);
         StartCoroutine(HideChatPanel());
     }
 
@@ -78,7 +82,9 @@ public class ChatBehaviour : NetworkBehaviour
         yield return new WaitForSeconds(hideChatPanelAfterDelay);
         if (!PlayerUI.isPaused) // if PlayerUI is pause means that the user is typing a message
         {
-            chatPanel.GetComponent<CanvasGroup>().LeanAlpha(0.5f, 0.5f);
+            var canvasGroup = chatPanel.GetComponent<CanvasGroup>();
+            if (canvasGroup) 
+                chatPanel.GetComponent<CanvasGroup>().LeanAlpha(0.5f, 0.5f);
         }
     }
 
@@ -114,7 +120,7 @@ public class ChatBehaviour : NetworkBehaviour
     [ClientRpc]
     private void RpcHandleMessage(string playerName, string message)
     {
-        string formattedMessage = $"\n<color=blue><b>[{playerName}]</b></color>: {message}";
+        var formattedMessage = $"\n<b>{playerName}</b>: <color=#DDD>{message}</color>";
         OnMessage?.Invoke(formattedMessage);
     }
     
@@ -127,7 +133,7 @@ public class ChatBehaviour : NetworkBehaviour
     [ClientRpc]
     private void RpcHandleSystemMessage(string message)
     {
-        string formattedMessage = $"\n<color=blue><b><i>{message}</i></b></color>";
+        var formattedMessage = $"\n{message}";
         OnMessage?.Invoke(formattedMessage);
     }
 }

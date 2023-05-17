@@ -12,7 +12,7 @@ public class LobbyController : MonoBehaviour
 	
 	[Header("Buttons")]
 	[SerializeField]
-    public Button hostButton;
+    public Button hostButton, quitButton;
 	    
 	[Header("Input")]
 	[SerializeField] public TMP_InputField usernameInput;
@@ -41,8 +41,15 @@ public class LobbyController : MonoBehaviour
 	    SetError("");
 
 	    if (Application.platform == RuntimePlatform.WebGLPlayer)
-			hostButton.gameObject.SetActive(false);
-
+	    {
+		    hostButton.gameObject.SetActive(false);
+	    }
+	    
+	    if (Application.platform == RuntimePlatform.WebGLPlayer || Application.isEditor )
+	    {
+		    quitButton.gameObject.SetActive(false);
+	    }
+	    
 	    if (!Application.isPlaying) return;
 	    var username = PlayerPrefs.GetString("Username");
 	    if (!string.IsNullOrEmpty(username))
@@ -77,7 +84,8 @@ public class LobbyController : MonoBehaviour
 		}
 		catch (Exception e)
 		{
-			SetError("An error happened : " + e.Message);	
+			SetError("Erreur : " + e.Message);	
+			Debug.LogError(e);
 		}
 		
     }
@@ -92,7 +100,8 @@ public class LobbyController : MonoBehaviour
 		}
 		catch (Exception e)
 		{
-			SetError("An error happened : " + e.Message);
+			SetError("Erreur : " + e.Message);
+			Debug.LogError(e);
 		}
 		
     }
