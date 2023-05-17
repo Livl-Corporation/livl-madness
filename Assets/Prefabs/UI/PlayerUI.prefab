@@ -1249,6 +1249,7 @@ GameObject:
   - component: {fileID: 6215745281581146073}
   - component: {fileID: 6917307582939696603}
   - component: {fileID: 4338120944374925040}
+  - component: {fileID: 5612934057643158772}
   m_Layer: 5
   m_Name: Chat
   m_TagString: Untagged
@@ -1293,13 +1294,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4294866489288816370}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.003921569}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1366,6 +1367,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5612934057643158772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4294866489288816370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1 &4368915444646969240
 GameObject:
   m_ObjectHideFlags: 0
@@ -1710,8 +1724,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 103.85498, y: -57.8664}
-  m_SizeDelta: {x: 207.71, y: 224.4909}
+  m_AnchoredPosition: {x: 103.85498, y: -85.05592}
+  m_SizeDelta: {x: 207.71, y: 170.11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &267572476075700324
 CanvasRenderer:
