@@ -55,7 +55,7 @@ MonoBehaviour:
   offlineScene: Assets/Scenes/LobbLivl.unity
   onlineScene: Assets/Scenes/Room.unity
   transport: {fileID: 3032535145747475926}
-  networkAddress: localhost
+  networkAddress: chouffe.tgimenez.fr
   maxConnections: 64
   authenticator: {fileID: 0}
   playerPrefab: {fileID: 4416926081852918481, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
