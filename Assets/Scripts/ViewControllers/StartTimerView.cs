@@ -44,6 +44,10 @@ public class StartTimerView : MonoBehaviour, ITimerObserver
     {
         startTimerText.text = "GO";
         audioSource.PlayOneShot(timerFinishedSound);
+        
+        // animate opatity to 0
+        startTimerText.GetComponent<CanvasGroup>().LeanAlpha(0, 1).setEaseInOutQuint();
+
         StartCoroutine(DelayedDestroy());
     }
     
