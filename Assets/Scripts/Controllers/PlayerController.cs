@@ -81,7 +81,7 @@ public class PlayerController : NetworkBehaviour
 
     private void HideCursor()
     {
-        if (PlayerUI.isPaused || !PlayerUI.isInGame)
+        if (PlayerUI.isPaused || !PlayerUI.isCursorCaptured)
         {
             if (Cursor.lockState != CursorLockMode.None)
             {

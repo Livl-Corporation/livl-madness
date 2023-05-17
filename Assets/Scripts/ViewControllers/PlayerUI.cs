@@ -8,6 +8,7 @@ public class PlayerUI : NetworkBehaviour
 
     private static bool paused = false;
     private static bool inGame = false;
+    private static bool captureCursor = true;
     
     private Player player;
     private NetworkManager networkManager;
@@ -33,6 +34,11 @@ public class PlayerUI : NetworkBehaviour
     }
     public static bool isInGame => inGame;
 
+    public static bool isCursorCaptured
+    {
+        get => captureCursor;
+    }
+    
     private void Awake()
     {
         phoneController.AddPlayerUI(this);
@@ -58,6 +64,7 @@ public class PlayerUI : NetworkBehaviour
         smartphoneCanvas.SetActive(false);
         paused = true;
         inGame = false;
+        captureCursor = false;
         pauseOverlay.SetActive(true);
     }
     
