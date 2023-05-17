@@ -38,8 +38,6 @@ public class GameManager : NetworkBehaviour, ITimerObserver
         if (hasGameStarted)
         {
             RpcOnTimerFinished();
-            // TODO : ici timer de 30 sec
-            // au bout de 30 secondes, ils dégagent tout le monde  s'il en reste
             Invoke(nameof(RejectAllPlayersAndLoadRoomScene), 30f);
             return;
         }
@@ -52,7 +50,7 @@ public class GameManager : NetworkBehaviour, ITimerObserver
     [Server]
     public void RejectAllPlayersAndLoadRoomScene()
     {
-        if (NetworkManager.singleton.numPlayers > 0) // étrange, a voir si c'est ca, a mediter...
+        if (NetworkManager.singleton.numPlayers > 0)
         {
             Debug.Log("Restart du serveur...");
             NetworkManager.singleton.StopServer();
