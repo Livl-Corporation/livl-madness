@@ -3328,6 +3328,7 @@ MonoBehaviour:
   buttonText: {fileID: 147809765}
   hintText: {fileID: 1154426498}
   networkRoomPlayer: {fileID: 0}
+  hourText: {fileID: 1293295983}
   readyButtonSoloText: "D\xE9marrer la partie"
   readyButtonMultiText: "Pr\xEAt"
   unreadyButtonText: Annuler
