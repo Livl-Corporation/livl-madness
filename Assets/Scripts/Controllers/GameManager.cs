@@ -81,8 +81,18 @@ public class GameManager : NetworkBehaviour, ITimerObserver
         
         gameTimer.AddObserver(this);
         gameTimer.StartTimer();
+        
         FindObjectOfType<MessageBroadcaster>().StartMessageLoop();
+        
         CmdGameStart();
+        
+        var playerUI = FindObjectOfType<PlayerUI>();
+
+        if (playerUI != null)
+        {
+            playerUI.StartGame();
+        }
+        
     }
 
     [Command(requiresAuthority = false)]

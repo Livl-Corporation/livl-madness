@@ -7,7 +7,7 @@ public class PlayerUI : NetworkBehaviour
 {
 
     private static bool paused = false;
-    private static bool endGame = false;
+    private static bool inGame = false;
     
     private Player player;
     private NetworkManager networkManager;
@@ -31,7 +31,7 @@ public class PlayerUI : NetworkBehaviour
         get => paused;
         set => paused = value;
     }
-    public static bool isEndGame => endGame;
+    public static bool isInGame => inGame;
 
     private void Awake()
     {
@@ -46,13 +46,18 @@ public class PlayerUI : NetworkBehaviour
         smartphoneCanvas.SetActive(true);
         paused = false;
     }
+
+    public void StartGame()
+    {
+        inGame = true;
+    }
     
     public void TimerFinished()
     {
         leaderboardCanvas.SetActive(true);
         smartphoneCanvas.SetActive(false);
         paused = true;
-        endGame = true;
+        inGame = false;
         pauseOverlay.SetActive(true);
     }
     
@@ -70,7 +75,7 @@ public class PlayerUI : NetworkBehaviour
     
     void HandlePauseInput()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !endGame && !chatInput.isFocused)
+        if (Input.GetKeyDown(KeyCode.Escape) && isInGame && !chatInput.isFocused)
         {
             TogglePauseMenu();
         }
