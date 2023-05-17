@@ -17,10 +17,11 @@
   - [🙋 Play in solo](#Play-in-solo)
   - [🏚️ Play in local multiplayer](Play-in-local-multiplayer)
   - [🌍 Play in multiplayer over the internet](#Play-in-multiplayer-over-the-internet)
+  - [🙅 Troubleshooting](#Troubleshooting)
 - [⚙️ Technical Specification](#Technical-Specification)
 - [💖 Credits](#Credits)
 
-# Game specification
+# 🎮 Game specification
 
 ## Objective
 
@@ -44,16 +45,16 @@ We are providing server for Windows and Linux operating system.
 
 More informations about theses in the [how to play](#How-to-play-?) section.
 
-# How to play ?
+# 🕹️ How to play ?
 
 Firstly, you need to download your client or server build on our [Release page](https://github.com/Livl-Corporation/livl-madness/releases).
 
-## Play in solo
+## 🙋 Play in solo
 
 To play in solo, you simply need to download the client for your operating system and run it.
 Then start a party and enjoy !
 
-## Play in local multiplayer
+## 🏚️ Play in local multiplayer
 
 To play in multiplayer using your local network be sure that all the player computer are connected to the same network.
 
@@ -64,7 +65,10 @@ To get your local IP address, you can use the `ipconfig` command on Windows or `
 The other player need to click on the gear button on the top right of the screen and enter the host IP address.
 Then choose a nickname and click on "Rejoindre une partie".
 
-## Play in multiplayer over the internet
+## 🌍 Play in multiplayer over the internet
+
+A public server is available at the following address: `chouffe.tgimenez.fr`.
+If you cannot join, it means that a game is already in progress or that the server is turned off. Good luck guessing 🤓!
 
 To play accross the internet, you need to have a server running on a computer connected to the internet.
 
@@ -78,11 +82,11 @@ The port of the game is the default miror port `7778`. You need to open this por
 
 Once the server is running, you can share your [public IP](https://whatismyipaddress.com/) address to the players.
 
-## Troubleshooting
+## 🙅 Troubleshooting
 
 If by any chance, there is an issue when you start your game _(scan not working, crashing etc...)_, especially if this is the second game you play, do not esitate to restart EVERYTHING (client & server)...
 
-# Technical Specification
+# ⚙️ Technical Specification
 
 ## Game development
 
@@ -92,7 +96,7 @@ The game is developped using [Unity](https://unity.com/fr) as game engine, and [
 
 Almost all the product assets in the game has been done by hand with [Blender](https://www.blender.org/) by taking pictures of real products in Eckbolsheim Livl store. Thanks to our photographer who has his gallery full of product wonderfull product pictures !
 
-# Credits
+# 💖 Credits
 
 Here are our four Livl enineer who worked on this wonderful project ! Do not hesitate them to thanks them for their hard work and dedication to this amazing project !
 

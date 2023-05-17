@@ -8,6 +8,8 @@
 
 [Site web de Livl Madness](https://livl.franck-g.fr/)
 
+🇬🇧 This readme is available in english [just here](../README.md) !
+
 # Table des matières
 
 - [🎮 Spécifications du jeu](#Spécifications-du-jeu)
@@ -15,10 +17,11 @@
   - [🙋 Jouer en solo](#Jouer-en-solo)
   - [🏚️ Jouer en multijoueur local](#Jouer-en-multijoueur-local)
   - [🌍 Jouer en multijoueur via Internet](#Jouer-en-multijoueur-via-Internet)
+  - [🙅 Dépannage](#Dépannage)
 - [⚙️ Spécifications techniques](#Spécifications-techniques)
 - [💖 Crédits](#Crédits)
 
-# Spécifications du jeu
+# 🎮 Spécifications du jeu
 
 ## Objectif
 
@@ -42,16 +45,16 @@ Nous fournissons un serveur pour les systèmes d'exploitation Windows et Linux.
 
 Plus d'informations à ce sujet dans la section [comment jouer](#Comment-jouer-?) .
 
-# Comment jouer ?
+# 🕹️ Comment jouer ?
 
 Tout d'abord, vous devez télécharger votre client ou votre serveur à partir de notre [page de publication](https://github.com/Livl-Corporation/livl-madness/releases).
 
-## Jouer en solo
+## 🙋 Jouer en solo
 
 Pour jouer en solo, il vous suffit de télécharger le client correspondant à votre système d'exploitation et de l'exécuter.
 Ensuite, lancez une partie et amusez-vous !
 
-## Jouer en multijoueur local
+## 🏚️ Jouer en multijoueur local
 
 Pour jouer en multijoueur en utilisant votre réseau local, assurez-vous que tous les ordinateurs des joueurs sont connectés au même réseau.
 
@@ -62,7 +65,10 @@ Pour obtenir votre adresse IP locale, vous pouvez utiliser la commande `ipconfig
 Les autres joueurs doivent cliquer sur le bouton d'engrenage en haut à droite de l'écran et entrer l'adresse IP de l'hôte.
 Ensuite, choisissez un pseudonyme et cliquez sur "Rejoindre une partie".
 
-## Jouer en multijoueur via Internet
+## 🌍 Jouer en multijoueur via Internet
+
+Un serveur public est disponible à l'adresse suivante : `chouffe.tgimenez.fr`.
+Si vous ne pouvez pas rejoindre, c'est qu'une partie est déjà en cours ou que le serveur et éteint. Bonne chance pour deviner 🤓 !
 
 Pour jouer à travers Internet, vous devez avoir un serveur en cours d'exécution sur un ordinateur connecté à Internet.
 
@@ -76,7 +82,11 @@ Le port du jeu est le port miroir par défaut `7778`. Vous devez ouvrir ce port 
 
 Une fois que le serveur est en cours d'exécution, vous pouvez partager votre adresse IP publique à partir de [ce site](https://whatismyipaddress.com/) aux joueurs.
 
-# Spécifications techniques
+## 🙅 Dépannage
+
+Si par hasard, il y a un problème lorsque vous démarrez votre jeu (le scan ne fonctionne pas, des plantages, etc...), surtout si c'est le deuxième jeu auquel vous jouez, n'hésitez pas à redémarrer TOUT (client et serveur)...
+
+# ⚙️ Spécifications techniques
 
 ## Développement du jeu
 
@@ -86,7 +96,7 @@ Le jeu est développé en utilisant [Unity](https://unity.com/fr) comme moteur d
 
 Presque toutes les ressources de produits du jeu ont été réalisées à la main avec [Blender](https://www.blender.org/) en prenant des photos de produits réels dans le magasin Livl d'Eckbolsheim. Merci à notre photographe qui possède une galerie remplie de magnifiques photos de produits !
 
-# Crédits
+# 💖 Crédits
 
 Voici nos quatre ingénieurs Livl qui ont travaillé sur ce merveilleux projet ! N'hésitez pas à les remercier pour leur travail acharné et leur dévouement à ce projet incroyable !
 
