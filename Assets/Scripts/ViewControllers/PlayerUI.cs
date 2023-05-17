@@ -62,13 +62,41 @@ public class PlayerUI : NetworkBehaviour
     
     public void TimerFinished()
     {
-        leaderboardCanvas.SetActive(true);
-        smartphoneCanvas.SetActive(false);
         controls.SetActive(false);
         paused = true;
         inGame = false;
         captureCursor = false;
         pauseOverlay.SetActive(true);
+        CollapsePhone();
+        OpenLeaderboard();
+    }
+
+    private void OpenLeaderboard()
+    {
+        
+        // save previous leaderboard scale 
+        var previousScale = leaderboardCanvas.transform.localScale;
+        
+        // set leaderboard scale to 0
+        leaderboardCanvas.transform.localScale = Vector3.zero;
+        
+        // set leaderboard opacity to 0
+        var canvasGroup = leaderboardCanvas.GetComponent<CanvasGroup>();
+        canvasGroup.alpha = 0;
+        
+        // set leaderboard active
+        leaderboardCanvas.SetActive(true);
+        
+        // animate leaderboard
+        LeanTween.scale(leaderboardCanvas, previousScale, 0.5f).setEaseOutExpo();
+        LeanTween.alphaCanvas(canvasGroup, 1, 0.5f).setEaseOutExpo();
+    }
+
+    private void CollapsePhone()
+    {
+        
+        smartphoneCanvas.LeanMoveY(-500, 1f).setEaseOutExpo();
+        
     }
     
     public void SetPlayer(Player _player)

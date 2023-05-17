@@ -278,6 +278,7 @@ GameObject:
   - component: {fileID: 6120144207830448343}
   - component: {fileID: 5351808255465056513}
   - component: {fileID: 8703681148639564653}
+  - component: {fileID: 5087295016488531108}
   m_Layer: 0
   m_Name: TimerText
   m_TagString: Untagged
@@ -402,6 +403,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!225 &5087295016488531108
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2610099198188176812}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2819854752636084169
 GameObject:
   m_ObjectHideFlags: 0
