@@ -67,6 +67,9 @@ Then choose a nickname and click on "Rejoindre une partie".
 
 ## 🌍 Play in multiplayer over the internet
 
+A public server is available at the following address: `chouffe.tgimenez.fr`.
+If you cannot join, it means that a game is already in progress or that the server is turned off. Good luck guessing 🤓!
+
 To play accross the internet, you need to have a server running on a computer connected to the internet.
 
 It can be a dedicated server build, or via the game client, by choosing "Héberger une partie" after entering your nickname.

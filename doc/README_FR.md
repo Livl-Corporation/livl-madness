@@ -67,6 +67,9 @@ Ensuite, choisissez un pseudonyme et cliquez sur "Rejoindre une partie".
 
 ## 🌍 Jouer en multijoueur via Internet
 
+Un serveur public est disponible à l'adresse suivante : `chouffe.tgimenez.fr`.
+Si vous ne pouvez pas rejoindre, c'est qu'une partie est déjà en cours ou que le serveur et éteint. Bonne chance pour deviner 🤓 !
+
 Pour jouer à travers Internet, vous devez avoir un serveur en cours d'exécution sur un ordinateur connecté à Internet.
 
 Il peut s'agir d'une version dédiée du serveur, ou via le client de jeu, en choisissant "Héberger une partie" après avoir entré votre pseudonyme.
