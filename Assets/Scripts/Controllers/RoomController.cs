@@ -106,8 +106,7 @@ public class RoomController : NetworkBehaviour, IRoomObservable
         FindObjectOfType<PlayerRoomSpawn>().SpawnPlayerPrefab(username);
     }
     
-    [Command(requiresAuthority = false)]
-    public void CmdRemovePlayer(uint id)
+    public void RemovePlayer(uint id)
     {
         if (!roomPlayers.ContainsKey(id))
         {
