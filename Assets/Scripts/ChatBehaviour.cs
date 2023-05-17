@@ -110,8 +110,8 @@ public class ChatBehaviour : NetworkBehaviour
         CmdSendMessage(message, Player.LocalPlayerName);
 
     }
-
-    [Command]
+.
+0    [Command]
     private void CmdSendMessage(string message, string playerName)
     {
         RpcHandleMessage(playerName, message);

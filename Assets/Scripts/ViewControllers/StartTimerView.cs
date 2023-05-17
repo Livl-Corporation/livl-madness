@@ -46,8 +46,13 @@ public class StartTimerView : MonoBehaviour, ITimerObserver
         audioSource.PlayOneShot(timerFinishedSound);
         
         // animate opatity to 0
-        startTimerText.GetComponent<CanvasGroup>().LeanAlpha(0, 1).setEaseInOutQuint();
+        var canvasGroup = startTimerText.GetComponent<CanvasGroup>();
 
+        if (canvasGroup != null)
+        {
+            canvasGroup.LeanAlpha(0, 1).setEaseInOutQuint();
+        }
+        
         StartCoroutine(DelayedDestroy());
     }
     
