@@ -12,14 +12,14 @@
 
 # Table des matières
 
-- [🎮 Spécifications du jeu](#Spécifications-du-jeu)
-- [🕹️ Comment jouer ?](#Comment-jouer-?)
-  - [🙋 Jouer en solo](#Jouer-en-solo)
-  - [🏚️ Jouer en multijoueur local](#Jouer-en-multijoueur-local)
-  - [🌍 Jouer en multijoueur via Internet](#Jouer-en-multijoueur-via-Internet)
-  - [🙅 Dépannage](#Dépannage)
-- [⚙️ Spécifications techniques](#Spécifications-techniques)
-- [💖 Crédits](#Crédits)
+- [🎮 Spécifications du jeu](#spécifications-du-jeu)
+- [🕹️ Comment jouer ?](#comment-jouer-?)
+  - [🙋 Jouer en solo](#jouer-en-solo)
+  - [🏚️ Jouer en multijoueur local](#jouer-en-multijoueur-local)
+  - [🌍 Jouer en multijoueur via Internet](#jouer-en-multijoueur-via-Internet)
+  - [🙅 Dépannage](#dépannage)
+- [⚙️ Spécifications techniques](#spécifications-techniques)
+- [💖 Crédits](#crédits)
 
 # 🎮 Spécifications du jeu
 

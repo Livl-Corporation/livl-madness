@@ -15,7 +15,7 @@
 - [🎮 Game specification](#game-specification)
 - [🕹️ How to play ?](#how-to-play-?)
   - [🙋 Play in solo](#play-in-solo)
-  - [🏚️ Play in local multiplayer](play-in-local-multiplayer)
+  - [🏚️ Play in local multiplayer](#play-in-local-multiplayer)
   - [🌍 Play in multiplayer over the internet](#play-in-multiplayer-over-the-internet)
   - [🙅 Troubleshooting](#troubleshooting)
 - [⚙️ Technical Specification](#technical-Specification)
