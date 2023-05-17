@@ -10,14 +10,25 @@ public class StartTimerView : MonoBehaviour, ITimerObserver
     
     [SerializeField] private TMP_Text startTimerText;
     
+    [SerializeField] private AudioClip timerCountdownSound;
+    [SerializeField] private AudioClip timerFinishedSound;
+    
+    private AudioSource audioSource;
+    
     public void UpdateTimer(string time)
     {
+        
+        if (startTimerText.text == time) return;
+        
         startTimerText.text = time;
+        audioSource.PlayOneShot(timerCountdownSound);
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        
         var gameManager = FindObjectOfType<GameManager>();
         
         if (gameManager == null)
@@ -32,6 +43,7 @@ public class StartTimerView : MonoBehaviour, ITimerObserver
     public void OnTimerFinished()
     {
         startTimerText.text = "GO";
+        audioSource.PlayOneShot(timerFinishedSound);
         StartCoroutine(DelayedDestroy());
     }
     
