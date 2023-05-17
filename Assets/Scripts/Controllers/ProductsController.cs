@@ -71,7 +71,6 @@ public class ProductsController : NetworkBehaviour
         
     }
     
-    [Command(requiresAuthority = false)]
     private void SetInStock(string productName)
     {
         if (!spawnedProducts.ContainsKey(productName))
