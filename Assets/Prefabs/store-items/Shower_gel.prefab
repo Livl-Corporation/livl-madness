@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea12a060b51a3f40902f2446c926392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDisplayedName: Gel douche
+  itemDisplayedName: Gel douche petit marseillais
 --- !u!114 &6040846260360433081
 MonoBehaviour:
   m_ObjectHideFlags: 0

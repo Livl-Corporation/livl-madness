@@ -15531,6 +15531,9 @@ MonoBehaviour:
   - {fileID: 943825921881234587, guid: 1d2bf7450d0beb4408775ab2e7ed40f8, type: 3}
   - {fileID: 4686924483727266106, guid: afe5f61084769c741931791c418716c3, type: 3}
   - {fileID: 1410795433473361439, guid: a57e3e28b05cb7947ad24487e49740ae, type: 3}
+  - {fileID: 7734884278429523865, guid: fd1461b94be866647a40a7bef07a0bbc, type: 3}
+  - {fileID: 3837587465288088010, guid: a636a7442e5197447b2148669dcbff78, type: 3}
+  - {fileID: 7266508060050638719, guid: 4447f8162fc5f07468f2946b07322ce4, type: 3}
   shelves:
   - {fileID: 1925121461}
   - {fileID: 1387917589}
@@ -20088,7 +20091,6 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0.1
-  skyboxRotationSpeed: 0.5
   sceneCamera: {fileID: 517037572}
   timer: {fileID: 2143361922}
 --- !u!4 &2143361921
