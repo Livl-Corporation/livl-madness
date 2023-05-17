@@ -26,7 +26,9 @@ public class Timer : NetworkBehaviour, ITimerObservable
                 isTimerRunning = false;
                 SetTimeLeft(timeLeft);
                 Debug.Log("Timer has finished");
-                FindObjectOfType<GameManager>().CmdNotifyTimerFinished();
+                
+                observers.ForEach(observer => observer.OnTimerFinished());
+                
             }
         }
     }

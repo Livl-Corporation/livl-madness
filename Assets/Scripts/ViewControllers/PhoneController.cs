@@ -34,6 +34,10 @@ public class PhoneController : MonoBehaviour, ITimerObserver, IPlayerStatsObserv
         return productListController;
     }
 
+    public void OnTimerFinished()
+    {
+    }
+
     public void AddPlayerUI(PlayerUI _playerUi)
     {
         messageController.AddPlayerUI(_playerUi);

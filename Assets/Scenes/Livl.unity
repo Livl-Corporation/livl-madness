@@ -20207,7 +20207,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0.1
-  timeLeft: 180
+  timeLeft: 10
 --- !u!114 &2143361923
 MonoBehaviour:
   m_ObjectHideFlags: 0

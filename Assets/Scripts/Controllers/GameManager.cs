@@ -1,7 +1,8 @@
+using Interfaces;
 using Mirror;
 using UnityEngine;
 
-public class GameManager : NetworkBehaviour
+public class GameManager : NetworkBehaviour, ITimerObserver
 {
     public static GameManager Instance;
 
@@ -23,6 +24,18 @@ public class GameManager : NetworkBehaviour
         Debug.LogError("More than one GameManager in scene.");
     }
 
+    public void UpdateTimer(string time)
+    {
+    }
+
+    public void OnTimerFinished()
+    {
+        if (isServer)
+        {
+            CmdNotifyTimerFinished();
+        }
+    }
+
     private void Start()
     {
         sceneCamera.GetComponent<AudioListener>().enabled = false;
@@ -36,6 +49,14 @@ public class GameManager : NetworkBehaviour
 
     public void StartGame()
     {
+        
+        if (timer == null)
+        {
+            Debug.LogError("Timer is null");
+            return;
+        }
+        
+        timer.AddObserver(this);
         timer.StartTimer();
         FindObjectOfType<MessageBroadcaster>().StartMessageLoop();
     }
