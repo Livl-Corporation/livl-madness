@@ -28,7 +28,6 @@ public class LivlNetworkRoomManager : NetworkRoomManager
 
         base.OnRoomServerDisconnect(conn);
         
-        // TODO : si y'a plus de joueurs, on revient a la scene Room
         if (numPlayers == 0)
         {
             Debug.Log("Restart du serveur...");
