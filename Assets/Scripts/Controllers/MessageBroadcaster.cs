@@ -99,8 +99,7 @@ public class MessageBroadcaster : NetworkBehaviour
         var delay = Random.Range(minMessageDelay, maxMessageDelay);
         Invoke(nameof(SendGameMessage), delay);
     }
-
-    [Command(requiresAuthority = false)]
+    
     public void StartMessageLoop()
     {
         ResetMessageQueue();

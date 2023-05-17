@@ -37,7 +37,7 @@ public class GameManager : NetworkBehaviour, ITimerObserver
         
         if (hasGameStarted)
         {
-            CmdNotifyTimerFinished();
+            RpcOnTimerFinished();
             return;
         }
         
@@ -84,16 +84,10 @@ public class GameManager : NetworkBehaviour, ITimerObserver
         
         FindObjectOfType<MessageBroadcaster>().StartMessageLoop();
         
-        CmdGameStart();
+        RpcGameStart();
         
     }
 
-    [Command(requiresAuthority = false)]
-    public void CmdGameStart()
-    {
-        RpcGameStart();
-    }
-    
     [ClientRpc]
     public void RpcGameStart()
     {
@@ -127,12 +121,6 @@ public class GameManager : NetworkBehaviour, ITimerObserver
         }
 
         Instance.sceneCamera.SetActive(isActive);
-    }
-
-    [Command(requiresAuthority = false)]
-    public void CmdNotifyTimerFinished()
-    {
-        RpcOnTimerFinished();
     }
 
     [ClientRpc]
