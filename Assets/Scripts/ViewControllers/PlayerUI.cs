@@ -7,7 +7,8 @@ public class PlayerUI : NetworkBehaviour
 {
 
     private static bool paused = false;
-    private static bool endGame = false;
+    private static bool inGame = false;
+    private static bool captureCursor = true;
     
     private Player player;
     private NetworkManager networkManager;
@@ -21,6 +22,8 @@ public class PlayerUI : NetworkBehaviour
     
     [SerializeField] private GameObject leaderboardCanvas;
     [SerializeField] private Leaderboard leaderboard;
+    [SerializeField] private GameObject controls;
+
     
     [Header("Chat system")]
     [SerializeField] public GameObject chatPanel;
@@ -31,8 +34,13 @@ public class PlayerUI : NetworkBehaviour
         get => paused;
         set => paused = value;
     }
-    public static bool isEndGame => endGame;
+    public static bool isInGame => inGame;
 
+    public static bool isCursorCaptured
+    {
+        get => captureCursor;
+    }
+    
     private void Awake()
     {
         phoneController.AddPlayerUI(this);
@@ -46,15 +54,44 @@ public class PlayerUI : NetworkBehaviour
         smartphoneCanvas.SetActive(true);
         paused = false;
     }
+
+    public void StartGame()
+    {
+        inGame = true;
+    }
     
     public void TimerFinished()
     {
-        leaderboardCanvas.SetActive(true);
-        smartphoneCanvas.SetActive(false);
+        controls.SetActive(false);
         paused = true;
-        endGame = true;
+        inGame = false;
+        captureCursor = false;
         pauseOverlay.SetActive(true);
+        smartphoneCanvas.SetActive(false);
+        OpenLeaderboard();
     }
+
+    private void OpenLeaderboard()
+    {
+        
+        // save previous leaderboard scale 
+        var previousScale = leaderboardCanvas.transform.localScale;
+        
+        // set leaderboard scale to 0
+        leaderboardCanvas.transform.localScale = Vector3.zero;
+        
+        // set leaderboard opacity to 0
+        var canvasGroup = leaderboardCanvas.GetComponent<CanvasGroup>();
+        canvasGroup.alpha = 0;
+        
+        // set leaderboard active
+        leaderboardCanvas.SetActive(true);
+        
+        // animate leaderboard
+        LeanTween.scale(leaderboardCanvas, previousScale, 0.5f).setEaseOutExpo();
+        LeanTween.alphaCanvas(canvasGroup, 1, 0.5f).setEaseOutExpo();
+    }
+    
     
     public void SetPlayer(Player _player)
     {
@@ -70,7 +107,7 @@ public class PlayerUI : NetworkBehaviour
     
     void HandlePauseInput()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !endGame && !chatInput.isFocused)
+        if (Input.GetKeyDown(KeyCode.Escape) && isInGame && !chatInput.isFocused)
         {
             TogglePauseMenu();
         }
@@ -94,7 +131,7 @@ public class PlayerUI : NetworkBehaviour
         {
             networkManager.StopClient();
         }
-        else
+        else if(!isServerOnly) // isHost
         {
             networkManager.StopHost();
         }

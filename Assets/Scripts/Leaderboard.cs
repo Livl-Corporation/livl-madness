@@ -34,12 +34,6 @@ public class Leaderboard : MonoBehaviour, IPlayerStatsObserver
         // Order the player stats by score
         playerStats = playerStats.OrderByDescending(x => x.Value.Score).ToDictionary(x => x.Key, x => x.Value);
 
-        // Remove all existing player score board items
-        foreach (Transform child in transformPlayerScoreBoardList)
-        {
-            Destroy(child.gameObject);
-        }
-
         // For each connected player
         var index = 0;
         foreach (var playerStat in playerStats)
@@ -68,14 +62,21 @@ public class Leaderboard : MonoBehaviour, IPlayerStatsObserver
     
     private void AddPlayerStat(string playerName)
     {
+        
+        if (_playerStatItems.ContainsKey(playerName)) return;
+        
         var playerStatItem = Instantiate(playerScoreBoardItem, transformPlayerScoreBoardList);
         _playerStatItems.Add(playerName, playerStatItem.GetComponent<PlayerScoreBoardItem>());
     }
 
     private void RemovePlayerStat(string playerName)
     {
+        
+        if (!_playerStatItems.ContainsKey(playerName)) return;
+        
         var playerStatItem = _playerStatItems[playerName];
         _playerStatItems.Remove(playerName);
+        
         Destroy(playerStatItem.gameObject);
     }    
     

@@ -69,6 +69,9 @@ public class ChatBehaviour : NetworkBehaviour
      */
     private void ShowChatPanel()
     {
+        if (chatPanel == null)
+            return;
+        
         var canvasGroup = chatPanel.GetComponent<CanvasGroup>();
             
         if (!canvasGroup) return;
@@ -124,7 +127,7 @@ public class ChatBehaviour : NetworkBehaviour
         OnMessage?.Invoke(formattedMessage);
     }
     
-    [Command]
+    [Command(requiresAuthority = false)]
     public void CmdSendSystemMessage(string message)
     {
         RpcHandleSystemMessage(message);

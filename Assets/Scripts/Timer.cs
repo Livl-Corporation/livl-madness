@@ -8,6 +8,8 @@ public class Timer : NetworkBehaviour, ITimerObservable
 {
     [SyncVar(hook = nameof(OnTimeLeftChanged))]
     [SerializeField] private float timeLeft = 150f;
+
+    [SerializeField] private string timeFormat = @"mm\:ss";
     
     private bool isTimerRunning = false;
     
@@ -17,7 +19,7 @@ public class Timer : NetworkBehaviour, ITimerObservable
     {
         if (isServer && isTimerRunning)
         {
-            if (timeLeft > 0)
+            if (timeLeft > 1)
             {
                 SetTimeLeft(timeLeft -= Time.deltaTime);
             }
@@ -26,7 +28,9 @@ public class Timer : NetworkBehaviour, ITimerObservable
                 isTimerRunning = false;
                 SetTimeLeft(timeLeft);
                 Debug.Log("Timer has finished");
-                FindObjectOfType<GameManager>().CmdNotifyTimerFinished();
+                
+                observers.ForEach(observer => observer.OnTimerFinished());
+                
             }
         }
     }
@@ -47,6 +51,7 @@ public class Timer : NetworkBehaviour, ITimerObservable
     public void StartTimer()
     {
         isTimerRunning = true;
+        NotifyObservers();
     }
 
     public bool IsTimerFinished()
@@ -72,6 +77,6 @@ public class Timer : NetworkBehaviour, ITimerObservable
     public string GetTimeLeftText()
     {
         TimeSpan timeSpan = TimeSpan.FromSeconds(timeLeft);
-        return timeSpan.ToString(@"mm\:ss");
+        return timeSpan.ToString(timeFormat);
     }
 }

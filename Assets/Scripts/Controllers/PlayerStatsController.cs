@@ -18,7 +18,7 @@ public class PlayerStatsController : NetworkBehaviour, IPlayerStatsObservable
     }
 
     [Command(requiresAuthority = false)]
-    public void CmdAddPlayer(string playerName)
+    public void CmdAddPlayer(string playerName, uint playerNetId)
     {
         if (_playerStats.ContainsKey(playerName))
         {
@@ -26,19 +26,21 @@ public class PlayerStatsController : NetworkBehaviour, IPlayerStatsObservable
             return;
         }
         
-        _playerStats.Add(playerName, new PlayerStat(playerName));
+        _playerStats.Add(playerName, new PlayerStat(playerName, playerNetId));
     }
-
-    [Command(requiresAuthority = false)]
-    public void CmdRemovePlayer(string playerName)
+    
+    public void RemovePlayer(uint playerNetId)
     {
-        if (!_playerStats.ContainsKey(playerName))
+        
+        var playerStat = _playerStats.Values.FirstOrDefault(a => a.NetId == playerNetId);
+        
+        if (playerStat == null)
         {
             Debug.LogError("Player not found");
             return;
         }
         
-        _playerStats.Remove(playerName);
+        _playerStats.Remove(playerStat.Username);
     }
     
     [Command(requiresAuthority = false)]
@@ -66,6 +68,7 @@ public class PlayerStatsController : NetworkBehaviour, IPlayerStatsObservable
         }
         
         var playerStat = _playerStats[playerName];
+        
         _playerStats[playerName] = new PlayerStat(playerStat, playerStat.Score - 1);
     }
 
@@ -89,9 +92,9 @@ public class PlayerStatsController : NetworkBehaviour, IPlayerStatsObservable
         }
     }
 
-    public List<string> GetPlayerNames()
+    public string GetUsername(uint netId)
     {
-        return _playerStats.Keys.ToList();
+        return _playerStats.Values.FirstOrDefault(a => a.NetId == netId)?.Username;
     }
     
 }

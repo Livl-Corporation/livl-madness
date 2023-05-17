@@ -64,7 +64,6 @@ public class MessageBroadcaster : NetworkBehaviour
         RpcReceiveMessage(RandomMessage(startMessages));
     }
     
-    [Command]
     public void SendGameMessage()
     {
 
@@ -99,8 +98,7 @@ public class MessageBroadcaster : NetworkBehaviour
         var delay = Random.Range(minMessageDelay, maxMessageDelay);
         Invoke(nameof(SendGameMessage), delay);
     }
-
-    [Command]
+    
     public void StartMessageLoop()
     {
         ResetMessageQueue();

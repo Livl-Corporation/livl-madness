@@ -103,7 +103,6 @@ public class ScanListController : NetworkBehaviour, IProductListObservable
         StartCoroutine(DelayedDeleteProduct(itemName));
     }
 
-    [Command(requiresAuthority = false)]
     public void CmdUpdateStock()
     {
         var outOfStockProducts = productsController.GetOutOfStockProducts();

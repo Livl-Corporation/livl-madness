@@ -1300,7 +1300,6 @@ GameObject:
   - component: {fileID: 2561476806693317443}
   - component: {fileID: 959329303632799821}
   - component: {fileID: 6489145176461333928}
-  - component: {fileID: 6926045519968136458}
   - component: {fileID: 5506690378060195164}
   m_Layer: 6
   m_Name: CanvasNameplate
@@ -1391,20 +1390,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6926045519968136458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3880288074550000581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f86913b7c6cc1064fbf9184d88325af8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerNameText: {fileID: 1424187958721221720}
-  parentTransform: {fileID: 3893294197879345259}
 --- !u!114 &5506690378060195164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1807,6 +1792,7 @@ GameObject:
   - component: {fileID: 6717103498096639098}
   - component: {fileID: 5836573403214798025}
   - component: {fileID: 6114772045017858437}
+  - component: {fileID: 429943827553213490}
   m_Layer: 6
   m_Name: PlayerArmature
   m_TagString: Player
@@ -2635,6 +2621,22 @@ MonoBehaviour:
   csvSeparator: 59
   minMessageDelay: 10
   maxMessageDelay: 100
+--- !u!114 &429943827553213490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416926081852918481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f86913b7c6cc1064fbf9184d88325af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0.1
+  playerNameText: {fileID: 1424187958721221720}
 --- !u!1 &4456592374060248320
 GameObject:
   m_ObjectHideFlags: 0

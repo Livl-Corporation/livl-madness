@@ -25,19 +25,6 @@ public class LobbyController : MonoBehaviour
 	
 	private void Start()
     {
-	    
-	    // Parse command line argument for server builds
-	    string[] args = System.Environment.GetCommandLineArgs();
-
-	    foreach (string argument in args)
-	    {
-		    if (argument == "--server")
-		    {
-			    NetworkManager.singleton.StartServer();
-			    return;
-		    }
-	    }
-	    
 	    SetError("");
 
 	    if (Application.platform == RuntimePlatform.WebGLPlayer)

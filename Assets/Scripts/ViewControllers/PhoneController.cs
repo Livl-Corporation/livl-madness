@@ -34,6 +34,10 @@ public class PhoneController : MonoBehaviour, ITimerObserver, IPlayerStatsObserv
         return productListController;
     }
 
+    public void OnTimerFinished()
+    {
+    }
+
     public void AddPlayerUI(PlayerUI _playerUi)
     {
         messageController.AddPlayerUI(_playerUi);
@@ -51,6 +55,8 @@ public class PhoneController : MonoBehaviour, ITimerObserver, IPlayerStatsObserv
 
         // Start on the product list screen
         Navigate(Phone.Screen.ProductList);
+        
+        timeText.text = DateTime.Now.ToString("HH:mm");
 
         SetupTimer();
         SetupScore();

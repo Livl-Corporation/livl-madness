@@ -1,14 +1,20 @@
+using Interfaces;
 using Mirror;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class GameManager : NetworkBehaviour
+public class GameManager : NetworkBehaviour, ITimerObserver
 {
     public static GameManager Instance;
 
     [SerializeField]
     private GameObject sceneCamera;
     
-    [SerializeField] private Timer timer;
+    [SerializeField] private AudioSource backgroundMusic;
+    
+    [SerializeField] private Timer gameTimer;
+    [SerializeField] private Timer startTimer;
+    private bool hasGameStarted = false;
 
     private void Awake()
     {
@@ -21,6 +27,36 @@ public class GameManager : NetworkBehaviour
         Debug.LogError("More than one GameManager in scene.");
     }
 
+    public void UpdateTimer(string time)
+    {
+    }
+
+    public void OnTimerFinished()
+    {
+        if (!isServer) return;
+        
+        if (hasGameStarted)
+        {
+            RpcOnTimerFinished();
+            Invoke(nameof(RejectAllPlayersAndLoadRoomScene), 30f);
+            return;
+        }
+        
+        hasGameStarted = true;
+        StartGame();
+        
+    }
+
+    [Server]
+    public void RejectAllPlayersAndLoadRoomScene()
+    {
+        if (NetworkManager.singleton.numPlayers > 0)
+        {
+            Debug.Log("Restart du serveur...");
+            NetworkManager.singleton.StopServer();
+        }
+    }
+    
     private void Start()
     {
         sceneCamera.GetComponent<AudioListener>().enabled = false;
@@ -28,19 +64,65 @@ public class GameManager : NetworkBehaviour
 
     public override void OnStartServer()
     {
-        // Start game after 1 second
-        Invoke(nameof(StartGame), 1f);
+        base.OnStartServer();
+        startTimer.AddObserver(this);
+        
+        // Start timer after 1s delay
+        Invoke(nameof(StartStartTimer), 1);
+    }
+    
+    private void StartStartTimer()
+    {
+        startTimer.StartTimer();
+    }
+    
+    public Timer GetStartTimer()
+    {
+        return startTimer;
     }
 
     public void StartGame()
     {
-        timer.StartTimer();
+        
+        if (gameTimer == null)
+        {
+            Debug.LogError("Timer is null");
+            return;
+        }
+        
+        gameTimer.AddObserver(this);
+        gameTimer.StartTimer();
+        
         FindObjectOfType<MessageBroadcaster>().StartMessageLoop();
+        
+        RpcGameStart();
+        
+    }
+
+    [ClientRpc]
+    public void RpcGameStart()
+    {
+        backgroundMusic.Play();
+        var startTimerView = FindObjectOfType<StartTimerView>();
+        if (startTimerView == null)
+        {
+            Debug.LogError("StartTimerView not found");
+            return;
+        }
+        startTimerView.OnTimerFinished();
+        
+        var playerUI = FindObjectOfType<PlayerUI>();
+
+        if (playerUI != null)
+        {
+            playerUI.StartGame();
+        }
+        
     }
 
     public Timer GetTimer()
     {
-        return timer;
+        return gameTimer;
     }
     public static void SetSceneCameraActive(bool isActive)
     {
@@ -52,17 +134,13 @@ public class GameManager : NetworkBehaviour
         Instance.sceneCamera.SetActive(isActive);
     }
 
-    [Command(requiresAuthority = false)]
-    public void CmdNotifyTimerFinished()
-    {
-        RpcOnTimerFinished();
-    }
-
     [ClientRpc]
     public void RpcOnTimerFinished()
     {
-        var playerUI = FindObjectOfType<PlayerUI>();
+        backgroundMusic.Stop();
         
+        var playerUI = FindObjectOfType<PlayerUI>();
+
         if (playerUI != null)
         {
             playerUI.TimerFinished();
