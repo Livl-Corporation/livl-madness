@@ -34,12 +34,6 @@ public class Leaderboard : MonoBehaviour, IPlayerStatsObserver
         // Order the player stats by score
         playerStats = playerStats.OrderByDescending(x => x.Value.Score).ToDictionary(x => x.Key, x => x.Value);
 
-        // Remove all existing player score board items
-        foreach (Transform child in transformPlayerScoreBoardList)
-        {
-            Destroy(child.gameObject);
-        }
-
         // For each connected player
         var index = 0;
         foreach (var playerStat in playerStats)
