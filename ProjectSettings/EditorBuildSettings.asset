@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LobbLivl.unity
     guid: 09dfed18286c60d4592919e9451faaf1
   - enabled: 1
+    path: Assets/Scenes/Room.unity
+    guid: 91c0035f6f1eb24a68c8f120585555aa
+  - enabled: 1
     path: Assets/Scenes/Livl.unity
     guid: ed51aed68170e074e893a23f9d7b876c
   m_configObjects: {}

@@ -31,14 +31,15 @@ public class PlayerSetup : NetworkBehaviour
             playerStatsController = FindObjectOfType<PlayerStatsController>();
         }
         
-        var playerName = DefinePlayerName();
-
         if (!isLocalPlayer)
         {
             DisableComponents();
             AssignRemoteLayer();
             return;
         }
+
+        var playerName = PlayerFrame.Username;
+        transform.name = playerName;
 
         RegisterPlayerStats(playerName);
         Player.LocalPlayerName = playerName;
@@ -78,26 +79,9 @@ public class PlayerSetup : NetworkBehaviour
         if (sceneCamera != null)
             sceneCamera.gameObject.SetActive(true);
 
-        playerStatsController.CmdRemovePlayer(transform.name);
         Destroy(playerUIInstance);
-        
     }
-
-    private string DefinePlayerName()
-    {
-        var usedPlayerNames = playerStatsController.GetPlayerNames();
-        var playerName = PlayerPrefs.GetString("Username", "Player" + GetComponent<NetworkIdentity>().netId);
-        
-        // Check if player name is used
-        while (usedPlayerNames.Contains(playerName))
-        {
-            playerName += "1";
-        }
-        
-        transform.name = playerName;
-        return playerName;
-    }
-
+    
     private void InitPlayerUI()
     {
         // Création du UI du joueur local
@@ -144,7 +128,7 @@ public class PlayerSetup : NetworkBehaviour
         }
         
         // Ajout du joueur aux statistiques
-        playerStatsController.CmdAddPlayer(playerName);
+        playerStatsController.CmdAddPlayer(playerName, netId);
     }
     
 }
