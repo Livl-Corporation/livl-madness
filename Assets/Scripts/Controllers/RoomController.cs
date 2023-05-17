@@ -77,6 +77,8 @@ public class RoomController : NetworkBehaviour, IRoomObservable
             observer.UpdateRoom(result);
         }
         
+        if(networkRoomPlayer == null) return;
+        
         var isSolo = result.Count == 1;
         
         hintText.text = isSolo ? soloHintText : multiHintText;
