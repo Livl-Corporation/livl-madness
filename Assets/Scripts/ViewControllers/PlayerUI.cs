@@ -109,7 +109,7 @@ public class PlayerUI : NetworkBehaviour
         {
             networkManager.StopClient();
         }
-        else
+        else if(!isServerOnly) // isHost
         {
             networkManager.StopHost();
         }

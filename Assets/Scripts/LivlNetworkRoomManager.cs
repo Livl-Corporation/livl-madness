@@ -6,7 +6,7 @@ public class LivlNetworkRoomManager : NetworkRoomManager
     public override void OnRoomServerDisconnect(NetworkConnectionToClient conn)
     {
         var playerStatsController = FindObjectOfType<PlayerStatsController>();
-
+        
         if (playerStatsController != null)
         {
             playerStatsController.RemovePlayer(conn.identity.netId);
