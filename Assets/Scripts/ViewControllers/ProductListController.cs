@@ -12,6 +12,8 @@ public class ProductListController : MonoBehaviour, IProductListObserver
     [SerializeField] private ScanListController scanListController;
 
     private readonly List<ProductItemController> productItems = new List<ProductItemController>();
+
+    private AudioSource audioSource;
     
     private void Awake()
     {
@@ -34,6 +36,13 @@ public class ProductListController : MonoBehaviour, IProductListObserver
             return;
         }
         scanListController.AddObserver(this);
+        
+        audioSource = GetComponent<AudioSource>();
+        
+        if (audioSource == null)
+        {
+            Debug.LogError("ProductListController: AudioSource not found");
+        }
     }
 
     public void UpdateProductList(List<ProductItem> productList)
@@ -54,8 +63,15 @@ public class ProductListController : MonoBehaviour, IProductListObserver
                 ReplaceProduct(i, new DisplayedProductItem(item));
                 continue;
             }
-            
-            ReplaceProduct(i, new DisplayedProductItem(item, item.ScannedBy == Player.LocalPlayerName));
+
+
+            var isScannedByLocalPlayer = item.ScannedBy == Player.LocalPlayerName;
+            ReplaceProduct(i, new DisplayedProductItem(item, isScannedByLocalPlayer));
+
+            if (!isScannedByLocalPlayer)
+            {
+                audioSource.Play();
+            }
 
         }
     }
