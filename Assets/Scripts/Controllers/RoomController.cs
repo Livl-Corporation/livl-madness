@@ -40,10 +40,8 @@ public class RoomController : NetworkBehaviour, IRoomObservable
     public void OnStartButtonClick()
     {
         var ready = !networkRoomPlayer.readyToBegin;
-        networkRoomPlayer.CmdChangeReadyState(ready);
-
-        buttonText.text = ready ? unreadyButtonText : readyButtonMultiText;
         CmdSetReady(networkRoomPlayer.netId, ready);
+        networkRoomPlayer.CmdChangeReadyState(ready);
     }
     
     public void OnBackButtonClick()
@@ -82,15 +80,13 @@ public class RoomController : NetworkBehaviour, IRoomObservable
         var isSolo = result.Count == 1;
         
         hintText.text = isSolo ? soloHintText : multiHintText;
+        buttonText.text = isSolo ? readyButtonSoloText : readyButtonMultiText;
 
-        if (networkRoomPlayer == null)
-        {
-            return;
-        }
+        if (!roomPlayers.TryGetValue(networkRoomPlayer.netId, out var player)) return;
         
-        if (!networkRoomPlayer.readyToBegin)
+        if (player.IsReady)
         {
-            buttonText.text = isSolo ? readyButtonSoloText : readyButtonMultiText;
+            buttonText.text = unreadyButtonText;
         }
         
     }
