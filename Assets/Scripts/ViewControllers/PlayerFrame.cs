@@ -1,11 +1,18 @@
+using System;
 using Mirror;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
-public class PlayerFrame : MonoBehaviour
+public class PlayerFrame : NetworkBehaviour
 {
     [SerializeField] TMP_Text readyButtonText;
     [SerializeField] NetworkRoomPlayer networkRoomPlayer;
+
+    private void Start()
+    {
+        Debug.Log("PlayerFrame Start " + isLocalPlayer);
+    }
 
     public void OnReadyButtonClick()
     {
