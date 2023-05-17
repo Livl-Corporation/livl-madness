@@ -7,7 +7,8 @@ public class PlayerUI : NetworkBehaviour
 {
 
     private static bool paused = false;
-    private static bool endGame = false;
+    private static bool inGame = false;
+    private static bool captureCursor = true;
     
     private Player player;
     private NetworkManager networkManager;
@@ -33,8 +34,13 @@ public class PlayerUI : NetworkBehaviour
         get => paused;
         set => paused = value;
     }
-    public static bool isEndGame => endGame;
+    public static bool isInGame => inGame;
 
+    public static bool isCursorCaptured
+    {
+        get => captureCursor;
+    }
+    
     private void Awake()
     {
         phoneController.AddPlayerUI(this);
@@ -48,6 +54,11 @@ public class PlayerUI : NetworkBehaviour
         smartphoneCanvas.SetActive(true);
         paused = false;
     }
+
+    public void StartGame()
+    {
+        inGame = true;
+    }
     
     public void TimerFinished()
     {
@@ -55,7 +66,8 @@ public class PlayerUI : NetworkBehaviour
         smartphoneCanvas.SetActive(false);
         controls.SetActive(false);
         paused = true;
-        endGame = true;
+        inGame = false;
+        captureCursor = false;
         pauseOverlay.SetActive(true);
     }
     
@@ -73,7 +85,7 @@ public class PlayerUI : NetworkBehaviour
     
     void HandlePauseInput()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !endGame && !chatInput.isFocused)
+        if (Input.GetKeyDown(KeyCode.Escape) && isInGame && !chatInput.isFocused)
         {
             TogglePauseMenu();
         }

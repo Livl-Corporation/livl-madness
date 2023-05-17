@@ -64,7 +64,7 @@ public class MessageBroadcaster : NetworkBehaviour
         RpcReceiveMessage(RandomMessage(startMessages));
     }
     
-    [Command]
+    [Command(requiresAuthority = false)]
     public void SendGameMessage()
     {
 
@@ -100,7 +100,7 @@ public class MessageBroadcaster : NetworkBehaviour
         Invoke(nameof(SendGameMessage), delay);
     }
 
-    [Command]
+    [Command(requiresAuthority = false)]
     public void StartMessageLoop()
     {
         ResetMessageQueue();

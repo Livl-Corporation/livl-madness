@@ -81,7 +81,7 @@ public class PlayerController : NetworkBehaviour
 
     private void HideCursor()
     {
-        if (PlayerUI.isPaused || PlayerUI.isEndGame)
+        if (PlayerUI.isPaused || !PlayerUI.isCursorCaptured)
         {
             if (Cursor.lockState != CursorLockMode.None)
             {
@@ -103,12 +103,15 @@ public class PlayerController : NetworkBehaviour
     }
 
     private void FixedUpdate() {
-        SampleGround();
-        Move();
-        HandleJump();
-        HandleCrouch();
-        HandleAiming();
-        ManageAimingRig();
+        if (PlayerUI.isInGame)
+        {
+            SampleGround();
+            Move();
+            HandleJump();
+            HandleCrouch();
+            HandleAiming();
+            ManageAimingRig();
+        }
     }
 
     private void ManageAimingRig()
@@ -128,7 +131,7 @@ public class PlayerController : NetworkBehaviour
 
     private void Move()
     {
-        if(PlayerUI.isPaused)
+        if(PlayerUI.isPaused || !PlayerUI.isInGame)
             return;
         
         if(!_hasAnimator) return;
