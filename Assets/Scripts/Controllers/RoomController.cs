@@ -103,7 +103,7 @@ public class RoomController : NetworkBehaviour, IRoomObservable
         
         var player = new PlayerRoom(username, id);
         roomPlayers.Add(id, player);
-        FindObjectOfType<PlayerRoomSpawn>().CmdSpawnPlayerPrefab(username);
+        FindObjectOfType<PlayerRoomSpawn>().SpawnPlayerPrefab(username);
     }
     
     [Command(requiresAuthority = false)]
@@ -136,5 +136,4 @@ public class RoomController : NetworkBehaviour, IRoomObservable
     {
         return roomPlayers.Values.Select(player => player.Username).ToList();
     }
-    
 }

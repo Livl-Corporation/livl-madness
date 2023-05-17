@@ -16,15 +16,16 @@ public class PlayerRoomSpawn : NetworkBehaviour
     {
         availableSpawnPoints = new Queue<GameObject>(spawnPoints.ToList());
     }
-
-    [Command(requiresAuthority = false)]
-    public void CmdSpawnPlayerPrefab(string username)
+    
+    public void SpawnPlayerPrefab(string username)
     {
         if (!IsEmptySpaceAvailable())
         {
             Debug.Log("No more available space in the players spaaaaaawn");
             return;
         }
+        
+        Debug.Log("Spawn PlayerPrefab");
         
         var item = playerPrefab;
 
@@ -37,6 +38,8 @@ public class PlayerRoomSpawn : NetworkBehaviour
         spawnedObject.transform.name = username;
         NetworkServer.Spawn(spawnedObject);
         spawnedPlayers.Add(spawnedObject);
+        
+        Debug.Log("PlayerPrefab spawned");
     }
 
     [Command(requiresAuthority = false)]
