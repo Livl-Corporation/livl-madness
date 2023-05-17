@@ -28,9 +28,8 @@ public class PlayerStatsController : NetworkBehaviour, IPlayerStatsObservable
         
         _playerStats.Add(playerName, new PlayerStat(playerName, playerNetId));
     }
-
-    [Command(requiresAuthority = false)]
-    public void CmdRemovePlayer(uint playerNetId)
+    
+    public void RemovePlayer(uint playerNetId)
     {
         
         var playerStat = _playerStats.Values.FirstOrDefault(a => a.NetId == playerNetId);
@@ -69,6 +68,7 @@ public class PlayerStatsController : NetworkBehaviour, IPlayerStatsObservable
         }
         
         var playerStat = _playerStats[playerName];
+        
         _playerStats[playerName] = new PlayerStat(playerStat, playerStat.Score - 1);
     }
 
@@ -92,9 +92,9 @@ public class PlayerStatsController : NetworkBehaviour, IPlayerStatsObservable
         }
     }
 
-    public List<string> GetPlayerNames()
+    public string GetUsername(uint netId)
     {
-        return _playerStats.Keys.ToList();
+        return _playerStats.Values.FirstOrDefault(a => a.NetId == netId)?.Username;
     }
     
 }

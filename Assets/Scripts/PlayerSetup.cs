@@ -33,6 +33,7 @@ public class PlayerSetup : NetworkBehaviour
         
         if (!isLocalPlayer)
         {
+            transform.name = playerStatsController.GetUsername(netId);
             DisableComponents();
             AssignRemoteLayer();
             return;

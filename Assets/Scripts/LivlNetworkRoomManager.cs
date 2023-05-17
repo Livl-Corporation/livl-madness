@@ -9,21 +9,21 @@ public class LivlNetworkRoomManager : NetworkRoomManager
 
         if (playerStatsController != null)
         {
-            playerStatsController.CmdRemovePlayer(conn.identity.netId);
+            playerStatsController.RemovePlayer(conn.identity.netId);
         }
         
         var roomController = FindObjectOfType<RoomController>();
 
         if (roomController != null)
         {
-            roomController.CmdRemovePlayer(conn.identity.netId);
+            roomController.RemovePlayer(conn.identity.netId);
         }
         
         var playerRoomController = FindObjectOfType<PlayerRoomSpawn>();
 
         if (playerRoomController != null)
         {
-            playerRoomController.CmdUnspawnPlayerPrefab();
+            playerRoomController.UnspawnPlayerPrefab();
         }
 
         base.OnRoomServerDisconnect(conn);
