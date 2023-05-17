@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Mirror;
@@ -15,9 +14,7 @@ public class PlayerRoomSpawn : NetworkBehaviour
 
     private void Awake()
     {
-        var rnd = new System.Random();
-        availableSpawnPoints = new Queue<GameObject>(spawnPoints
-            .OrderBy(a => rnd.Next()).ToList());
+        availableSpawnPoints = new Queue<GameObject>(spawnPoints.ToList());
     }
 
     [Command(requiresAuthority = false)]
@@ -51,7 +48,7 @@ public class PlayerRoomSpawn : NetworkBehaviour
             return;
         }
         
-        var selectedSpawnPoint = spawnedPlayers[0];
+        var selectedSpawnPoint = spawnedPlayers[^1];
         spawnedPlayers.RemoveAt(0);
         NetworkServer.UnSpawn(selectedSpawnPoint);
         Destroy(selectedSpawnPoint);
