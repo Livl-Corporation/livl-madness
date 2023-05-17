@@ -15,6 +15,7 @@ public class RoomController : NetworkBehaviour, IRoomObservable
     [SerializeField] private TMP_Text buttonText;
     [SerializeField] private TMP_Text hintText;
     [SerializeField] private NetworkRoomPlayer networkRoomPlayer;
+    [SerializeField] private TMP_Text hourText;
     
     [Header("Config")]
     [SerializeField] private string readyButtonSoloText = "Démarrer la partie";
@@ -36,7 +37,14 @@ public class RoomController : NetworkBehaviour, IRoomObservable
     {
         networkRoomPlayer = _networkRoomPlayer;
     }
-    
+
+    private void Update()
+    {
+        if (hourText == null) return;
+        
+        hourText.text = DateTime.Now.ToString("HH:mm");
+    }
+
     public void OnStartButtonClick()
     {
         var ready = !networkRoomPlayer.readyToBegin;
