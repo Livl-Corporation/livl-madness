@@ -86,13 +86,6 @@ public class GameManager : NetworkBehaviour, ITimerObserver
         
         CmdGameStart();
         
-        var playerUI = FindObjectOfType<PlayerUI>();
-
-        if (playerUI != null)
-        {
-            playerUI.StartGame();
-        }
-        
     }
 
     [Command(requiresAuthority = false)]
@@ -112,6 +105,14 @@ public class GameManager : NetworkBehaviour, ITimerObserver
             return;
         }
         startTimerView.OnTimerFinished();
+        
+        var playerUI = FindObjectOfType<PlayerUI>();
+
+        if (playerUI != null)
+        {
+            playerUI.StartGame();
+        }
+        
     }
 
     public Timer GetTimer()
