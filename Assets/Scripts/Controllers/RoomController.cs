@@ -46,7 +46,6 @@ public class RoomController : NetworkBehaviour, IRoomObservable
     
     public void OnBackButtonClick()
     {
-        CmdRemovePlayer(networkRoomPlayer.netId);
         if (NetworkServer.active)
         {
             NetworkManager.singleton.StopHost();
@@ -77,6 +76,8 @@ public class RoomController : NetworkBehaviour, IRoomObservable
             observer.UpdateRoom(result);
         }
         
+        if(networkRoomPlayer == null) return;
+        
         var isSolo = result.Count == 1;
         
         hintText.text = isSolo ? soloHintText : multiHintText;
@@ -102,6 +103,7 @@ public class RoomController : NetworkBehaviour, IRoomObservable
         
         var player = new PlayerRoom(username, id);
         roomPlayers.Add(id, player);
+        FindObjectOfType<PlayerRoomSpawn>().CmdSpawnPlayerPrefab(username);
     }
     
     [Command(requiresAuthority = false)]

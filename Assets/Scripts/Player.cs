@@ -18,8 +18,11 @@ public class Player : NetworkBehaviour
 
     public void FootStepAudioSound()
     {
-        audioSource.volume = 0.1f;
+        if (isServerOnly)
+            return;
         
+        audioSource.volume = 0.1f;
+
         if (!isLocalPlayer)
         {
             // Get the distance between this player and the local player
@@ -29,8 +32,9 @@ public class Player : NetworkBehaviour
             if (distance <= footStepRange)
             {
                 // Calculate the volume based on the distance
-                float volume = Mathf.InverseLerp(GetComponent<AudioSource>().minDistance, GetComponent<AudioSource>().maxDistance, distance);
                 
+                float volume = Mathf.InverseLerp(GetComponent<AudioSource>().minDistance, GetComponent<AudioSource>().maxDistance, distance);
+
                 // Set the volume of the audio source
                 audioSource.volume = volume;
                 
