@@ -68,14 +68,21 @@ public class Leaderboard : MonoBehaviour, IPlayerStatsObserver
     
     private void AddPlayerStat(string playerName)
     {
+        
+        if (_playerStatItems.ContainsKey(playerName)) return;
+        
         var playerStatItem = Instantiate(playerScoreBoardItem, transformPlayerScoreBoardList);
         _playerStatItems.Add(playerName, playerStatItem.GetComponent<PlayerScoreBoardItem>());
     }
 
     private void RemovePlayerStat(string playerName)
     {
+        
+        if (!_playerStatItems.ContainsKey(playerName)) return;
+        
         var playerStatItem = _playerStatItems[playerName];
         _playerStatItems.Remove(playerName);
+        
         Destroy(playerStatItem.gameObject);
     }    
     
