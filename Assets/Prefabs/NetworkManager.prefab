@@ -55,7 +55,7 @@ MonoBehaviour:
   offlineScene: Assets/Scenes/LobbLivl.unity
   onlineScene: Assets/Scenes/Room.unity
   transport: {fileID: 3032535145747475926}
-  networkAddress: chouffe.tgimenez.fr
+  networkAddress: localhost
   maxConnections: 64
   authenticator: {fileID: 0}
   playerPrefab: {fileID: 4416926081852918481, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
@@ -63,7 +63,7 @@ MonoBehaviour:
   playerSpawnMethod: 0
   spawnPrefabs: []
   timeInterpolationGui: 1
-  showRoomGUI: 1
+  showRoomGUI: 0
   minPlayers: 1
   roomPlayerPrefab: {fileID: 1557683716987127228, guid: 1ad0ba1be29078c4981ec1f6182057a2, type: 3}
   RoomScene: Assets/Scenes/Room.unity
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9016440220411718642}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6442dc8070ceb41f094e44de0bf87274, type: 3}
   m_Name: 

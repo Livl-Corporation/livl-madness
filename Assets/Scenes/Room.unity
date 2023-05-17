@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44705588, g: 0.49695587, b: 0.5750898, a: 1}
+  m_IndirectSpecularColor: {r: 0.4470548, g: 0.4969548, b: 0.57508844, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3729,6 +3729,7 @@ GameObject:
   - component: {fileID: 111524281}
   - component: {fileID: 111524280}
   - component: {fileID: 111524283}
+  - component: {fileID: 111524284}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -3832,11 +3833,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b108e13cf363c34db91b13e1380669a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerList: {fileID: 229249480}
-  playerFramePrefab: {fileID: 9114860307187896918, guid: 28984b8f14f9f0745805d355a9e2ec6a, type: 3}
-  startButton: {fileID: 1057533464}
-  hintText: {fileID: 1154426496}
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0.1
+  buttonText: {fileID: 147809765}
+  hintText: {fileID: 1154426498}
   networkRoomPlayer: {fileID: 0}
+  readyButtonSoloText: "D\xE9marrer la partie"
+  readyButtonMultiText: "Pr\xEAt"
+  unreadyButtonText: Annuler
+  soloHintText: "Attendez que d'autres joueurs rejoingnent la partie ou d\xE9marrez
+    seul d\xE8s maintenant"
+  multiHintText: "La partie d\xE9marrera automatiquement lorsque tous les joueurs
+    seront pr\xEAts"
+--- !u!114 &111524284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111524277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 3128438209
+  _assetId: 0
+  serverOnly: 0
+  visible: 0
+  hasSpawned: 0
 --- !u!1 &111702072
 GameObject:
   m_ObjectHideFlags: 0
@@ -7977,6 +8003,7 @@ GameObject:
   - component: {fileID: 229249484}
   - component: {fileID: 229249483}
   - component: {fileID: 229249482}
+  - component: {fileID: 229249485}
   m_Layer: 5
   m_Name: PlayerList
   m_TagString: Untagged
@@ -8024,11 +8051,11 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
+  m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
 --- !u!114 &229249483
 MonoBehaviour:
@@ -8068,6 +8095,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229249480}
   m_CullTransparentMesh: 1
+--- !u!114 &229249485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229249480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 374d5e04de9df4d4a9c2ff330b06a688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerFramePrefab: {fileID: 9114860307187896918, guid: 28984b8f14f9f0745805d355a9e2ec6a, type: 3}
+  roomController: {fileID: 0}
 --- !u!1 &229996752
 GameObject:
   m_ObjectHideFlags: 0
