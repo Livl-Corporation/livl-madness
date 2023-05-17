@@ -6,7 +6,7 @@ public class LivlNetworkRoomManager : NetworkRoomManager
     public override void OnRoomServerDisconnect(NetworkConnectionToClient conn)
     {
         var playerStatsController = FindObjectOfType<PlayerStatsController>();
-
+        
         if (playerStatsController != null)
         {
             playerStatsController.RemovePlayer(conn.identity.netId);
@@ -27,5 +27,13 @@ public class LivlNetworkRoomManager : NetworkRoomManager
         }
 
         base.OnRoomServerDisconnect(conn);
+        
+        if (numPlayers == 0)
+        {
+            Debug.Log("Restart du serveur...");
+            StopServer();
+            
+            CancelInvoke(nameof(GameManager.Instance.RejectAllPlayersAndLoadRoomScene));
+        }
     }
 }

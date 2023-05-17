@@ -124,7 +124,7 @@ public class ChatBehaviour : NetworkBehaviour
         OnMessage?.Invoke(formattedMessage);
     }
     
-    [Command]
+    [Command(requiresAuthority = false)]
     public void CmdSendSystemMessage(string message)
     {
         RpcHandleSystemMessage(message);

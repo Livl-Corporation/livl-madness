@@ -64,7 +64,6 @@ public class MessageBroadcaster : NetworkBehaviour
         RpcReceiveMessage(RandomMessage(startMessages));
     }
     
-    [Command(requiresAuthority = false)]
     public void SendGameMessage()
     {
 

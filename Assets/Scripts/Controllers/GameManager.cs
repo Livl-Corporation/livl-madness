@@ -38,6 +38,7 @@ public class GameManager : NetworkBehaviour, ITimerObserver
         if (hasGameStarted)
         {
             RpcOnTimerFinished();
+            Invoke(nameof(RejectAllPlayersAndLoadRoomScene), 30f);
             return;
         }
         
@@ -46,6 +47,16 @@ public class GameManager : NetworkBehaviour, ITimerObserver
         
     }
 
+    [Server]
+    public void RejectAllPlayersAndLoadRoomScene()
+    {
+        if (NetworkManager.singleton.numPlayers > 0)
+        {
+            Debug.Log("Restart du serveur...");
+            NetworkManager.singleton.StopServer();
+        }
+    }
+    
     private void Start()
     {
         sceneCamera.GetComponent<AudioListener>().enabled = false;
