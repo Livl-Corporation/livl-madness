@@ -67,7 +67,7 @@ public class PlayerUI : NetworkBehaviour
         inGame = false;
         captureCursor = false;
         pauseOverlay.SetActive(true);
-        CollapsePhone();
+        smartphoneCanvas.SetActive(false);
         OpenLeaderboard();
     }
 
@@ -91,13 +91,7 @@ public class PlayerUI : NetworkBehaviour
         LeanTween.scale(leaderboardCanvas, previousScale, 0.5f).setEaseOutExpo();
         LeanTween.alphaCanvas(canvasGroup, 1, 0.5f).setEaseOutExpo();
     }
-
-    private void CollapsePhone()
-    {
-        
-        smartphoneCanvas.LeanMoveY(-500, 1f).setEaseOutExpo();
-        
-    }
+    
     
     public void SetPlayer(Player _player)
     {
