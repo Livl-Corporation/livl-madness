@@ -69,6 +69,9 @@ public class ChatBehaviour : NetworkBehaviour
      */
     private void ShowChatPanel()
     {
+        if (chatPanel == null)
+            return;
+        
         var canvasGroup = chatPanel.GetComponent<CanvasGroup>();
             
         if (!canvasGroup) return;
