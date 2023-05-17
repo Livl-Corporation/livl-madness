@@ -103,12 +103,15 @@ public class PlayerController : NetworkBehaviour
     }
 
     private void FixedUpdate() {
-        SampleGround();
-        Move();
-        HandleJump();
-        HandleCrouch();
-        HandleAiming();
-        ManageAimingRig();
+        if (PlayerUI.isInGame)
+        {
+            SampleGround();
+            Move();
+            HandleJump();
+            HandleCrouch();
+            HandleAiming();
+            ManageAimingRig();
+        }
     }
 
     private void ManageAimingRig()
