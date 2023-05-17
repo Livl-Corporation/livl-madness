@@ -8,15 +8,17 @@
 
 [Livl Madness website](https://livl.franck-g.fr/)
 
+🇫🇷 Ce readme est aussi disponible en français [juste ici](./doc/README_FR.md) !
+
 # Table of contents
 
-- [Game specification](#Game-specification)
-- [How to play ?](#How-to-play-?)
-  - [Play in solo](#Play-in-solo)
-  - [Play in local multiplayer](Play-in-local-multiplayer)
-  - [Play in multiplayer over the internet](#Play-in-multiplayer-over-the-internet)
-- [Technical Specification](#Technical-Specification)
-- [Credits](#Credits)
+- [🎮 Game specification](#Game-specification)
+- [🕹️ How to play ?](#How-to-play-?)
+  - [🙋 Play in solo](#Play-in-solo)
+  - [🏚️ Play in local multiplayer](Play-in-local-multiplayer)
+  - [🌍 Play in multiplayer over the internet](#Play-in-multiplayer-over-the-internet)
+- [⚙️ Technical Specification](#Technical-Specification)
+- [💖 Credits](#Credits)
 
 # Game specification
 
