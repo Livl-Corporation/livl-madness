@@ -5,13 +5,16 @@ using UnityEngine.Animations.Rigging;
 
 public class PlayerController : NetworkBehaviour
 {
+
+    public static float DefaultMouseSensivity = 20.0f;
+    
     [Header("Movement Settings")]
     [SerializeField] private float AnimBlendSpeed = 8.9f;
     [SerializeField] private Transform CameraRoot;
     [SerializeField] private Transform Camera;
     [SerializeField] private float UpperLimit = -40f;
     [SerializeField] private float BottomLimit = 70f;
-    [SerializeField] private float MouseSensitivity = 21.9f;
+    private float MouseSensitivity = DefaultMouseSensivity;
     [SerializeField, Range(10, 500)] private float JumpFactor = 150f;
     [SerializeField] private float Dis2Ground = 0.8f;
     [SerializeField] private LayerMask GroundCheck;
@@ -34,6 +37,10 @@ public class PlayerController : NetworkBehaviour
     [SerializeField] private float AimSmoothSpeed = 20;
     [SerializeField] LayerMask AimLayerMask;
     [SerializeField] private Camera PlayerCamera;
+    
+    
+    private static readonly string SensibilityKey = "MouseSensibility";
+
     
     private Rigidbody _playerRigidbody;
     private InputManager _inputManager;
@@ -72,6 +79,12 @@ public class PlayerController : NetworkBehaviour
         _aimingHash = Animator.StringToHash("Aiming");
         
         _player = GetComponent<Player>();
+        
+        if (PlayerPrefs.HasKey(SensibilityKey))
+        {
+            MouseSensitivity = PlayerPrefs.GetFloat(SensibilityKey);
+        }
+        
     }
 
     private void Update()
@@ -274,4 +287,15 @@ public class PlayerController : NetworkBehaviour
         if(isLocalPlayer)
             AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_playerRigidbody.transform.position), 1f);
     }
+    
+    public void SetMouseSensitivity(float sensitivity)
+    {
+        MouseSensitivity = sensitivity;
+    }
+    
+    public float GetMouseSensitivity()
+    {
+        return MouseSensitivity;
+    }
+
 }

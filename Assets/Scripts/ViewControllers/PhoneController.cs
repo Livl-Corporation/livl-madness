@@ -26,6 +26,7 @@ public class PhoneController : MonoBehaviour, ITimerObserver, IPlayerStatsObserv
 
     private GameObject currentScreen;
     private Dictionary<Phone.Screen, GameObject> screens = new Dictionary<Phone.Screen, GameObject>();
+
     
     private float lastCoroutineTime;
 
@@ -44,7 +45,7 @@ public class PhoneController : MonoBehaviour, ITimerObserver, IPlayerStatsObserv
     }
 
     void Start()
-    {   
+    {
         GenerateScreens();
 
         // Hide all screens
@@ -182,4 +183,5 @@ public class PhoneController : MonoBehaviour, ITimerObserver, IPlayerStatsObserv
         
         timer.RemoveObserver(this);
     }
+    
 }
