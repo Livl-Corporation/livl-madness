@@ -23,6 +23,8 @@
 
 # 🎮 Game specification
 
+[Here is a Youtube Gameplay about the Livl Madness Game ](https://www.youtube.com/watch?v=Y9a4rZaCKXk) 
+
 ## Objective
 
 Players must compete against each other to scan as much product as possible in a limited time. They share the same shopping list and the same products. The player who scans the most products wins.
