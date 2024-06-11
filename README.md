@@ -12,6 +12,7 @@
 
 # Table of contents
 
+- [📺 Gameplay Videos](#gameplay-videos)
 - [🎮 Game specification](#game-specification)
 - [🕹️ How to play ?](#how-to-play-?)
   - [🙋 Play in solo](#play-in-solo)
@@ -21,9 +22,31 @@
 - [⚙️ Technical Specification](#technical-Specification)
 - [💖 Credits](#credits)
 
-# 🎮 Game specification
 
-[Here is a Youtube Gameplay about the Livl Madness Game ](https://www.youtube.com/watch?v=Y9a4rZaCKXk) 
+# 📺 Gameplay Videos
+
+<table align="center">
+  <tr>
+    <td align="center">
+      <h3 id="multiplayer-gameplay">Livl Madness Gameplay in Multiplayer</h3>
+      <a href="https://www.youtube.com/watch?v=93hBMCC_aoE">
+        <img src="https://img.youtube.com/vi/93hBMCC_aoE/0.jpg" alt="Multiplayer Gameplay" width="400px"/>
+      </a>
+      <br/>
+      <a href="https://www.youtube.com/watch?v=93hBMCC_aoE">Watch on YouTube</a>
+    </td>
+    <td align="center">
+      <h3 id="solo-gameplay">Livl Madness Gameplay in Solo</h3>
+      <a href="https://www.youtube.com/watch?v=Y9a4rZaCKXk">
+        <img src="https://img.youtube.com/vi/Y9a4rZaCKXk/0.jpg" alt="Solo Gameplay" width="400px"/>
+      </a>
+      <br/>
+      <a href="https://www.youtube.com/watch?v=Y9a4rZaCKXk">Watch on YouTube</a>
+    </td>
+  </tr>
+</table>
+
+# 🎮 Game specification
 
 ## Objective
 
