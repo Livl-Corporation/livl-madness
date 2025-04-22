@@ -129,7 +129,7 @@ Here are our four Livl enineer who worked on this wonderful project ! Do not hes
   <tr>
     <th><img src="https://avatars.githubusercontent.com/u/19238963?v=4?v=4?size=115" width="115"><br><strong>@FranckG28</strong></th>
     <th><img  src="https://avatars.githubusercontent.com/u/62793491?v=4?size=115" width="115"><br><strong>@jvondermarck</strong></th>
-    <th><img  src="https://avatars.githubusercontent.com/u/67447144?v=4?size=115" width="115"><br><strong>@Augustin68</strong></th>
+    <th><img  src="https://avatars.githubusercontent.com/u/67447144?v=4?size=115" width="115"><br><strong>@raffaeldp</strong></th>
     <th><img  src="https://avatars.githubusercontent.com/u/51646882?v=4?size=115" width="115"><br><strong>@Kayn017</strong></th>
   </tr>
   <tr align="center">
